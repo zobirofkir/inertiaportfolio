@@ -1,8 +1,16 @@
+import HeaderComponent from '@/Components/HeaderComponent'
+import { Head } from '@inertiajs/react'
 import React from 'react'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+        <Head title="Home" />
+
+        <HeaderComponent />
+
+        
+    </>
   )
 }
 

@@ -58,6 +58,20 @@
     --chart-5: 340 75% 55%
   }
 }
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    }
+
+    .star {
+    animation: twinkle 2s infinite;
+}
+
 @layer base {
   * {
     @apply border-border;

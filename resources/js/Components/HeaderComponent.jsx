@@ -1,6 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 
+// Star Component
+const Star = () => {
+  const style = {
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    width: `${Math.random() * 3}px`,
+    height: `${Math.random() * 3}px`,
+    animationDelay: `${Math.random() * 2}s`,
+  };
+
+  return <div className="star absolute bg-white rounded-full animate-twinkle" style={style}></div>;
+};
+
 const HeaderComponent = () => {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark';
@@ -24,7 +37,16 @@ const HeaderComponent = () => {
 
   return (
     <header className={`w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      <div className='container mx-auto flex justify-between items-center'>
+      {/* Stars Background */}
+      {darkMode && (
+        <div className="absolute inset-0 overflow-hidden">
+          {Array.from({ length: 100 }).map((_, index) => (
+            <Star key={index} />
+          ))}
+        </div>
+      )}
+
+      <div className='container mx-auto flex justify-between items-center relative'>
 
         {/* Logo */}
         <h1 className='text-xl sm:text-2xl font-bold tracking-wide'>ZOBIR</h1>

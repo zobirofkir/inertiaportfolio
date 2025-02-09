@@ -23,7 +23,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header className={`w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <header className={`w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
       <div className='container mx-auto flex justify-between items-center'>
 
         {/* Logo */}
@@ -44,7 +44,7 @@ const HeaderComponent = () => {
         <button
           onClick={toggleMobileMenu}
           aria-label="Toggle Mobile Menu"
-          className='sm:hidden p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700'
+          className='sm:hidden p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700'
         >
           {isMobileMenuOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
         </button>
@@ -53,7 +53,7 @@ const HeaderComponent = () => {
         <button
           onClick={() => setDarkMode(!darkMode)}
           aria-label="Toggle Dark Mode"
-          className='hidden sm:block p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700'
+          className='hidden sm:block p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700'
         >
           {darkMode ? <Sun className='w-6 h-6 text-yellow-400' /> : <Moon className='w-6 h-6 text-gray-700' />}
         </button>
@@ -83,7 +83,7 @@ const HeaderComponent = () => {
         <button
           onClick={() => setDarkMode(!darkMode)}
           aria-label="Toggle Dark Mode"
-          className='mt-4 p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700'
+          className='mt-4 p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700'
         >
           {darkMode ? <Sun className='w-6 h-6 text-yellow-400' /> : <Moon className='w-6 h-6 text-gray-700' />}
         </button>

@@ -46,7 +46,7 @@ const SliderComponent = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="w-full py-16 bg-gray-50 dark:bg-gray-900"
+      className="w-full py-16 bg-gray-50 dark:bg-black"
     >
       <div className="w-full max-w-6xl mx-auto px-4">
         <Swiper

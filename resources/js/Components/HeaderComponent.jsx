@@ -33,7 +33,7 @@ const HeaderComponent = () => {
         <nav className="hidden sm:block">
           <ul className='flex gap-4 sm:gap-6 text-base sm:text-lg'>
             {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
-              <li key={index} className='cursor-pointer transition-colors duration-300 hover:text-green-400'>
+              <li key={index} className='cursor-pointer transition-colors duration-300 hover:text-gray-400'>
                 {item}
               </li>
             ))}
@@ -70,7 +70,7 @@ const HeaderComponent = () => {
             {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
               <li
                 key={index}
-                className='cursor-pointer transition-colors duration-300 hover:text-green-400'
+                className='cursor-pointer transition-colors duration-300 hover:text-gray-400'
                 onClick={toggleMobileMenu}
               >
                 {item}

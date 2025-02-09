@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 
 const HeaderComponent = () => {
@@ -25,7 +25,7 @@ const HeaderComponent = () => {
   return (
     <header className={`w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <div className='container mx-auto flex justify-between items-center'>
-        
+
         {/* Logo */}
         <h1 className='text-xl sm:text-2xl font-bold tracking-wide'>ZOBIR</h1>
 

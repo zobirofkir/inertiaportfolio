@@ -1,4 +1,3 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
@@ -29,15 +28,15 @@ const portfolioItems = [
   },
   {
     id: 4,
-    title: 'Project 3',
+    title: 'Project 4',
     image: 'https://via.placeholder.com/800x600',
-    description: 'Description for Project 3',
+    description: 'Description for Project 4',
   },
   {
     id: 5,
-    title: 'Project 3',
+    title: 'Project 5',
     image: 'https://via.placeholder.com/800x600',
-    description: 'Description for Project 3',
+    description: 'Description for Project 5',
   },
 ];
 
@@ -99,15 +98,15 @@ const SliderComponent = () => {
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 40,
+              spaceBetween: 30,
             },
             1440: {
               slidesPerView: 3,
-              spaceBetween: 50,
+              spaceBetween: 40,
             },
           }}
         >

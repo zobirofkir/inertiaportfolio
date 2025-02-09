@@ -27,6 +27,18 @@ const portfolioItems = [
     image: 'https://via.placeholder.com/800x600',
     description: 'Description for Project 3',
   },
+  {
+    id: 4,
+    title: 'Project 3',
+    image: 'https://via.placeholder.com/800x600',
+    description: 'Description for Project 3',
+  },
+  {
+    id: 5,
+    title: 'Project 3',
+    image: 'https://via.placeholder.com/800x600',
+    description: 'Description for Project 3',
+  },
 ];
 
 const SliderComponent = () => {

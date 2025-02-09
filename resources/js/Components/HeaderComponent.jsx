@@ -70,7 +70,7 @@ const HeaderComponent = () => {
             {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
               <li
                 key={index}
-                className='cursor-pointer transition-colors duration-300 hover:text-gray-400'
+                className='cursor-pointer transition-colors text-center duration-300 hover:text-gray-400'
                 onClick={toggleMobileMenu}
               >
                 {item}

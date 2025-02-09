@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Serif+Hentaigana:wght@200..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,7 +32,7 @@
     --radius: 0.5rem
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -59,6 +61,7 @@
 @layer base {
   * {
     @apply border-border;
+    font-family: "Josefin Sans", serif;
   }
   body {
     @apply bg-background text-foreground;

@@ -1,6 +1,6 @@
 import SliderComponent from '@/Components/SliderComponent'
 import { Head } from '@inertiajs/react'
-import Layout from './Layout'
+import Layout from '../Layouts/Layout'
 
 const Home = () => {
   return (

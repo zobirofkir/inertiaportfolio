@@ -1,6 +1,7 @@
 import SliderComponent from '@/Components/SliderComponent'
 import { Head } from '@inertiajs/react'
 import Layout from '../Layouts/Layout'
+import AboutComponent from '@/Components/AboutComponent'
 
 const Home = () => {
   return (
@@ -9,6 +10,8 @@ const Home = () => {
 
 
         <SliderComponent />
+
+        <AboutComponent />
     </Layout>
   )
 }

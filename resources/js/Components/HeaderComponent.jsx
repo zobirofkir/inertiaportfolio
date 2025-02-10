@@ -1,50 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useState } from 'react';
 
-// Star Component
-const Star = () => {
-  const style = {
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    width: `${Math.random() * 3}px`,
-    height: `${Math.random() * 3}px`,
-    animationDelay: `${Math.random() * 2}s`,
-  };
-
-  return <div className="star absolute bg-white rounded-full animate-twinkle" style={style}></div>;
-};
-
-const HeaderComponent = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
-  });
-
+const HeaderComponent = ({ darkMode, setDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <header className={`w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      {/* Stars Background */}
-      {darkMode && (
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 100 }).map((_, index) => (
-            <Star key={index} />
-          ))}
-        </div>
-      )}
 
       <div className='container mx-auto flex justify-between items-center relative'>
 
@@ -71,13 +40,13 @@ const HeaderComponent = () => {
           {isMobileMenuOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
         </button>
 
-        {/* Dark Mode Toggle */}
+        {/* Dark Mode Switch (Sun and Moon icons) */}
         <button
-          onClick={() => setDarkMode(!darkMode)}
+          onClick={toggleDarkMode}
           aria-label="Toggle Dark Mode"
-          className='hidden sm:block p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700'
+          className="hidden sm:block p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700"
         >
-          {darkMode ? <Sun className='w-6 h-6 text-yellow-400' /> : <Moon className='w-6 h-6 text-gray-700' />}
+          {darkMode ? <Sun className='w-6 h-6 text-yellow-500' /> : <Moon className='w-6 h-6 text-gray-800' />}
         </button>
       </div>
 
@@ -99,16 +68,15 @@ const HeaderComponent = () => {
               </li>
             ))}
           </ul>
-        </nav>
 
-        {/* Dark Mode Toggle for Mobile */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          aria-label="Toggle Dark Mode"
-          className='mt-4 p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700'
-        >
-          {darkMode ? <Sun className='w-6 h-6 text-yellow-400' /> : <Moon className='w-6 h-6 text-gray-700' />}
-        </button>
+            <button
+                onClick={toggleDarkMode}
+                aria-label="Toggle Dark Mode"
+                className="block sm:hidden p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700"
+                >
+                {darkMode ? <Sun className='w-6 h-6 text-yellow-500' /> : <Moon className='w-6 h-6 text-gray-800' />}
+            </button>
+        </nav>
       </div>
     </header>
   );

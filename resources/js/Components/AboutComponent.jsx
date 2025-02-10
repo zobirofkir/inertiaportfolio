@@ -17,7 +17,7 @@ const AboutComponent = () => {
       } else {
         clearInterval(typingInterval1);
       }
-    }, 50); // Adjust typing speed here
+    }, 50);
 
     const typingInterval2 = setTimeout(() => {
       const interval = setInterval(() => {
@@ -27,8 +27,8 @@ const AboutComponent = () => {
         } else {
           clearInterval(interval);
         }
-      }, 50); // Adjust typing speed here
-    }, fullText1.length * 50 + 500); // Delay second paragraph typing
+      }, 50);
+    }, fullText1.length * 50 + 500);
 
     return () => {
       clearInterval(typingInterval1);
@@ -37,7 +37,7 @@ const AboutComponent = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center py-12 bg-white dark:bg-transparent">
+    <section className="flex flex-col items-center py-12 bg-white dark:bg-transparent fade-in">
       <div className="max-w-4xl text-center">
         <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">About Me</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 typewriter">

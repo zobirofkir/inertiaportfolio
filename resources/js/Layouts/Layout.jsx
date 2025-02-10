@@ -54,7 +54,6 @@ const Layout = ({ children, title }) => {
         <HeaderComponent darkMode={darkMode} setDarkMode={setDarkMode} />
         <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
           {children}
-          {/* Render ProjectComponent in light mode */}
         </main>
       </div>
     </>

@@ -48,7 +48,7 @@ const SliderComponent = () => {
       transition={{ duration: 1 }}
       className="w-full py-16 bg-white dark:bg-transparent"
     >
-      <div className="w-full max-w-6xl mx-auto px-4">
+      <div className="w-full mx-auto px-4">
         <Swiper
           effect={'coverflow'}
           grabCursor={true}

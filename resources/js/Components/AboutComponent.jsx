@@ -4,7 +4,7 @@ const AboutComponent = () => {
   return (
     <section className="flex flex-col items-center py-12 bg-white dark:bg-transparent">
       <div className="max-w-4xl text-center">
-        <h2 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-6">About Me</h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">About Me</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
           Hi, I'm Zobir Ofkir, a passionate web developer. I specialize in building modern web applications using technologies like React.js, Laravel, and Next.js.
           I enjoy solving complex problems and continuously improving my skills.

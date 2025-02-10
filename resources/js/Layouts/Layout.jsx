@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import HeaderComponent from '@/Components/HeaderComponent';
+import ProjectComponent from '@/Components/ProjectComponent'; // Import the ProjectComponent
 
 /**
  * Star Component
@@ -51,7 +52,11 @@ const Layout = ({ children, title }) => {
         )}
 
         <HeaderComponent darkMode={darkMode} setDarkMode={setDarkMode} />
-        <main className="container mx-auto p-4 relative z-10 transition-all duration-500">{children}</main>
+        <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
+          {children}
+          {/* Render ProjectComponent in light mode */}
+          {!darkMode && <ProjectComponent />}
+        </main>
       </div>
     </>
   );

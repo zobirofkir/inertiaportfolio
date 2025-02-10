@@ -26,7 +26,7 @@ const ProjectComponent = () => {
     ];
 
   return (
-    <div className="min-h-screen bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden">
+    <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden">
       {/* Projects list */}
       <div className="relative z-10 container mx-auto px-6 py-16">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">

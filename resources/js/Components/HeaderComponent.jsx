@@ -52,9 +52,10 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`sm:hidden overflow-hidden transition-all duration-500 ease-out ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{ transitionProperty: 'max-height, opacity' }}
       >
         <nav className='mt-4'>
           <ul className='flex flex-col gap-4 text-base'>

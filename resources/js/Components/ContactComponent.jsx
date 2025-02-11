@@ -1,82 +1,85 @@
 import React from 'react';
 
-const ContactComponent = ({ darkMode }) => {
+const ContactComponent = () => {
   return (
-    <div className={`py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${darkMode ? 'bg-transparent text-white' : 'bg-transparent text-gray-900'}`}>
-      <div className="max-w-7xl mx-auto">
-        {/* Gradient Text Heading */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-transparent bg-clip-text">
-          Contact Us
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <div className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white dark:bg-transparent text-black dark:text-white'}`}>
-            <form>
-              <div className="mb-6">
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
-                  }`}
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
-                  }`}
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
-                  }`}
-                  placeholder="Enter your message"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className={`w-full px-4 py-2 rounded-lg font-semibold bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-white hover:from-blue-600 hover:via-purple-700 hover:to-pink-700 transition-all duration-300`}
-              >
-                Send Message
-              </button>
-            </form>
+    <div className="flex items-center justify-center bg-white dark:bg-transparent p-6">
+      <div className="w-full mx-auto bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="md:flex">
+
+          {/* Left Side - Image */}
+          <div className="md:w-1/3 flex items-center justify-center p-8">
+            <img
+              src="https://zobirofkir.com/logo192.png"
+              alt="Your Name"
+              className="rounded-full w-48 h-48 object-cover border-4 border-white dark:border-gray-700 shadow-lg"
+            />
           </div>
 
-          {/* Google Map */}
-          <div className="rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d144.95373531531664!3d-37.816279742021665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d2a6c8e2299a!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1625070000000!5m2!1sen!2sus"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              className="rounded-lg"
-            ></iframe>
+          {/* Right Side - Info */}
+          <div className="md:w-2/3 p-8">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Your Name</h1>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Your professional title or short bio goes here. Highlight your skills, experience, and what makes you unique.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-gray-700 dark:text-gray-300 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <span className="text-gray-700 dark:text-gray-300">your.email@example.com</span>
+              </div>
+              <div className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-gray-700 dark:text-gray-300 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+                <span className="text-gray-700 dark:text-gray-300">+123 456 7890</span>
+              </div>
+              <div className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-gray-700 dark:text-gray-300 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span className="text-gray-700 dark:text-gray-300">City, Country</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

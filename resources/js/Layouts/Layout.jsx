@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import HeaderComponent from '@/Components/HeaderComponent';
+import FooterComponent from '@/Components/FooterComponent';
 
 /**
  * Star Component
@@ -54,6 +55,7 @@ const Layout = ({ children, title }) => {
         <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
           {children}
         </main>
+        <FooterComponent />
       </div>
     </>
   );

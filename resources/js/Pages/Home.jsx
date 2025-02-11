@@ -4,6 +4,7 @@ import Layout from '../Layouts/Layout'
 import AboutComponent from '@/Components/AboutComponent'
 import ProjectComponent from '@/Components/ProjectComponent'
 import ServiceComponent from '@/Components/ServiceComponent'
+import ContactComponent from '@/Components/ContactComponent'
 
 const Home = () => {
   return (
@@ -17,6 +18,8 @@ const Home = () => {
         <ServiceComponent />
 
         <ProjectComponent />
+
+        <ContactComponent />
     </Layout>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactComponent = ({ darkMode }) => {
   return (
-    <div className={`py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${darkMode ? 'bg-transparent text-white' : 'bg-transparent text-gray-900'}`}>
       <div className="max-w-7xl mx-auto">
         {/* Gradient Text Heading */}
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-transparent bg-clip-text">
@@ -10,7 +10,7 @@ const ContactComponent = ({ darkMode }) => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+          <div className={`p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white dark:bg-transparent text-black dark:text-white'}`}>
             <form>
               <div className="mb-6">
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -21,7 +21,7 @@ const ContactComponent = ({ darkMode }) => {
                   id="name"
                   name="name"
                   className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'
+                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
                   }`}
                   placeholder="Enter your name"
                   required
@@ -36,7 +36,7 @@ const ContactComponent = ({ darkMode }) => {
                   id="email"
                   name="email"
                   className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'
+                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
                   }`}
                   placeholder="Enter your email"
                   required
@@ -51,7 +51,7 @@ const ContactComponent = ({ darkMode }) => {
                   name="message"
                   rows="4"
                   className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'
+                    darkMode ? 'bg-gray-700/50 text-white' : 'bg-white text-gray-900'
                   }`}
                   placeholder="Enter your message"
                   required

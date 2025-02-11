@@ -6,6 +6,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import { useEffect, useState } from 'react';
 
 const portfolioItems = [
   {
@@ -41,6 +42,26 @@ const portfolioItems = [
 ];
 
 const SliderComponent = () => {
+    const [text, setText] = useState('');
+    const fullText = "Hello I'm Zobir Ofkir 👋";
+
+    useEffect(() => {
+        let index = 0;
+
+        const typingInterval1 = setInterval(() => {
+          if (index < fullText.length) {
+            setText((prevText) => prevText + fullText.charAt(index));
+            index++;
+          } else {
+            clearInterval(typingInterval1);
+          }
+        }, 50);
+
+        return () => {
+          clearInterval(typingInterval1);
+        };
+      }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -49,6 +70,11 @@ const SliderComponent = () => {
       className="w-full py-16 bg-white dark:bg-transparent"
     >
       <div className="w-full mx-auto px-4">
+        <div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+            {text}
+          </h2>
+        </div>
         <Swiper
           effect={'coverflow'}
           grabCursor={true}

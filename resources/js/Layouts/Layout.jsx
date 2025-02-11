@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import HeaderComponent from '@/Components/HeaderComponent';
-import ProjectComponent from '@/Components/ProjectComponent'; // Import the ProjectComponent
 
 /**
  * Star Component

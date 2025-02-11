@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 
@@ -12,6 +13,14 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
     setDarkMode(!darkMode);
   };
 
+  const navItems = [
+    { name: 'Home', url: '/' },
+    { name: 'About', url: '/about' },
+    { name: 'Services', url: '/services' },
+    { name: 'Project', url: '/project' },
+    { name: 'Contact', url: '/contact' },
+  ];
+
   return (
     <header
       className={`sticky top-0 z-50 w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${
@@ -19,16 +28,15 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center relative">
-
         {/* Logo */}
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:block">
           <ul className="flex gap-4 sm:gap-6 text-base sm:text-lg">
-            {['Home', 'About', 'Services', 'Project', 'Contact'].map((item, index) => (
+            {navItems.map((item, index) => (
               <li key={index} className="cursor-pointer transition-colors duration-300 hover:text-gray-400">
-                {item}
+                <Link href={item.url}>{item.name}</Link>
               </li>
             ))}
           </ul>
@@ -62,13 +70,13 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       >
         <nav className="mt-4">
           <ul className="flex flex-col gap-4 text-base">
-            {['Home', 'About', 'Services', 'Project', 'Contact'].map((item, index) => (
+            {navItems.map((item, index) => (
               <li
                 key={index}
                 className="cursor-pointer transition-colors text-center duration-300 hover:text-gray-400"
                 onClick={toggleMobileMenu}
               >
-                {item}
+                <Link href={item.url}>{item.name}</Link>
               </li>
             ))}
           </ul>

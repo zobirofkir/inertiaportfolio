@@ -19,13 +19,14 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center relative">
+
         {/* Logo */}
         <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:block">
           <ul className="flex gap-4 sm:gap-6 text-base sm:text-lg">
-            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+            {['Home', 'About', 'Services', 'Project', 'Contact'].map((item, index) => (
               <li key={index} className="cursor-pointer transition-colors duration-300 hover:text-gray-400">
                 {item}
               </li>
@@ -61,7 +62,7 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       >
         <nav className="mt-4">
           <ul className="flex flex-col gap-4 text-base">
-            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+            {['Home', 'About', 'Services', 'Project', 'Contact'].map((item, index) => (
               <li
                 key={index}
                 className="cursor-pointer transition-colors text-center duration-300 hover:text-gray-400"

@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react'
 import Layout from '../Layouts/Layout'
 import AboutComponent from '@/Components/AboutComponent'
 import ProjectComponent from '@/Components/ProjectComponent'
+import ServiceComponent from '@/Components/ServiceComponent'
 
 const Home = () => {
   return (
@@ -12,6 +13,8 @@ const Home = () => {
         <SliderComponent />
 
         <AboutComponent />
+
+        <ServiceComponent />
 
         <ProjectComponent />
     </Layout>

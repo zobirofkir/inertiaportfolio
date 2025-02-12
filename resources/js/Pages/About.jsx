@@ -9,7 +9,7 @@ const About = () => {
       <div className="min-h-screen bg-white dark:bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300 flex items-center">
         <div className="container mx-auto px-4 py-12">
           <motion.h1
-            className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
+            className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

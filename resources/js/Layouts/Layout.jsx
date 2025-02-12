@@ -33,7 +33,7 @@ const Fog = () => {
     animationDuration: `${Math.random() * 10 + 5}s`,
   };
 
-  return <div className="fog absolute bg-gray-200 rounded-full animate-float" style={style}></div>;
+  return <div className="fog absolute bg-gray-500 rounded-full animate-float" style={style}></div>;
 };
 
 const Layout = ({ children, title }) => {

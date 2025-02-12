@@ -8,7 +8,9 @@ const About = () => {
       <Head title="About Me" />
       <div className="min-h-screen bg-white dark:bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300 flex items-center">
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center">
+            About Me
+          </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Profile Image with 3D Effect */}

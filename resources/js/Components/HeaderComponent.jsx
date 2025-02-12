@@ -15,10 +15,11 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
 
   const navItems = [
     { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' },
+    { name: 'About', url: '/abouts' },
     { name: 'Services', url: '/services' },
-    { name: 'Project', url: '/project' },
-    { name: 'Contact', url: '/contact' },
+    { name: 'Project', url: '/projects' },
+    { name: 'Contact', url: '/contacts' },
+    { name: 'Blog', url: '/blogs' },
   ];
 
   return (

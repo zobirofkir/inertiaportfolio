@@ -11,13 +11,16 @@ const About = () => {
           <h1 className="text-4xl font-bold text-center mb-8">About Me</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Profile Image */}
+            {/* Profile Image with 3D Effect */}
             <div className="flex justify-center">
-              <img
-                src="/path/to/your/profile/image.jpg"
-                alt="Profile"
-                className="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg dark:shadow-gray-700"
-              />
+              <div className="relative w-48 h-48 md:w-64 md:h-64">
+                <div className="absolute inset-0 bg-indigo-600 rounded-full transform rotate-45 scale-95 animate-float"></div>
+                <img
+                  src="https://zobirofkir.com/logo192.png"
+                  alt="Profile"
+                  className="relative rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg dark:shadow-gray-700 transform rotate-0 hover:rotate-6 transition-transform duration-300"
+                />
+              </div>
             </div>
 
             {/* About Me Content */}

@@ -30,8 +30,9 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
     >
       <div className="container mx-auto flex justify-between items-center relative">
         {/* Logo */}
-        <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
-
+        <Link href="/">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
+        </Link>
         {/* Desktop Navigation */}
         <nav className="hidden sm:block">
           <ul className="flex gap-4 sm:gap-6 text-base sm:text-lg">

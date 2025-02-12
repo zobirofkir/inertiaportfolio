@@ -1,3 +1,4 @@
+import MyImage from '../Images/my_image.jpeg';
 
 const ContactComponent = () => {
   return (
@@ -8,7 +9,7 @@ const ContactComponent = () => {
           {/* Left Side - Image */}
           <div className="md:w-1/3 flex items-center justify-center p-8">
             <img
-              src="https://zobirofkir.com/logo192.png"
+              src={`${MyImage}`}
               alt="Your Name"
               className="rounded-full w-48 h-48 object-cover border-4 border-white dark:border-gray-700 shadow-lg"
             />
@@ -16,9 +17,9 @@ const ContactComponent = () => {
 
           {/* Right Side - Info */}
           <div className="md:w-2/3 p-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Your Name</h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Zobir Ofkir</h1>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Your professional title or short bio goes here. Highlight your skills, experience, and what makes you unique.
+              Full Stack Developer | Laravel | React.js | Next.js | Docker | DevOps | Three.js
             </p>
             <div className="space-y-4">
               <div className="flex items-center">
@@ -36,7 +37,7 @@ const ContactComponent = () => {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-700 dark:text-gray-300">your.email@example.com</span>
+                <span className="text-gray-700 dark:text-gray-300">contact@zobirofkir.com</span>
               </div>
               <div className="flex items-center">
                 <svg
@@ -53,7 +54,7 @@ const ContactComponent = () => {
                     d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-700 dark:text-gray-300">+123 456 7890</span>
+                <span className="text-gray-700 dark:text-gray-300">+212 619920942</span>
               </div>
               <div className="flex items-center">
                 <svg
@@ -76,7 +77,7 @@ const ContactComponent = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-gray-700 dark:text-gray-300">City, Country</span>
+                <span className="text-gray-700 dark:text-gray-300">Imouzzer Kandar , Ain Sultan</span>
               </div>
             </div>
           </div>

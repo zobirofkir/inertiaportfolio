@@ -29,4 +29,8 @@ Route::get('/blogs', function () {
     return inertia('Blog');
 });
 
+Route::get('/blog/{post}', function ($post) {
+    return inertia('ShowBlog', ['post' => $post]);
+});
+
 require __DIR__.'/auth.php';

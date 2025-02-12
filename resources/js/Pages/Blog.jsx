@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
+import { Link } from '@inertiajs/react';
 
 const Blog = () => {
   const [search, setSearch] = useState('');
@@ -79,27 +80,29 @@ const Blog = () => {
           </motion.div>
 
           {/* Right Side - Posts */}
-          <motion.div
-            className="lg:w-3/4 w-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPosts.map((post) => (
-                <motion.div
-                  key={post.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className="text-lg font-semibold dark:text-white mb-3">{post.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Category: {post.category}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Posted on: {post.createdAt}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+            <motion.div
+                className="lg:w-3/4 w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+            >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredPosts.map((post) => (
+                    <Link href={`/blog/${post.id}`} className="flex-1">
+                        <motion.div
+                            key={post.id}
+                            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                            >
+                            <h3 className="text-lg font-semibold dark:text-white mb-3">{post.title}</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Category: {post.category}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Posted on: {post.createdAt}</p>
+                        </motion.div>
+                    </Link>
+                ))}
+                </div>
+            </motion.div>
         </div>
       </div>
     </Layout>

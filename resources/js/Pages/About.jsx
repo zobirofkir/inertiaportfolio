@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
+import MyImage from '../Images/my_image.jpeg';
 
 const About = () => {
   return (
@@ -28,7 +29,7 @@ const About = () => {
               >
                 <div className="absolute inset-0 bg-indigo-600 rounded-full transform rotate-45 scale-95 animate-float"></div>
                 <img
-                  src="https://zobirofkir.com/logo192.png"
+                  src={`${MyImage}`}
                   alt="Profile"
                   className="relative rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg dark:shadow-gray-700 transform rotate-0 hover:rotate-6 transition-transform duration-300"
                 />

@@ -19,7 +19,7 @@ const ServiceComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white dark:bg-transparent p-4 md:p-6">
+    <div className="flex flex-col items-center justify-center bg-transparent dark:bg-transparent p-4 md:p-6">
       <h1 className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10">
         My Services
       </h1>

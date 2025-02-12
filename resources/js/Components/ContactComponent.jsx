@@ -1,7 +1,7 @@
 
 const ContactComponent = () => {
   return (
-    <div className="flex items-center justify-center bg-white dark:bg-transparent p-6">
+    <div className="flex items-center justify-center bg-transparent dark:bg-transparent p-6">
       <div className="w-full mx-auto bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="md:flex">
 

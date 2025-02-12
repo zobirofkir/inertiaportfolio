@@ -59,7 +59,7 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
           aria-label="Toggle Dark Mode"
           className="hidden sm:block p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700"
         >
-          {darkMode ? <Sun className="w-6 h-6 text-yellow-500" /> : <Moon className="w-6 h-6 text-gray-800" />}
+          {darkMode ? <Sun className="w-6 h-6 text-white" /> : <Moon className="w-6 h-6 text-gray-800" />}
         </button>
       </div>
 
@@ -88,7 +88,7 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
             aria-label="Toggle Dark Mode"
             className="block sm:hidden p-2 rounded-full transition-all duration-300 ease-in-out bg-gray-200 dark:bg-black hover:bg-gray-300 dark:hover:bg-gray-700"
           >
-            {darkMode ? <Sun className="w-6 h-6 text-yellow-500" /> : <Moon className="w-6 h-6 text-gray-800" />}
+            {darkMode ? <Sun className="w-6 h-6 text-white" /> : <Moon className="w-6 h-6 text-gray-800" />}
           </button>
         </nav>
       </div>

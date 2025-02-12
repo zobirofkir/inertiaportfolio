@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
 const ServiceComponent = () => {
-  const [services, setServices] = useState([
-    { id: 1, name: 'Frontend Development', info: 'Building responsive and interactive UIs.', isSpinning: false, image: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' },
-    { id: 2, name: 'Backend Development', info: 'Creating robust server-side applications.', isSpinning: false, image: 'https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png' },
-    { id: 3, name: 'UI/UX Design', info: 'Designing user-friendly and engaging experiences.', isSpinning: false, image: 'https://www.cdnlogo.com/logos/n/80/next-js.svg' },
-    { id: 4, name: 'SEO Optimization', info: 'Enhancing website visibility and performance.', isSpinning: false, image: 'https://cdn.freebiesupply.com/logos/large/2x/docker-logo-png-transparent.png' },
-    { id: 5, name: 'Frontend Development', info: 'Building responsive and interactive UIs.', isSpinning: false, image: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' },
-    { id: 6, name: 'Backend Development', info: 'Creating robust server-side applications.', isSpinning: false, image: 'https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png' },
-    { id: 7, name: 'UI/UX Design', info: 'Designing user-friendly and engaging experiences.', isSpinning: false, image: 'https://www.cdnlogo.com/logos/n/80/next-js.svg' },
-    { id: 8, name: 'SEO Optimization', info: 'Enhancing website visibility and performance.', isSpinning: false, image: 'https://cdn.freebiesupply.com/logos/large/2x/docker-logo-png-transparent.png' },
-  ]);
+    const [services, setServices] = useState([
+        { id: 1, name: 'Full Stack Development', info: 'Developing complete web applications using Laravel and React.js.', isSpinning: false, image: 'https://static.thenounproject.com/png/2230389-200.png' },
+        { id: 2, name: 'Custom Web Applications', info: 'Building tailored web solutions with high scalability and performance.', isSpinning: false, image: 'https://cdn-icons-png.freepik.com/256/12098/12098331.png?semt=ais_hybrid' },
+        { id: 3, name: 'Admin Panel Development', info: 'Creating powerful and user-friendly admin dashboards using Filament and Laravel.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/9323/9323925.png' },
+        { id: 4, name: 'Website Optimization', info: 'Enhancing website speed, SEO, and performance for a seamless user experience.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/1640/1640827.png' },
+        { id: 5, name: 'Real-time Web Applications', info: 'Developing chat apps and real-time systems using Laravel WebSockets and React.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/8727/8727856.png' },
+        { id: 6, name: 'Three.js & 3D Web Development', info: 'Creating interactive 3D experiences and visualizations in Next.js.', isSpinning: false, image: 'https://cdn3d.iconscout.com/3d/premium/thumb/web-development-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--html-logo-technology-design-pack-business-illustrations-4496032.png?f=webp' },
+        { id: 7, name: 'Payment Gateway Integration', info: 'Implementing secure payment solutions for e-commerce and online services.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/4802/4802398.png' },
+        { id: 8, name: 'Docker & DevOps', info: 'Setting up scalable and containerized environments for smooth deployment.', isSpinning: false, image: 'https://theagileadmin.com/wp-content/uploads/2015/10/docker-logo.png' },
+    ]);
 
   const handleCubeClick = (id) => {
     setServices(services.map(service =>

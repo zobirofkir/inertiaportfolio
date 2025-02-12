@@ -7,7 +7,7 @@ const Contact = () => {
     <Layout>
       <Head title="Contact" />
 
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 h-screen">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Contact Form */}
           <motion.div

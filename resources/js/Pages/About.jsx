@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
 
@@ -7,25 +8,40 @@ const About = () => {
       <Head title="About Me" />
       <div className="min-h-screen bg-white dark:bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300 flex items-center">
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center">
+          <motion.h1
+            className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             About Me
-          </h1>
+          </motion.h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Profile Image with 3D Effect */}
             <div className="flex justify-center">
-              <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <motion.div
+                className="relative w-48 h-48 md:w-64 md:h-64"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <div className="absolute inset-0 bg-indigo-600 rounded-full transform rotate-45 scale-95 animate-float"></div>
                 <img
                   src="https://zobirofkir.com/logo192.png"
                   alt="Profile"
                   className="relative rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg dark:shadow-gray-700 transform rotate-0 hover:rotate-6 transition-transform duration-300"
                 />
-              </div>
+              </motion.div>
             </div>
 
             {/* About Me Content */}
-            <div className="space-y-6">
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <p className="text-lg leading-relaxed">
                 Hi, I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">[Your Name]</span>, a passionate and creative web developer with a strong focus on building user-friendly, responsive, and visually appealing websites. I specialize in modern web technologies and love turning ideas into reality through code.
               </p>
@@ -54,7 +70,7 @@ const About = () => {
                   Contact Me
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

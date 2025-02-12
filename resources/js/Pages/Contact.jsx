@@ -1,6 +1,5 @@
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
-import React from 'react';
 
 const Contact = () => {
   return (

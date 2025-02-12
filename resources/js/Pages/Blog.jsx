@@ -1,6 +1,6 @@
 import Layout from '@/Layouts/Layout'
 import { Head } from '@inertiajs/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const Blog = () => {
   const [search, setSearch] = useState('')

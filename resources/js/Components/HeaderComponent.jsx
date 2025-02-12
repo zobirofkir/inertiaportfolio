@@ -18,8 +18,8 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
     { name: 'About', url: '/abouts' },
     { name: 'Services', url: '/services' },
     { name: 'Project', url: '/projects' },
-    { name: 'Contact', url: '/contacts' },
     { name: 'Blog', url: '/blogs' },
+    { name: 'Contact', url: '/contacts' },
   ];
 
   return (

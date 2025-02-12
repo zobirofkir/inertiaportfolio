@@ -8,7 +8,7 @@ const Service = () => {
     <Layout>
         <Head title="Service" />
 
-        <section className='md:h-screen h-auto'>
+        <section className='sm:h-screen sm:flex sm:items-center sm:justify-center  h-auto'>
             <ServiceComponent />
         </section>
     </Layout>

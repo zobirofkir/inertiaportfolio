@@ -1,5 +1,4 @@
 import Layout from '@/Layouts/Layout';
-import React from 'react';
 import { Head } from '@inertiajs/react';
 
 const About = () => {

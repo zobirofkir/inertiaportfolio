@@ -17,4 +17,8 @@ Route::get('/services', function () {
     return inertia('Service');
 });
 
+Route::get('/projects', function() {
+    return inertia('Project');
+});
+
 require __DIR__.'/auth.php';

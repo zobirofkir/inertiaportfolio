@@ -1,7 +1,6 @@
 import ServiceComponent from '@/Components/ServiceComponent'
 import Layout from '@/Layouts/Layout'
 import { Head } from '@inertiajs/react'
-import React from 'react'
 
 const Service = () => {
   return (

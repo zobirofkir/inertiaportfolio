@@ -1,16 +1,16 @@
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
+import { motion } from "framer-motion";
 
 const ShowBlog = () => {
   const post = {
     title: "Mastering Laravel with Inertia.js",
     description:
       "Learn how to build modern web applications using Laravel and Inertia.js with React. Discover best practices, tips, and tricks to streamline your development process.",
-    image: "https://via.placeholder.com/800x400", // Replace with a real image URL
+    image: "https://via.placeholder.com/800x400",
     url: "https://laravel.com/docs/inertia",
   };
 
-  // Example list of images for the gallery
   const images = [
     "https://via.placeholder.com/800x400",
     "https://via.placeholder.com/800x401",
@@ -25,41 +25,74 @@ const ShowBlog = () => {
       <Head title={post.title} />
 
       {/* Blog Post Container */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <motion.div
+        className="max-w-6xl mx-auto px-4 py-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Post Image with 3D Effect */}
         {post.image && (
-          <div className="relative group overflow-hidden rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-500 transform hover:-translate-y-2">
-            <img
+          <motion.div
+            className="relative group overflow-hidden rounded-lg shadow-2xl"
+            whileHover={{ scale: 1.02, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <motion.img
               src={post.image}
               alt={post.title}
-              className="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-96 object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.5 }}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <motion.div
+              className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <h2 className="text-white text-4xl font-bold text-center">
                 {post.title}
               </h2>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
 
         {/* Post Title */}
-        <h1 className="text-5xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white text-center">
+        <motion.h1
+          className="text-5xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
           {post.title}
-        </h1>
+        </motion.h1>
 
         {/* Post Description */}
-        <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-center max-w-2xl mx-auto">
+        <motion.p
+          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
           {post.description}
-        </p>
+        </motion.p>
 
         {/* External URL Link */}
         {post.url && (
-          <div className="flex justify-center">
-            <a
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            <motion.a
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg"
+              whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <span>Visit External Website</span>
               <svg
@@ -76,12 +109,17 @@ const ShowBlog = () => {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         )}
 
         {/* Key Features Section */}
-        <div className="mt-16">
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Key Features
           </h2>
@@ -94,9 +132,11 @@ const ShowBlog = () => {
               "Easy-to-use API",
               "Comprehensive documentation",
             ].map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-500 transform hover:-translate-y-2"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {feature}
@@ -104,50 +144,71 @@ const ShowBlog = () => {
                 <p className="text-gray-600 dark:text-gray-300">
                   Explore how this feature can enhance your development workflow.
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Image Gallery Section */}
-        <div className="mt-16">
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Image Gallery
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {images.map((image, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="relative group overflow-hidden rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-500 transform hover:-translate-y-2"
+                className="relative overflow-hidden rounded-lg shadow-2xl"
+                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)" }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                <img
+                <motion.img
                   src={image}
                   alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-64 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <motion.div
+                  className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <span className="text-white text-xl font-bold">
                     Image {index + 1}
                   </span>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Call-to-Action Section */}
-        <div className="mt-16 text-center">
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+        >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
             Join thousands of developers building modern web applications with Laravel and Inertia.js.
           </p>
-          <a
+          <motion.a
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg"
+            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             <span>Start Learning Now</span>
             <svg
@@ -164,9 +225,9 @@ const ShowBlog = () => {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
-        </div>
-      </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </Layout>
   );
 };

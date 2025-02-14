@@ -29,6 +29,7 @@ class BlogService implements BlogConstructor
     public function show($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
-        return inertia('ShowBlog', ['blog' => BlogResource::make($blog)]);
+        $tags = $blog->tags->pluck('title');
+        return inertia('ShowBlog', ['blog' => BlogResource::make($blog), 'tags' => $tags]);
     }
 }

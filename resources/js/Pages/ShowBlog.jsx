@@ -2,7 +2,7 @@ import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
 import { motion } from "framer-motion";
 
-const ShowBlog = ( {blog} ) => {
+const ShowBlog = ({ blog, tags }) => {
   const post = {
     title: blog.data.title,
     description: blog.data.description,
@@ -19,7 +19,7 @@ const ShowBlog = ( {blog} ) => {
 
       {/* Blog Post Container */}
       <motion.div
-        className="max-w-6xl mx-auto px-4 py-12"
+        className="container mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -73,11 +73,11 @@ const ShowBlog = ( {blog} ) => {
 
         {/* Post Content */}
         <motion.div
-        className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-center max-w-2xl mx-auto"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed flex flex-col items-end max-w- mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Key Features Section */}
@@ -91,26 +91,16 @@ const ShowBlog = ( {blog} ) => {
             Key Features
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "Seamless integration with Laravel and React",
-              "Server-side rendering (SSR) support",
-              "Built-in state management",
-              "Optimized for performance",
-              "Easy-to-use API",
-              "Comprehensive documentation",
-            ].map((feature, index) => (
+            {tags.map((tag, index) => (
               <motion.div
                 key={index}
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
                 whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {feature}
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center">
+                  #{tag}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Explore how this feature can enhance your development workflow.
-                </p>
               </motion.div>
             ))}
           </div>

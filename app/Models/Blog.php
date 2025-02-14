@@ -20,6 +20,15 @@ class Blog extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'images' => 'array',
+    ];
+
+    /**
      * Get the user that owns the Blog
      *
      * @return BelongsTo

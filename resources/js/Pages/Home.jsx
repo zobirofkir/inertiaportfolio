@@ -6,6 +6,7 @@ import ProjectComponent from '@/Components/ProjectComponent'
 import ServiceComponent from '@/Components/ServiceComponent'
 import ContactComponent from '@/Components/ContactComponent'
 import BlogComponent from '@/Components/BlogComponent'
+import CategoryComponent from '@/Components/CategoryComponent'
 
 const Home = () => {
   return (
@@ -20,8 +21,10 @@ const Home = () => {
 
         <ProjectComponent />
 
+        <CategoryComponent />
+
         <BlogComponent />
-        
+
         <ContactComponent />
     </Layout>
   )

@@ -2,6 +2,7 @@
 
 namespace App\Services\Services;
 
+use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Services\Constructors\BlogConstructor;
@@ -28,6 +29,6 @@ class BlogService implements BlogConstructor
     public function show($slug)
     {
         $blog = Blog::where('slug', $slug)->first();
-        return inertia('ShowBlog', ['blog' => $blog]);
+        return inertia('ShowBlog', ['blog' => BlogResource::make($blog)]);
     }
 }

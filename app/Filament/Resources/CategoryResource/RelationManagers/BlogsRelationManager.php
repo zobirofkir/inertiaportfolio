@@ -27,7 +27,7 @@ class BlogsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                TextInput::make('title')->required()->unique(),
+                TextInput::make('title')->required()->unique(ignoreRecord: true),
                 Textarea::make('description')->required(),
                 RichEditor::make('content')->required(),
                 FileUpload::make('images')->multiple()->image()->required(),

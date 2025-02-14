@@ -2,23 +2,16 @@ import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
 import { motion } from "framer-motion";
 
-const ShowBlog = () => {
+const ShowBlog = ( {blog} ) => {
   const post = {
-    title: "Mastering Laravel with Inertia.js",
-    description:
-      "Learn how to build modern web applications using Laravel and Inertia.js with React. Discover best practices, tips, and tricks to streamline your development process.",
-    image: "https://via.placeholder.com/800x400",
+    title: blog.data.title,
+    description: blog.data.description,
+    content: blog.data.content,
+    image: blog.data.image,
     url: "https://laravel.com/docs/inertia",
   };
 
-  const images = [
-    "https://via.placeholder.com/800x400",
-    "https://via.placeholder.com/800x401",
-    "https://via.placeholder.com/800x402",
-    "https://via.placeholder.com/800x403",
-    "https://via.placeholder.com/800x404",
-    "https://via.placeholder.com/800x405",
-  ];
+  const images = blog.data.images || [];
 
   return (
     <Layout>
@@ -78,40 +71,14 @@ const ShowBlog = () => {
           {post.description}
         </motion.p>
 
-        {/* External URL Link */}
-        {post.url && (
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <motion.a
-              href={post.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg"
-              whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <span>Visit External Website</span>
-              <svg
-                className="w-5 h-5 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </motion.a>
-          </motion.div>
-        )}
+        {/* Post Content */}
+        <motion.div
+        className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-center max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+        />
 
         {/* Key Features Section */}
         <motion.div
@@ -181,7 +148,7 @@ const ShowBlog = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <span className="text-white text-xl font-bold">
-                    Image {index + 1}
+                    {blog.data.title}
                   </span>
                 </motion.div>
               </motion.div>

@@ -17,16 +17,19 @@ class MakeServiceCommand extends Command
         $servicePath = app_path("Services/Services/{$name}Service.php");
         $constructorPath = app_path("Services/Constructors/{$name}Constructor.php");
         $facadePath = app_path("Services/Facades/{$name}Facade.php");
+        $serviceProviderPath = app_path("App/Providers/{$name}ServiceProvider.php");
 
         (new Filesystem)->ensureDirectoryExists(app_path('Services/Services'));
         (new Filesystem)->ensureDirectoryExists(app_path('Services/Constructors'));
         (new Filesystem)->ensureDirectoryExists(app_path('Services/Facades'));
+        (new Filesystem)->ensureDirectoryExists(app_path('App/Providers'));
 
         $this->createService($servicePath, $name);
         $this->createConstructor($constructorPath, $name);
         $this->createFacade($facadePath, $name);
+        $this->createServiceProvider($serviceProviderPath, $name);
 
-        $this->info("Created service, Constructor, and facade: {$name}Service, {$name}Constructor, and {$name}Facade");
+        $this->info("Created service, Constructor, and facade: {$name}Service, {$name}Constructor, and {$name}Facade, and service provider: {$name}ServiceProvider");
     }
 
     private function createService($path, $name)
@@ -72,6 +75,39 @@ class {$name}Facade extends Facade
         return '{$name}Service';
     }
 }";
+        file_put_contents($path, $content);
+    }
+
+    private function createServiceProvider($path, $name)
+    {
+        $content = "<?php
+
+namespace App\Providers;
+
+use App\Services\Services\\{$name}Service;
+use Illuminate\Support\ServiceProvider;
+
+class {$name}ServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     */
+    public function register(): void
+    {
+        \$this->app->bind('{$name}Service', function () {
+            return new {$name}Service();
+        });
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
+";
         file_put_contents($path, $content);
     }
 }

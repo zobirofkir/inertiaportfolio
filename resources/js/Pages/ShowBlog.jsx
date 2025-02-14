@@ -80,32 +80,6 @@ const ShowBlog = ({ blog, tags }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {/* Key Features Section */}
-        <motion.div
-          className="mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Key Features
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tags.map((tag, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
-                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center">
-                  #{tag}
-                </h3>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Image Gallery Section */}
         <motion.div
           className="mt-16"
@@ -146,43 +120,30 @@ const ShowBlog = ({ blog, tags }) => {
           </div>
         </motion.div>
 
-        {/* Call-to-Action Section */}
+        {/* Key Features Section */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Ready to Get Started?
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            Key Features
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-            Join thousands of developers building modern web applications with Laravel and Inertia.js.
-          </p>
-          <motion.a
-            href={post.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg"
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <span>Start Learning Now</span>
-            <svg
-              className="w-5 h-5 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </motion.a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tags.map((tag, index) => (
+              <motion.div
+                key={index}
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center">
+                  #{tag}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </Layout>

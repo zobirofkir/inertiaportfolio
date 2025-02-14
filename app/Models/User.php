@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,6 +45,37 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'images' => 'array'
         ];
+    }
+
+    /**
+     * Get all of the user's blogs.
+     *
+     * @return HasMany
+     */
+    public function blogs() : HasMany
+    {
+        return $this->hasMany(Blog::class);
+    }
+
+    /**
+     * Get all of the user's tags.
+     *
+     * @return BelongsToMany
+     */
+    public function tags() : BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * Get all of the user's categories.
+     *
+     * @return HasMany
+     */
+    public function categories() : HasMany
+    {
+        return $this->hasMany(Category::class);
     }
 }

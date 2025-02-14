@@ -35,7 +35,7 @@ class BlogsRelationManager extends RelationManager
                 Select::make('is_published')->options([true => 'Published', false => 'Unpublished'])->required(),
                 Select::make('tags')->relationship('tags', 'title')->multiple()->required(),
                 Hidden::make('user_id')->default(Auth::user()->id),
-            ]);
+            ])->columns(1);
     }
 
     public function table(Table $table): Table

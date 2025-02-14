@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +26,8 @@ Route::get('/contacts', function () {
     return inertia('Contact');
 });
 
-Route::get('/blogs', function () {
-    return inertia('Blog');
-});
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 
-Route::get('/blog/{post}', function ($post) {
-    return inertia('ShowBlog', ['post' => $post]);
-});
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 
 require __DIR__.'/auth.php';

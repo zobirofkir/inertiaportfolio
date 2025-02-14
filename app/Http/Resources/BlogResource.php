@@ -24,7 +24,7 @@ class BlogResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'content' => $this->content,
+            'content' => str($this->content)->sanitizeHtml(),
             'image' => $images[0] ?? null,
             'images' => $images,
             'slug' => $this->slug,

@@ -5,6 +5,7 @@ import AboutComponent from '@/Components/AboutComponent'
 import ProjectComponent from '@/Components/ProjectComponent'
 import ServiceComponent from '@/Components/ServiceComponent'
 import ContactComponent from '@/Components/ContactComponent'
+import BlogComponent from '@/Components/BlogComponent'
 
 const Home = () => {
   return (
@@ -19,6 +20,8 @@ const Home = () => {
 
         <ProjectComponent />
 
+        <BlogComponent />
+        
         <ContactComponent />
     </Layout>
   )

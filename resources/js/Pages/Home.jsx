@@ -7,6 +7,7 @@ import ServiceComponent from '@/Components/ServiceComponent'
 import ContactComponent from '@/Components/ContactComponent'
 import BlogComponent from '@/Components/BlogComponent'
 import CategoryComponent from '@/Components/CategoryComponent'
+import SubscribeComponent from '@/Components/SubscribeComponent'
 
 const Home = () => {
   return (
@@ -26,6 +27,8 @@ const Home = () => {
         <BlogComponent />
 
         <ContactComponent />
+
+        <SubscribeComponent />
     </Layout>
   )
 }

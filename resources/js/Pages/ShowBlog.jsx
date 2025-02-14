@@ -32,11 +32,11 @@ const ShowBlog = ({ blog, tags }) => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-96 object-cover"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.5 }}
+                src={post.image}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5 }}
             />
             <motion.div
               className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"

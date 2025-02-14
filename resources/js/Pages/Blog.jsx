@@ -84,17 +84,17 @@ const Blog = ({ blogs, categories }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {filteredPosts.map((post) => (
                 <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id}>
                   <motion.div
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6"
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 "
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h3 className="text-lg font-semibold dark:text-white mb-3">{post.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Category: {post.category.title}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Posted on: {new Date(post.created_at).toLocaleDateString()}</p>
+                    <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3">{post.title}</h3>
+                    <p className="text-xl text-gray-600 dark:text-gray-300 mb-2">{post.description.substring(0, 50)} ...</p>
+                    <p className="text-md text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">Posted on: {new Date(post.created_at).toLocaleDateString()}</p>
                   </motion.div>
                 </Link>
               ))}

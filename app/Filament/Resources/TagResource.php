@@ -36,7 +36,9 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->required()->unique(),
+                TextInput::make('title')
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 Hidden::make('user_id')->default(Auth::user()->id),
             ])->columns(1);
     }

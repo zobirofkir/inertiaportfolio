@@ -32,14 +32,17 @@ class CategoryResource extends Resource
 
     protected static ?string $navigation = 'Categories';
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('title')->required()->unique(),
-                Hidden::make('user_id')->default(Auth::user()->id),
-            ])->columns(1);
+                TextInput::make('title')
+                    ->required()
+                    ->unique(ignoreRecord: true),
+                Hidden::make('user_id')
+                    ->default(Auth::user()->id),
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table

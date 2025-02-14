@@ -27,7 +27,7 @@ class MakeServiceCommand extends Command
         $this->createService($servicePath, $name);
         $this->createConstructor($constructorPath, $name);
         $this->createFacade($facadePath, $name);
-        $this->createServiceProvider($serviceProviderPath, $name);
+        $this->createServiceProvider($name);
 
         $this->info("Created service, Constructor, and facade: {$name}Service, {$name}Constructor, and {$name}Facade, and service provider: {$name}ServiceProvider");
     }
@@ -78,36 +78,8 @@ class {$name}Facade extends Facade
         file_put_contents($path, $content);
     }
 
-    private function createServiceProvider($path, $name)
+    private function createServiceProvider($name)
     {
-        $content = "<?php
-
-namespace App\Providers;
-
-use App\Services\Services\\{$name}Service;
-use Illuminate\Support\ServiceProvider;
-
-class {$name}ServiceProvider extends ServiceProvider
-{
-    /**
-     * Register services.
-     */
-    public function register(): void
-    {
-        \$this->app->bind('{$name}Service', function () {
-            return new {$name}Service();
-        });
-    }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
-    }
-}
-";
-        file_put_contents($path, $content);
+        exec("php artisan make:provider {$name}ServiceProvider");
     }
 }

@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 const CategoryComponent = () => {
-  // Sample categories
+  /**
+   * Test Categories
+   */
   const categories = [
     { id: 1, name: "Technology" },
     { id: 2, name: "Science" },
@@ -25,11 +27,15 @@ const CategoryComponent = () => {
           <div
             key={category.id}
             onClick={() => handleCategoryClick(category.id)}
-            className={`p-6 rounded-lg shadow-xl cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+            className={`p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-500 transform hover:scale-110 hover:rotate-3d ${
               selectedCategory === category.id
                 ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
                 : "bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700"
             }`}
+            style={{
+              transformStyle: "preserve-3d",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+            }}
           >
             <h3 className="text-xl font-semibold text-center">{category.name}</h3>
           </div>

@@ -10,7 +10,7 @@ import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
 
-const Home = () => {
+const Home = ({categories}) => {
   return (
     <Layout>
         <Head title="Home" />
@@ -25,7 +25,7 @@ const Home = () => {
 
         <TagComponent />
 
-        <CategoryComponent />
+        <CategoryComponent categories={categories} />
 
         <BlogComponent />
 

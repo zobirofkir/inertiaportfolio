@@ -1,17 +1,6 @@
 import { useState } from "react";
 
-const CategoryComponent = () => {
-  /**
-   * Test Categories
-   */
-  const categories = [
-    { id: 1, name: "Technology" },
-    { id: 2, name: "Science" },
-    { id: 3, name: "Business" },
-    { id: 4, name: "Health" },
-    { id: 5, name: "Lifestyle" },
-    { id: 6, name: "Education" },
-  ];
+const CategoryComponent = ({categories}) => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -37,7 +26,7 @@ const CategoryComponent = () => {
               boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <h3 className="text-xl font-semibold text-center">{category.name}</h3>
+            <h3 className="text-xl font-semibold text-center">{category.title}</h3>
           </div>
         ))}
       </div>
@@ -45,7 +34,7 @@ const CategoryComponent = () => {
         <div className="mt-6 text-center md:text-left">
           <h3 className="text-2xl font-semibold">Selected Category:</h3>
           <p className="text-lg text-blue-500 dark:text-purple-400">
-            {categories.find((cat) => cat.id === selectedCategory).name}
+            {categories.find((cat) => cat.id === selectedCategory).title}
           </p>
         </div>
       )}

@@ -9,7 +9,6 @@ const ShowBlog = ({ blog, tags }) => {
     description: blog.data.description,
     content: blog.data.content,
     image: blog.data.image,
-    url: "https://laravel.com/docs/inertia",
   };
 
   const images = blog.data.images || [];
@@ -209,7 +208,7 @@ const ShowBlog = ({ blog, tags }) => {
                     Post Comment
                 </button>
             </div>
-            
+
           {/* Display Comments */}
           <div className="space-y-6">
             {comments.map((comment) => (

@@ -11,8 +11,9 @@ import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
 
-const Home = ({ categories, tags: initialTags }) => {
+const Home = ({ categories, tags: initialTags, blogs: initialBlogs }) => {
   const [tags, setTags] = useState(initialTags);
+  const [blogs, setBlogs] = useState(initialBlogs);
 
   return (
     <Layout>
@@ -30,7 +31,7 @@ const Home = ({ categories, tags: initialTags }) => {
 
         <CategoryComponent categories={categories} />
 
-        <BlogComponent />
+        <BlogComponent blogs={blogs} setBlogs={setBlogs} />
 
         <ContactComponent />
 

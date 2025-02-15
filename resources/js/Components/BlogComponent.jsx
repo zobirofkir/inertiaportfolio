@@ -1,18 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const BlogComponent = () => {
-  const [blogs, setBlogs] = useState([
-    { id: 1, title: "blog 1", description: "A web application for managing tasks.", link: "https://blog1.com", image: "https://static.toiimg.com/photo/80387978.cms?imgsize=174948", isFlipped: false },
-    { id: 2, title: "blog 2", description: "An e-commerce platform with advanced filtering.", link: "https://blog2.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 3, title: "blog 3", description: "A portfolio website for a creative agency.", link: "https://blog3.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 4, title: "blog 4", description: "A mobile app for fitness tracking.", link: "https://blog4.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 5, title: "blog 5", description: "A social media platform for photographers.", link: "https://blog5.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 6, title: "blog 6", description: "A blog platform for tech enthusiasts.", link: "https://blog6.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 7, title: "blog 7", description: "A blog management tool for teams.", link: "https://blog7.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 8, title: "blog 8", description: "A weather app with real-time updates.", link: "https://blog8.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 9, title: "blog 9", description: "A recipe sharing platform.", link: "https://blog9.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-  ]);
+const BlogComponent = ({blogs, setBlogs}) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
@@ -75,7 +64,7 @@ const BlogComponent = () => {
                   style={{ backfaceVisibility: "hidden" }}
                 >
                   <motion.img
-                    src={blog.image}
+                    src={`storage/${blog.images[0]}`}
                     alt={blog.title}
                     className="w-full h-full object-cover rounded-lg"
                     style={{ transform: blog.isFlipped ? "rotateX(180deg)" : "rotateX(0deg)" }}
@@ -86,10 +75,9 @@ const BlogComponent = () => {
                   style={{ backfaceVisibility: "hidden", transform: "rotateX(180deg)" }}
                 >
                   <h2 className="text-2xl font-semibold mb-3">{blog.title}</h2>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{blog.description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{blog.description.slice(0, 100)}...</p>
                   <a
-                    href={blog.link}
-                    target="_blank"
+                    href={`/blog/${blog.slug}`}
                     rel="noopener noreferrer"
                     className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-md text-lg font-medium shadow-lg hover:scale-105 transition-transform duration-300"
                   >

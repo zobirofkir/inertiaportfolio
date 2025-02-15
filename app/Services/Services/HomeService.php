@@ -2,6 +2,7 @@
 
 namespace App\Services\Services;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Services\Constructors\HomeConstructor;
@@ -12,6 +13,7 @@ class HomeService implements HomeConstructor
     {
         $categories = Category::all();
         $tags = Tag::pluck('title');
-        return inertia('Home', ['categories' => $categories, 'tags' => $tags]);
+        $blogs = Blog::all();
+        return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs]);
     }
 }

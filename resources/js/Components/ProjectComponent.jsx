@@ -1,18 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const ProjectComponent = () => {
-  const [projects, setProjects] = useState([
-    { id: 1, title: "Project 1", description: "A web application for managing tasks.", link: "https://project1.com", image: "https://static.toiimg.com/photo/80387978.cms?imgsize=174948", isFlipped: false },
-    { id: 2, title: "Project 2", description: "An e-commerce platform with advanced filtering.", link: "https://project2.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 3, title: "Project 3", description: "A portfolio website for a creative agency.", link: "https://project3.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 4, title: "Project 4", description: "A mobile app for fitness tracking.", link: "https://project4.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 5, title: "Project 5", description: "A social media platform for photographers.", link: "https://project5.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 6, title: "Project 6", description: "A blog platform for tech enthusiasts.", link: "https://project6.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 7, title: "Project 7", description: "A project management tool for teams.", link: "https://project7.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 8, title: "Project 8", description: "A weather app with real-time updates.", link: "https://project8.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-    { id: 9, title: "Project 9", description: "A recipe sharing platform.", link: "https://project9.com", image: "https://via.placeholder.com/400x200", isFlipped: false },
-  ]);
+const ProjectComponent = ({ projects, setProjects }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
@@ -75,7 +64,7 @@ const ProjectComponent = () => {
                   style={{ backfaceVisibility: "hidden" }}
                 >
                   <motion.img
-                    src={project.image}
+                    src={`storage/${project.image}`}
                     alt={project.title}
                     className="w-full h-full object-cover rounded-lg"
                     style={{ transform: project.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}

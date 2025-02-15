@@ -43,9 +43,9 @@ const portfolioItems = [
 const SliderComponent = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
       className="w-full py-16 bg-transparent dark:bg-transparent"
     >
       <div className="w-full mx-auto px-4">
@@ -74,66 +74,51 @@ const SliderComponent = () => {
           modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
           className="w-full h-[500px] sm:h-[600px]"
           breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-              coverflowEffect: {
-                rotate: 10,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false,
-              },
-            },
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-              coverflowEffect: {
-                rotate: 15,
-                stretch: 0,
-                depth: 150,
-                modifier: 1,
-                slideShadows: true,
-              },
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            1440: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
+            320: { slidesPerView: 1, spaceBetween: 10 },
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
+            1440: { slidesPerView: 3, spaceBetween: 40 },
           }}
         >
-          {portfolioItems.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className="w-full h-full flex items-center justify-center rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden"
-            >
-              <div
-                className="absolute inset-0 w-full h-full bg-cover bg-center rounded-lg transition-transform duration-500 hover:scale-110"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${item.image})`,
-                }}
-              ></div>
-
-              {/* Content Overlay */}
+          {portfolioItems.map((item, index) => (
+            <SwiperSlide key={item.id} className="relative overflow-hidden">
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative z-10 flex flex-col items-center justify-center text-center p-6 sm:p-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.2, ease: 'easeOut' }}
+                className="w-full h-full flex items-center justify-center rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden"
               >
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-base sm:text-lg md:text-xl text-gray-200">
-                  {item.description}
-                </p>
+                <div
+                  className="absolute inset-0 w-full h-full bg-cover bg-center rounded-lg transition-transform duration-500 hover:scale-110"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${item.image})`,
+                  }}
+                ></div>
+
+                {/* محتوى البطاقة */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative z-10 flex flex-col items-center justify-center text-center p-6 sm:p-8"
+                >
+                  <motion.h3
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.2, duration: 0.6, ease: 'easeOut' }}
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4"
+                  >
+                    {item.title}
+                  </motion.h3>
+                  <motion.p
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                    className="text-base sm:text-lg md:text-xl text-gray-200"
+                  >
+                    {item.description}
+                  </motion.p>
+                </motion.div>
               </motion.div>
             </SwiperSlide>
           ))}

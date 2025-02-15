@@ -73,7 +73,7 @@ const ShowBlog = ({ blog, tags }) => {
 
         {/* Post Content */}
         <motion.div
-          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed flex flex-col items-end max-w- mx-auto"
+          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed flex flex-col items-center max-w- mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}

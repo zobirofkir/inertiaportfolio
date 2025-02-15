@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-const TagComponent = () => {
-  const [tags, setTags] = useState([
-    'Web Development',
-    'UI/UX Design',
-    'JavaScript',
-    'React.js',
-    'Tailwind CSS'
-  ]);
+const TagComponent = ({tags, setTags}) => {
 
 
   const handleDragEnd = (result) => {

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import SliderComponent from '@/Components/SliderComponent'
 import { Head } from '@inertiajs/react'
 import Layout from '../Layouts/Layout'
@@ -10,7 +11,9 @@ import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
 
-const Home = ({categories}) => {
+const Home = ({ categories, tags: initialTags }) => {
+  const [tags, setTags] = useState(initialTags);
+
   return (
     <Layout>
         <Head title="Home" />
@@ -23,7 +26,7 @@ const Home = ({categories}) => {
 
         <ProjectComponent />
 
-        <TagComponent />
+        <TagComponent tags={tags} setTags={setTags} />
 
         <CategoryComponent categories={categories} />
 
@@ -33,7 +36,7 @@ const Home = ({categories}) => {
 
         <SubscribeComponent />
     </Layout>
-  )
+  );
 }
 
-export default Home
+export default Home;

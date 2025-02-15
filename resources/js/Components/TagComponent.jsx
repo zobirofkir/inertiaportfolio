@@ -32,7 +32,7 @@ const TagComponent = ({tags, setTags}) => {
                     {...provided.dragHandleProps}
                     className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-white rounded-full shadow-md transform transition-all hover:scale-105"
                   >
-                    <span className="text-sm">{tag}</span>
+                    <span className="text-sm">#{tag}</span>
                   </div>
                 )}
               </Draggable>

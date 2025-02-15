@@ -13,7 +13,7 @@ class HomeService implements HomeConstructor
     {
         $categories = Category::all();
         $tags = Tag::pluck('title');
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->with('category', 'tags')->take(16)->get();
         return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs]);
     }
 }

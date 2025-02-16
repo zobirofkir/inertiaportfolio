@@ -42,6 +42,7 @@ class ProjectResource extends Resource
                 TextInput::make('title')->required()->unique(ignoreRecord: true),
                 FileUpload::make('image')->image()->required(),
                 Textarea::make('description')->required(),
+                TextInput::make('link'),
                 Select::make('is_published')->options([true => 'Published', false => 'Unpublished'])->required(),
                 Hidden::make('user_id')->default(Auth::user()->id),
             ])->columns(1);

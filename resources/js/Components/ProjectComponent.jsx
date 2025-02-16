@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@inertiajs/react";
 
 const ProjectComponent = ({ projects, setProjects }) => {
 
@@ -75,15 +76,14 @@ const ProjectComponent = ({ projects, setProjects }) => {
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
                   <h2 className="text-2xl font-semibold mb-3">{project.title}</h2>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    target="_blank"
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description.slice(0, 30)} ...</p>
+                  <Link
+                    href={`/project/${project.slug}`}
                     rel="noopener noreferrer"
                     className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-md text-lg font-medium shadow-lg hover:scale-105 transition-transform duration-300"
                   >
                     View Project
-                  </a>
+                  </Link>
                 </motion.div>
               </motion.div>
             ))}

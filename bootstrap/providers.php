@@ -5,4 +5,5 @@ return [
     App\Providers\BlogServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
     App\Providers\HomeServiceProvider::class,
+    App\Providers\ProjectServiceProvider::class,
 ];

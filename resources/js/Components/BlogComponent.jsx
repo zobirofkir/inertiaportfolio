@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@inertiajs/react";
 
 const BlogComponent = ({blogs, setBlogs}) => {
 
@@ -76,13 +77,13 @@ const BlogComponent = ({blogs, setBlogs}) => {
                 >
                   <h2 className="text-2xl font-semibold mb-3">{blog.title}</h2>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">{blog.description.slice(0, 100)}...</p>
-                  <a
+                  <Link
                     href={`/blog/${blog.slug}`}
                     rel="noopener noreferrer"
                     className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-md text-lg font-medium shadow-lg hover:scale-105 transition-transform duration-300"
                   >
                     View Blog
-                  </a>
+                  </Link>
                 </motion.div>
               </motion.div>
             ))}

@@ -13,7 +13,8 @@ class Project extends Model
         'image',
         'description',
         'slug',
-        'is_published'
+        'is_published',
+        'link'
     ];
 
     /**

@@ -2,8 +2,12 @@ import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
+import serviceSound from '../Sounds/serviceSound.mp3';
+import useSound from "use-sound";
 
 const Service = () => {
+    const [play] = useSound(serviceSound);
+
   const [services, setServices] = useState([
     { id: 1, name: 'Frontend Development', info: 'Building responsive and interactive UIs.', isSpinning: false, image: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png' },
     { id: 2, name: 'Backend Development', info: 'Creating robust server-side applications.', isSpinning: false, image: 'https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png' },
@@ -16,6 +20,7 @@ const Service = () => {
   ]);
 
   const handleCubeClick = (id) => {
+    play();
     setServices(services.map(service =>
       service.id === id ? { ...service, isSpinning: !service.isSpinning } : service
     ));

@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import serviceSound from '../Sounds/serviceSound.mp3';
+import useSound from 'use-sound';
 
 const ServiceComponent = () => {
+    const [play] = useSound(serviceSound);
+
     const [services, setServices] = useState([
         { id: 1, name: 'Full Stack Development', info: 'Developing complete web applications using Laravel and React.js.', isSpinning: false, image: 'https://static.thenounproject.com/png/2230389-200.png' },
         { id: 2, name: 'Custom Web Applications', info: 'Building tailored web solutions with high scalability and performance.', isSpinning: false, image: 'https://cdn-icons-png.freepik.com/256/12098/12098331.png?semt=ais_hybrid' },
@@ -13,6 +17,7 @@ const ServiceComponent = () => {
     ]);
 
   const handleCubeClick = (id) => {
+    play();
     setServices(services.map(service =>
       service.id === id ? { ...service, isSpinning: !service.isSpinning } : service
     ));

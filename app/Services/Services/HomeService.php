@@ -10,6 +10,10 @@ use App\Services\Constructors\HomeConstructor;
 
 class HomeService implements HomeConstructor
 {
+    /**
+     * Get all of the models for the HomeService.
+     *
+     */
     public function index()
     {
         $categories = Category::latest()->take(20)->get();

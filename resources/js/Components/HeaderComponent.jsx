@@ -1,10 +1,12 @@
 import { Link } from '@inertiajs/react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HeaderComponent = ({ darkMode, setDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -23,11 +25,33 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
     { name: 'Contact', url: '/contacts' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsHeaderVisible(false);
+      } else {
+        // Scrolling up
+        setIsHeaderVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <header
-      className={`sticky top-0 z-50 w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 z-50 w-full px-4 sm:px-6 py-4 shadow-md transition-all duration-300 ease-in-out ${
         darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'
-      }`}
+      } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="container mx-auto flex justify-between items-center relative">
         <Link href="/">

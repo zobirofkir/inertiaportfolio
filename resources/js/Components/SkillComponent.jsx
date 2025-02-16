@@ -22,6 +22,24 @@ const skills = [
     image: 'https://cdn-icons-png.flaticon.com/512/2119/2119033.png',
     description: 'A production-ready motion library for React.',
   },
+  {
+    id: 4,
+    name: 'TypeScript',
+    image: 'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',
+    description: 'A typed superset of JavaScript for better code quality.',
+  },
+  {
+    id: 5,
+    name: 'Node.js',
+    image: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
+    description: 'A JavaScript runtime for building server-side applications.',
+  },
+  {
+    id: 6,
+    name: 'GraphQL',
+    image: 'https://cdn-icons-png.flaticon.com/512/6124/6124995.png',
+    description: 'A query language for APIs and a runtime for executing them.',
+  },
 ];
 
 const SkillComponent = () => {
@@ -39,17 +57,17 @@ const SkillComponent = () => {
   };
 
   return (
-    <div className="bg-transparent p-8">
+    <div className="bg-transparent p-4 md:p-8">
       <motion.h1
         className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         My Skills
       </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {skills.map((skill) => (
           <motion.div
             key={skill.id}
@@ -59,7 +77,7 @@ const SkillComponent = () => {
             onClick={() => handleCardClick(skill)}
           >
             <motion.div
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow duration-300"
               style={{ transformStyle: 'preserve-3d' }}
               initial={{ rotateY: 0 }}
               animate={{ rotateY: selectedSkill?.id === skill.id ? 180 : 0 }}
@@ -75,9 +93,11 @@ const SkillComponent = () => {
                   <img
                     src={skill.image}
                     alt={skill.name}
-                    className="w-16 h-16 mb-4 object-cover"
+                    className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-bold dark:text-white">{skill.name}</h3>
+                  <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
+                    {skill.name}
+                  </h3>
                 </motion.div>
               )}
 
@@ -95,8 +115,12 @@ const SkillComponent = () => {
                   }}
                 >
                   <div className="text-center">
-                    <h3 className="text-xl font-bold dark:text-white">{skill.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mt-2">{skill.description}</p>
+                    <h3 className="text-lg md:text-xl font-bold dark:text-white">
+                      {skill.name}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">
+                      {skill.description}
+                    </p>
                   </div>
                 </motion.div>
               )}

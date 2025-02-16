@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
-import { Head, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
 import blogSound from '../Sounds/blogsound.mp3';

@@ -10,6 +10,7 @@ import BlogComponent from '@/Components/BlogComponent'
 import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
+import SkillComponent from '@/Components/SkillComponent';
 
 const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: initialProjects}) => {
   const [tags, setTags] = useState(initialTags);
@@ -25,6 +26,8 @@ const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: i
         <AboutComponent />
 
         <ServiceComponent />
+
+        <SkillComponent />
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
 

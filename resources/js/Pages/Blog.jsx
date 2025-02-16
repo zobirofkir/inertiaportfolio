@@ -3,12 +3,15 @@ import Layout from '@/Layouts/Layout';
 import { Head, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
+import blogSound from '../Sounds/blogsound.mp3';
+import useSound from "use-sound";
 
 const Blog = ({ blogs, categories }) => {
   const { data, links } = blogs;
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
+  const [play] = useSound(blogSound);
 
   const filteredPosts = data.filter(post => {
     return (
@@ -86,7 +89,7 @@ const Blog = ({ blogs, categories }) => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {filteredPosts.map((post) => (
-                <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id}>
+                <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id} onClick={play}>
                   <motion.div
                     className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 "
                     whileHover={{ scale: 1.05 }}

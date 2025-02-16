@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@inertiajs/react";
+import blogSound from '../Sounds/blogsound.mp3';
+import useSound from "use-sound";
 
 const BlogComponent = ({blogs, setBlogs}) => {
 
+  const [play] = useSound(blogSound);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
 
   const handleFlip = (id) => {
+    play();
     setBlogs((prevBlogs) =>
       prevBlogs.map((blog) =>
         blog.id === id ? { ...blog, isFlipped: !blog.isFlipped } : blog

@@ -1,10 +1,14 @@
 import { useState } from "react";
+import categorySound from '../Sounds/categorySound.mp3';
+import useSound from "use-sound";
 
 const CategoryComponent = ({categories}) => {
 
+  const [play] = useSound(categorySound);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryClick = (categoryId) => {
+    play();
     setSelectedCategory(categoryId);
   };
 

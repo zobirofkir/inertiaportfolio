@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@inertiajs/react";
+import useSound from "use-sound";
+import projectSound from '../Sounds/projectsound.mp3';
 
 const ProjectComponent = ({ projects, setProjects }) => {
 
+  const [play] = useSound(projectSound);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
 
   const handleFlip = (id) => {
+    play();
     setProjects((prevProjects) =>
       prevProjects.map((project) =>
         project.id === id ? { ...project, isFlipped: !project.isFlipped } : project

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import useSound from 'use-sound';
+import clickSound from '../Sounds/skillsound.mp3';
 
 const skills = [
   {
@@ -24,25 +26,28 @@ const skills = [
 
 const SkillComponent = () => {
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const [play] = useSound(clickSound);
 
   const handleCardClick = (skill) => {
+    play();
     setSelectedSkill(skill);
   };
 
   const handleBackClick = () => {
+    play();
     setSelectedSkill(null);
   };
 
   return (
     <div className="bg-transparent p-8">
-        <motion.h1
-            className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            My Skills
-        </motion.h1>
+      <motion.h1
+        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        My Skills
+      </motion.h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map((skill) => (
@@ -60,7 +65,6 @@ const SkillComponent = () => {
               animate={{ rotateY: selectedSkill?.id === skill.id ? 180 : 0 }}
               transition={{ duration: 0.5 }}
             >
-
               {/* Front Face */}
               {selectedSkill?.id !== skill.id && (
                 <motion.div

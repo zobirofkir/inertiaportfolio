@@ -6,6 +6,7 @@ use App\Filament\Widgets\BlogChart;
 use App\Filament\Widgets\CategoryChart;
 use App\Filament\Widgets\OverviewWidget;
 use App\Filament\Widgets\ProjectChart;
+use App\Filament\Widgets\Table\BlogTable;
 use App\Filament\Widgets\TagChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -42,11 +43,23 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
+                /**
+                 * Overview Widget
+                 */
                 OverviewWidget::class,
+
+                /**
+                 * Chart Widgets
+                 */
                 BlogChart::class,
                 CategoryChart::class,
                 TagChart::class,
                 ProjectChart::class,
+
+                /**
+                 * Table Widgets
+                 */
+                BlogTable::class
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -21,7 +21,7 @@ class ProjectTable extends BaseWidget
             )
             ->columns([
                 ImageColumn::make('image'),
-                TextColumn::make('title'),
+                TextColumn::make('title')->searchable(),
                 TextColumn::make('slug'),
                 TextColumn::make('description'),
                 TextColumn::make('status'),

@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Widgets\BlogChart;
 use App\Filament\Widgets\CategoryChart;
+use App\Filament\Widgets\CategoryTable;
 use App\Filament\Widgets\OverviewWidget;
 use App\Filament\Widgets\ProjectChart;
 use App\Filament\Widgets\Table\BlogTable;
@@ -59,7 +60,9 @@ class AdminPanelProvider extends PanelProvider
                 /**
                  * Table Widgets
                  */
-                BlogTable::class
+                BlogTable::class,
+                CategoryTable::class,
+                
             ])
             ->middleware([
                 EncryptCookies::class,

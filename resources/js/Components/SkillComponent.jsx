@@ -85,7 +85,7 @@ const SkillCard = ({ skill, isSelected, onClick }) => {
           animate={{ opacity: isSelected ? 1 : 0 }}
           transition={{ duration: 0.25, delay: isSelected ? 0.25 : 0 }}
         >
-          <h3 className="text-lg md:text-xl font-bold dark:text-white">
+          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
             {skill.name}
           </h3>
           <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 text-center">

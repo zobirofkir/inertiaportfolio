@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import useSound from 'use-sound';
 import clickSound from '../Sounds/skillsound.mp3';
 
@@ -42,18 +42,74 @@ const skills = [
   },
 ];
 
+const SkillCard = ({ skill, isSelected, onClick }) => {
+  return (
+    <motion.div
+      className="relative cursor-pointer"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Learn more about ${skill.name}`}
+    >
+      <motion.div
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow duration-300"
+        style={{ transformStyle: 'preserve-3d' }}
+        initial={{ rotateY: 0 }}
+        animate={{ rotateY: isSelected ? 180 : 0 }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+      >
+        {/* Front Face */}
+        <motion.div
+          className="flex flex-col items-center"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isSelected ? 0 : 1 }}
+          transition={{ duration: 0.25 }}
+        >
+          <img
+            src={skill.image}
+            alt={skill.name}
+            className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 object-cover"
+          />
+          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
+            {skill.name}
+          </h3>
+        </motion.div>
+
+        {/* Back Face */}
+        <motion.div
+          className="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded-lg p-4"
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isSelected ? 1 : 0 }}
+          transition={{ duration: 0.25, delay: isSelected ? 0.25 : 0 }}
+        >
+          <h3 className="text-lg md:text-xl font-bold dark:text-white">
+            {skill.name}
+          </h3>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">
+            {skill.description}
+          </p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// Main Skill Component
 const SkillComponent = () => {
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [play] = useSound(clickSound);
 
   const handleCardClick = (skill) => {
-    play();
-    setSelectedSkill(skill);
-  };
-
-  const handleBackClick = () => {
-    play();
-    setSelectedSkill(null);
+    if (selectedSkill?.id === skill.id) {
+      play();
+      setSelectedSkill(null);
+    } else {
+      play();
+      setSelectedSkill(skill);
+    }
   };
 
   return (
@@ -69,63 +125,12 @@ const SkillComponent = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {skills.map((skill) => (
-          <motion.div
+          <SkillCard
             key={skill.id}
-            className="relative cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            skill={skill}
+            isSelected={selectedSkill?.id === skill.id}
             onClick={() => handleCardClick(skill)}
-          >
-            <motion.div
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow duration-300"
-              style={{ transformStyle: 'preserve-3d' }}
-              initial={{ rotateY: 0 }}
-              animate={{ rotateY: selectedSkill?.id === skill.id ? 180 : 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Front Face */}
-              {selectedSkill?.id !== skill.id && (
-                <motion.div
-                  className="flex flex-col items-center"
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: selectedSkill ? 0 : 1 }}
-                >
-                  <img
-                    src={skill.image}
-                    alt={skill.name}
-                    className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 object-cover"
-                  />
-                  <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
-                    {skill.name}
-                  </h3>
-                </motion.div>
-              )}
-
-              {/* Back Face */}
-              {selectedSkill?.id === skill.id && (
-                <motion.div
-                  className="bg-transparent min-h-[110px] max-h-[110px]"
-                  style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.25 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBackClick();
-                  }}
-                >
-                  <div className="text-center">
-                    <h3 className="text-lg md:text-xl font-bold dark:text-white">
-                      {skill.name}
-                    </h3>
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">
-                      {skill.description}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          </motion.div>
+          />
         ))}
       </div>
     </div>

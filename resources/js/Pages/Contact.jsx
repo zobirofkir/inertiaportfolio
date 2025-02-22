@@ -7,7 +7,7 @@ const Contact = () => {
     <Layout>
       <Head title="Contact" />
 
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen md:mt-0 mt-20">
         <div className="container mx-auto p-6">
             <div className="grid md:grid-cols-2 gap-6">
             {/* Contact Form */}

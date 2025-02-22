@@ -86,18 +86,18 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Smooth Dropdown Animation */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="sm:hidden overflow-hidden mt-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="sm:hidden overflow-hidden"
           >
             <nav>
-              <ul className="flex flex-col gap-4 text-center text-base">
+              <ul className="flex flex-col gap-4 text-center text-base py-4">
                 {navItems.map((item, index) => (
                   <motion.li
                     key={index}

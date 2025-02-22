@@ -6,7 +6,7 @@ const ShowProject = ({ project }) => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
+    visible: { opacity: 1, transition: { duration: 0.5, staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
@@ -21,12 +21,14 @@ const ShowProject = ({ project }) => {
   return (
     <Layout>
       <Head title={project.title} />
-      <div className="h-screen">
+      <div className="h-screen flex items-center justify-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 mt-20">
         <motion.div
-          className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transform transition-all hover:shadow-3xl"
+          className="max-w-4xl w-full mx-4 bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden transform transition-all hover:shadow-3xl hover:rotate-1 hover:scale-105"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          whileHover={{ scale: 1.02, rotate: 1 }}
+          whileTap={{ scale: 0.98, rotate: -1 }}
         >
           {/* Project Image */}
           <motion.div
@@ -36,7 +38,8 @@ const ShowProject = ({ project }) => {
             <img
               src={imagePath}
               alt={project.title}
-              className="w-full h-full object-cover transform transition-all hover:scale-105"
+              className="w-full h-full object-cover transform transition-all hover:scale-110"
+              whileHover={{ scale: 1.1 }}
             />
           </motion.div>
 

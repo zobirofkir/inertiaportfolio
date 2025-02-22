@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/Layouts/Layout";
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import projectSound from '../Sounds/projectsound.mp3';
 import useSound from "use-sound";
 
@@ -43,6 +43,7 @@ const Project = ({ projects: initialProjects }) => {
 
     return (
         <Layout>
+            <Head title="Projects"/>
             <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden flex justify-center items-center min-h-screen">
                 <div className="relative z-10 container mx-auto px-6 py-16">
                     <motion.h1

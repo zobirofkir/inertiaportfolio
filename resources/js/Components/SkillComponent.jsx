@@ -72,7 +72,7 @@ const SkillCard = ({ skill, isSelected, onClick }) => {
             alt={skill.name}
             className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 object-cover"
           />
-          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
+          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center whitespace-nowrap">
             {skill.name}
           </h3>
         </motion.div>
@@ -88,7 +88,7 @@ const SkillCard = ({ skill, isSelected, onClick }) => {
           <h3 className="text-lg md:text-xl font-bold dark:text-white">
             {skill.name}
           </h3>
-          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 whitespace-nowrap">
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 text-center">
             {skill.description}
           </p>
         </motion.div>

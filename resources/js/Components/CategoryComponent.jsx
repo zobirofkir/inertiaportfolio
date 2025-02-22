@@ -14,7 +14,7 @@ const CategoryComponent = ({categories}) => {
 
   return (
     <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center md:text-left">Categories</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center md:text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600">Categories</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => (
           <div

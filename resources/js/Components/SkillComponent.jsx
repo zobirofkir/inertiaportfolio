@@ -88,7 +88,7 @@ const SkillCard = ({ skill, isSelected, onClick }) => {
           <h3 className="text-lg md:text-xl font-bold dark:text-white">
             {skill.name}
           </h3>
-          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 whitespace-nowrap">
             {skill.description}
           </p>
         </motion.div>

@@ -38,75 +38,72 @@ const ShowBlog = ({ blog, tags }) => {
     <Layout>
       <Head title={post.title} />
 
-      {/* Blog Post Container */}
+      {/* Hero Section with Blog Image */}
       <motion.div
-        className="container mx-auto"
+        className="relative h-96 w-full overflow-hidden rounded-md mt-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        {post.image && (
+          <motion.img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+        )}
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <motion.h1
+            className="text-5xl md:text-6xl font-bold text-white text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            {post.title}
+          </motion.h1>
+        </div>
+      </motion.div>
+
+      {/* Blog Content Section */}
+      <motion.div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Post Image with 3D Effect */}
-        {post.image && (
-          <motion.div
-            className="relative group overflow-hidden rounded-lg shadow-2xl"
-            whileHover={{ scale: 1.02, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)" }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <motion.img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-            />
-            <motion.div
-              className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-white text-4xl font-bold text-center">
-                {post.title}
-              </h2>
-            </motion.div>
-          </motion.div>
-        )}
 
-        {/* Post Title */}
-        <motion.h1
-          className="text-5xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white text-center"
+        {/* Blog Content */}
+        <motion.div
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <div
+            className="prose prose-lg dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </motion.div>
+
+        {/* Blog Description */}
+        <motion.p
+          className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          {post.title}
-        </motion.h1>
-
-        {/* Post Description */}
-        <motion.p
-          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-center max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
           {post.description}
         </motion.p>
-
-        {/* Post Content */}
-        <motion.div
-          className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed flex flex-col items-center max-w- mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
 
         {/* Image Gallery Section */}
         <motion.div
           className="mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Image Gallery
@@ -115,19 +112,19 @@ const ShowBlog = ({ blog, tags }) => {
             {images.map((image, index) => (
               <motion.div
                 key={index}
-                className="relative overflow-hidden rounded-lg shadow-2xl"
-                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)" }}
+                className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <motion.img
                   src={image}
                   alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover rounded-2xl"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 />
                 <motion.div
-                  className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
@@ -155,8 +152,8 @@ const ShowBlog = ({ blog, tags }) => {
             {tags.map((tag, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
-                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center">
@@ -172,49 +169,49 @@ const ShowBlog = ({ blog, tags }) => {
           className="mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
+          transition={{ delay: 1, duration: 0.5 }}
         >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Comments
           </h2>
 
-            {/* Comment Input Section */}
-            <div className="mb-8">
-                <input
-                    type="text"
-                    className="w-full p-2 rounded-lg shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white mb-4"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    type="email"
-                    className="w-full p-2 rounded-lg shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white mb-4"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <textarea
-                    className="w-full p-4 rounded-lg shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                    rows="4"
-                    placeholder="Leave a comment..."
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                />
-                <button
-                    className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-                    onClick={handleAddComment}
-                >
-                    Post Comment
-                </button>
-            </div>
+          {/* Comment Input Section */}
+          <div className="mb-8">
+            <input
+              type="text"
+              className="w-full p-3 rounded-xl shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="email"
+              className="w-full p-3 rounded-xl shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              className="w-full p-4 rounded-xl shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="4"
+              placeholder="Leave a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            />
+            <button
+              className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300"
+              onClick={handleAddComment}
+            >
+              Post Comment
+            </button>
+          </div>
 
           {/* Display Comments */}
           <div className="space-y-6">
             {comments.map((comment) => (
               <motion.div
                 key={comment.id}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+                className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-500"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

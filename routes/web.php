@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -41,9 +42,12 @@ Route::get('/project/{project}', [ProjectController::class, 'show'])->name('proj
 /**
  * @phpstan-ignore-next-line
  */
-Route::get('/contacts', function () {
-    return inertia('Contact');
-});
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
+/**
+ * @phpstan-ignore-next-line
+ */
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 /**
  * @phpstan-ignore-next-line

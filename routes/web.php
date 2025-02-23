@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
@@ -53,5 +54,10 @@ Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
  * @phpstan-ignore-next-line
  */
 Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
+
+/**
+ * @phpstan-ignore-next-line
+ */
+Route::post('/blog/{id}/comment', [CommentController::class, 'store'])->name('blog.comment.store');
 
 require __DIR__.'/auth.php';

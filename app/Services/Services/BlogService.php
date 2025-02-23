@@ -3,6 +3,7 @@
 namespace App\Services\Services;
 
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\CommentResource;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Services\Constructors\BlogConstructor;
@@ -16,7 +17,7 @@ class BlogService implements BlogConstructor
      */
     public function index()
     {
-        $blogs = Blog::with('category', 'tags')->paginate(10);
+        $blogs = Blog::with('category', 'tags' , 'comments')->paginate(10);
         $categories = Category::orderBy('created_at', 'desc')->get();
         return inertia('Blog', ['blogs' => $blogs, 'categories' => $categories]);
     }
@@ -28,8 +29,13 @@ class BlogService implements BlogConstructor
      */
     public function show($slug)
     {
-        $blog = Blog::where('slug', $slug)->first();
+        $blog = Blog::with('comments')->where('slug', $slug)->firstOrFail();
         $tags = $blog->tags->pluck('title');
-        return inertia('ShowBlog', ['blog' => BlogResource::make($blog), 'tags' => $tags]);
+
+        return inertia('ShowBlog', [
+            'blog' => BlogResource::make($blog),
+            'tags' => $tags,
+            'comments' => CommentResource::collection($blog->comments),
+        ]);
     }
 }

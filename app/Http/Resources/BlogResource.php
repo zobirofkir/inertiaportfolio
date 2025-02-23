@@ -28,6 +28,7 @@ class BlogResource extends JsonResource
             'image' => $images[0] ?? null,
             'images' => $images,
             'slug' => $this->slug,
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'is_published' => $this->is_published,
         ];
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('blog_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('email');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }

@@ -29,7 +29,10 @@ class BlogService implements BlogConstructor
      */
     public function show($slug)
     {
-        $blog = Blog::with('comments')->where('slug', $slug)->firstOrFail();
+        $blog = Blog::with(['comments' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->where('slug', $slug)->orderBy('created_at', 'desc')->firstOrFail();
+
         $tags = $blog->tags->pluck('title');
 
         return inertia('ShowBlog', [

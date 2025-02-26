@@ -31,7 +31,6 @@ const SliderComponent = ({projectsSlider}) => {
             modifier: 1,
             slideShadows: true,
           }}
-          pagination={{ clickable: true, dynamicBullets: true }}
           navigation={{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',

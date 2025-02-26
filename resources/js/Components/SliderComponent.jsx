@@ -85,7 +85,7 @@ const SliderComponent = ({projectsSlider}) => {
                     transition={{ delay: index * 0.3, duration: 0.6, ease: 'easeOut' }}
                     className="text-base sm:text-lg md:text-xl text-gray-200"
                   >
-                    {item.description.substring(0, 840)} ...
+                    {item.description.substring(0, 40)} ...
                   </motion.p>
 
                   <Link href={`project/${item.slug}`}>

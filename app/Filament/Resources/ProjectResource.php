@@ -63,6 +63,7 @@ class ProjectResource extends Resource
                     ])
                     ->formatStateUsing(fn ($state) => $state ? 'Published' : 'Unpublished'),
                 ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

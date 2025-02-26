@@ -6,6 +6,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import { Link } from '@inertiajs/react';
 
 
 const SliderComponent = ({projectsSlider}) => {
@@ -84,8 +85,22 @@ const SliderComponent = ({projectsSlider}) => {
                     transition={{ delay: index * 0.3, duration: 0.6, ease: 'easeOut' }}
                     className="text-base sm:text-lg md:text-xl text-gray-200"
                   >
-                    {item.description}
+                    {item.description.substring(0, 840)} ...
                   </motion.p>
+
+                  <Link href={`project/${item.slug}`}>
+
+                    <motion.button
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                        className='bg-gray-400 px-4 py-2 rounded-md'
+                    >
+                        Show Project
+                    </motion.button>
+
+                  </Link>
+
                 </motion.div>
               </motion.div>
             </SwiperSlide>

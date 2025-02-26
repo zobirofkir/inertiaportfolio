@@ -11,6 +11,7 @@ import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
 import SkillComponent from '@/Components/SkillComponent';
+import WelcomTextComponent from '@/Components/WelcomTextComponent';
 
 const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: initialProjects, projectsSlider: initialProjectsSlider}) => {
   const [tags, setTags] = useState(initialTags);
@@ -21,6 +22,8 @@ const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: i
   return (
     <Layout>
         <Head title="Home" />
+
+        <WelcomTextComponent />
 
         <SliderComponent projectsSlider={projectsSlider} setProjectsSlider={setProjectsSlider}/>
 

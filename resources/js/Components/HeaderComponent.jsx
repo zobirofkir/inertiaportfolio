@@ -1,4 +1,3 @@
-import { Link } from '@inertiajs/react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -54,15 +53,15 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="container mx-auto flex justify-between items-center relative">
-        <Link href="/">
+        <a href="/">
           <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
-        </Link>
+        </a>
 
         <nav className="hidden sm:block">
           <ul className="flex gap-4 sm:gap-6 text-base sm:text-lg">
             {navItems.map((item, index) => (
               <li key={index} className="cursor-pointer transition-colors duration-300 hover:text-gray-400">
-                <Link href={item.url}>{item.name}</Link>
+                <a href={item.url}>{item.name}</a>
               </li>
             ))}
           </ul>
@@ -107,7 +106,7 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link href={item.url}>{item.name}</Link>
+                    <a href={item.url}>{item.name}</a>
                   </motion.li>
                 ))}
               </ul>

@@ -20,6 +20,7 @@ class HomeService implements HomeConstructor
         $tags = Tag::pluck('title')->take(20);
         $blogs = Blog::latest()->with('category', 'tags')->take(16)->get();
         $projects = Project::latest()->get();
-        return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs, 'projects' => $projects]);
+        $projectsSlider = Project::latest()->get();
+        return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs, 'projects' => $projects, 'projectsSlider' => $projectsSlider]);
     }
 }

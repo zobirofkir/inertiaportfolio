@@ -7,40 +7,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
-const portfolioItems = [
-  {
-    id: 1,
-    title: 'Project 1',
-    image: 'https://wallpapersmug.com/download/800x600/05bf15/galaxy-space-fantasy-art.jpg',
-    description: 'Description for Project 1',
-  },
-  {
-    id: 2,
-    title: 'Project 2',
-    image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=pexels-pixabay-210019.jpg&fm=jpg',
-    description: 'Description for Project 2',
-  },
-  {
-    id: 3,
-    title: 'Project 3',
-    image: 'https://via.placeholder.com/800x600',
-    description: 'Description for Project 3',
-  },
-  {
-    id: 4,
-    title: 'Project 4',
-    image: 'https://via.placeholder.com/800x600',
-    description: 'Description for Project 4',
-  },
-  {
-    id: 5,
-    title: 'Project 5',
-    image: 'https://via.placeholder.com/800x600',
-    description: 'Description for Project 5',
-  },
-];
 
-const SliderComponent = () => {
+const SliderComponent = ({projectsSlider}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -81,7 +49,7 @@ const SliderComponent = () => {
             1440: { slidesPerView: 3, spaceBetween: 40 },
           }}
         >
-          {portfolioItems.map((item, index) => (
+          {projectsSlider.map((item, index) => (
             <SwiperSlide key={item.id} className="relative overflow-hidden">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -92,7 +60,7 @@ const SliderComponent = () => {
                 <div
                   className="absolute inset-0 w-full h-full bg-cover bg-center rounded-lg transition-transform duration-500 hover:scale-110"
                   style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${item.image})`,
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(storage/${item.image})`,
                   }}
                 ></div>
 

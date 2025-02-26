@@ -12,16 +12,17 @@ import SubscribeComponent from '@/Components/SubscribeComponent'
 import TagComponent from '@/Components/TagComponent'
 import SkillComponent from '@/Components/SkillComponent';
 
-const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: initialProjects}) => {
+const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: initialProjects, projectsSlider: initialProjectsSlider}) => {
   const [tags, setTags] = useState(initialTags);
   const [blogs, setBlogs] = useState(initialBlogs);
   const [projects, setProjects] = useState(initialProjects);
+  const [projectsSlider, setProjectsSlider] = useState(initialProjectsSlider)
 
   return (
     <Layout>
         <Head title="Home" />
 
-        <SliderComponent />
+        <SliderComponent projectsSlider={projectsSlider} setProjectsSlider={setProjectsSlider}/>
 
         <AboutComponent />
 

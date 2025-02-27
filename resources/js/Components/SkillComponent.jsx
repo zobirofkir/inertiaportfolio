@@ -1,139 +1,136 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import HTMLFlipBook from 'react-pageflip';
 import useSound from 'use-sound';
 import clickSound from '../Sounds/skillsound.mp3';
 
 const skills = [
-  {
-    id: 1,
-    name: 'React',
-    image: 'https://cdn-icons-png.flaticon.com/512/1183/1183672.png',
-    description: 'A JavaScript library for building user interfaces.',
-  },
-  {
-    id: 2,
-    name: 'Tailwind CSS',
-    image: 'https://cdn-icons-png.flaticon.com/512/732/732190.png',
-    description: 'A utility-first CSS framework for rapid UI development.',
-  },
-  {
-    id: 3,
-    name: 'Framer Motion',
-    image: 'https://cdn-icons-png.flaticon.com/512/2119/2119033.png',
-    description: 'A production-ready motion library for React.',
-  },
-  {
-    id: 4,
-    name: 'TypeScript',
-    image: 'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',
-    description: 'A typed superset of JavaScript for better code quality.',
-  },
-  {
-    id: 5,
-    name: 'Node.js',
-    image: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
-    description: 'A JavaScript runtime for building server-side applications.',
-  },
-  {
-    id: 6,
-    name: 'GraphQL',
-    image: 'https://cdn-icons-png.flaticon.com/512/6124/6124995.png',
-    description: 'A query language for APIs and a runtime for executing them.',
-  },
+    {
+      id: 1,
+      name: 'React',
+      image: 'https://cdn-icons-png.flaticon.com/512/1183/1183672.png',
+      description: 'React is a declarative, component-based JavaScript library for building modern, scalable user interfaces. It enables developers to create reusable UI components, manage application state efficiently with hooks or state management libraries like Redux, and optimize performance through its virtual DOM. React continues to dominate front-end development in 2025, with advancements in server-side rendering (Next.js) and concurrent rendering for smoother user experiences.',
+      emoji: '⚛️',
+      color: 'bg-blue-50'
+    },
+    {
+      id: 2,
+      name: 'Tailwind CSS',
+      image: 'https://cdn-icons-png.flaticon.com/512/732/732190.png',
+      description: 'Tailwind CSS is a highly customizable, utility-first CSS framework that streamlines the process of building responsive and modern user interfaces. By providing low-level utility classes, Tailwind allows developers to style components directly in their markup, reducing the need for custom CSS. In 2025, Tailwind has become even more powerful with features like Just-In-Time (JIT) compilation, dynamic theming, and seamless integration with popular frameworks like React and Vue.',
+      emoji: '🎨',
+      color: 'bg-teal-50'
+    },
+    {
+      id: 3,
+      name: 'Framer Motion',
+      image: 'https://cdn-icons-png.flaticon.com/512/2119/2119033.png',
+      description: 'Framer Motion is a robust motion library for React that simplifies the creation of complex animations and interactive UI components. With its intuitive API, developers can easily add gestures, drag-and-drop functionality, and smooth transitions to their applications. By 2025, Framer Motion has become the go-to solution for creating immersive, high-performance animations in web applications, supporting advanced features like 3D transformations and physics-based animations.',
+      emoji: '🚀',
+      color: 'bg-purple-50'
+    },
+    {
+      id: 4,
+      name: 'TypeScript',
+      image: 'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',
+      description: 'TypeScript is a strongly typed superset of JavaScript that enhances developer productivity and code quality by adding optional static typing. It compiles to plain JavaScript and is widely used in large-scale applications to catch errors during development. In 2025, TypeScript has solidified its position as the standard for JavaScript development, with improved tooling, better integration with frameworks like React and Angular, and advanced type inference capabilities.',
+      emoji: '📘',
+      color: 'bg-indigo-50'
+    },
+    {
+      id: 5,
+      name: 'Node.js',
+      image: 'https://cdn-icons-png.flaticon.com/512/919/919825.png',
+      description: 'Node.js is a powerful JavaScript runtime built on Chrome’s V8 engine, enabling developers to build scalable, high-performance server-side applications. It uses an event-driven, non-blocking I/O model, making it ideal for real-time applications and microservices. By 2025, Node.js has evolved with improved support for ES modules, enhanced performance optimizations, and seamless integration with modern DevOps tools, solidifying its place in the backend development ecosystem.',
+      emoji: '🖥️',
+      color: 'bg-green-50'
+    },
+    {
+      id: 6,
+      name: 'GraphQL',
+      image: 'https://cdn-icons-png.flaticon.com/512/6124/6124995.png',
+      description: 'GraphQL is a flexible and efficient query language for APIs, designed to provide clients with exactly the data they need. Unlike REST, GraphQL allows clients to request specific fields and nested data in a single query, reducing over-fetching and under-fetching of data. In 2025, GraphQL has become the standard for API development, with widespread adoption in modern applications, advanced tooling like Apollo and Relay, and support for real-time subscriptions and serverless architectures.',
+      emoji: '🔗',
+      color: 'bg-pink-50'
+    },
 ];
 
-const SkillCard = ({ skill, isSelected, onClick }) => {
-  return (
-    <motion.div
-      className="relative cursor-pointer"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      aria-label={`Learn more about ${skill.name}`}
-    >
-      <motion.div
-        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow duration-300"
-        style={{ transformStyle: 'preserve-3d' }}
-        initial={{ rotateY: 0 }}
-        animate={{ rotateY: isSelected ? 180 : 0 }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
-      >
-        {/* Front Face */}
-        <motion.div
-          className="flex flex-col items-center"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isSelected ? 0 : 1 }}
-          transition={{ duration: 0.25 }}
-        >
-          <img
-            src={skill.image}
-            alt={skill.name}
-            className="w-12 h-12 md:w-16 md:h-16 mb-2 md:mb-4 object-cover"
-          />
-          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center whitespace-nowrap">
-            {skill.name}
-          </h3>
-        </motion.div>
 
-        {/* Back Face */}
-        <motion.div
-          className="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-800 rounded-lg p-4"
-          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isSelected ? 1 : 0 }}
-          transition={{ duration: 0.25, delay: isSelected ? 0.25 : 0 }}
-        >
-          <h3 className="text-lg md:text-xl font-bold dark:text-white text-center">
-            {skill.name}
-          </h3>
-          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 text-center">
-            {skill.description}
-          </p>
-        </motion.div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-// Main Skill Component
 const SkillComponent = () => {
-  const [selectedSkill, setSelectedSkill] = useState(null);
   const [play] = useSound(clickSound);
+  const [isBookOpen, setIsBookOpen] = useState(false);
 
-  const handleCardClick = (skill) => {
-    if (selectedSkill?.id === skill.id) {
-      play();
-      setSelectedSkill(null);
-    } else {
-      play();
-      setSelectedSkill(skill);
-    }
+  const handleFlip = () => {
+    play();
+    setIsBookOpen(true);
   };
 
   return (
-    <div className="bg-transparent p-4 md:p-8">
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        My Skills
-      </motion.h1>
+    <section>
+        <div className='flex flex-col justify-center items-center text-center px-4 py-8'>
+            <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10">
+                My Skills
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
+                Hello, I'm Zobir Ofkir, a Web Developer. You can explore my skills in the book below.
+            </p>
+        </div>
+        <div className="flex justify-center items-center max-h-full bg-gray-100 dark:bg-gray-900 rounded-xl relative">
+            {/* FlipBook Component */}
+            <HTMLFlipBook
+            width={350}
+            height={500}
+            size="stretch"
+            minWidth={300}
+            maxWidth={1000}
+            minHeight={400}
+            maxHeight={1000}
+            maxShadowOpacity={0.5}
+            showCover={true}
+            mobileScrollSupport={true}
+            onFlip={handleFlip}
+            className="book-container z-0"
+            >
+            {/* Dark-themed Cover */}
+            <div className="cover bg-gray-800 rounded-xl text-white flex flex-col justify-center items-center p-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: 'url(https://www.transparenttextures.com/patterns/dark-leather.png)' }}></div>
+                <h1 className="text-4xl font-bold mb-4 z-10">📚 ZOBIR OFKIR</h1>
+                <p className="text-lg z-10">Hello I'm Zobir Ofkir And This Is My Skills !</p>
+                {/* Text on the right side */}
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 rotate-90 text-sm text-gray-400">
+                <p>Flip to explore my skills</p>
+                </div>
+                {/* Text on the left side */}
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -rotate-90 text-sm text-gray-400">
+                <p>Click to Open</p>
+                </div>
+            </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {skills.map((skill) => (
-          <SkillCard
-            key={skill.id}
-            skill={skill}
-            isSelected={selectedSkill?.id === skill.id}
-            onClick={() => handleCardClick(skill)}
-          />
-        ))}
-      </div>
-    </div>
+            {/* Skill Pages */}
+            {skills.map((skill) => (
+                <div key={skill.id} className={`p-6 ${skill.color} rounded-lg shadow-lg flex flex-col items-center text-center`}>
+                <img src={skill.image} alt={skill.name} className="w-16 h-16 mb-4" />
+                <h2 className="text-xl font-bold text-gray-900">{skill.name} {skill.emoji}</h2>
+                <p className="text-gray-600 mt-2">{skill.description}</p>
+                </div>
+            ))}
+
+            {/* Back Cover */}
+            <div className="cover bg-gray-800 rounded-xl text-white flex flex-col justify-center items-center p-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: 'url(https://www.transparenttextures.com/patterns/dark-leather.png)' }}></div>
+                <h1 className="text-4xl font-bold mb-4 z-10">📚 ZOBIR OFKIR</h1>
+                <p className="text-lg z-10">Thanks for exploring my skills!</p>
+                {/* Text on the left side */}
+                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -rotate-90 text-sm text-gray-400">
+                <p>Hope you enjoyed the journey</p>
+                </div>
+                {/* Text on the right side */}
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 rotate-90 text-sm text-gray-400">
+                <p>Let's build something amazing!</p>
+                </div>
+            </div>
+            </HTMLFlipBook>
+        </div>
+    </section>
   );
 };
 

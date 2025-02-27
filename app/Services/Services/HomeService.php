@@ -5,6 +5,7 @@ namespace App\Services\Services;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\Skill;
 use App\Models\Tag;
 use App\Services\Constructors\HomeConstructor;
@@ -23,6 +24,7 @@ class HomeService implements HomeConstructor
         $projects = Project::latest()->get();
         $projectsSlider = Project::latest()->get();
         $skills = Skill::latest()->get();
-        return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs, 'projects' => $projects, 'projectsSlider' => $projectsSlider, 'skills' => $skills]);
+        $services = Service::latest()->get();
+        return inertia('Home', ['categories' => $categories, 'tags' => $tags, 'blogs' => $blogs, 'projects' => $projects, 'projectsSlider' => $projectsSlider, 'skills' => $skills, 'services' => $services]);
     }
 }

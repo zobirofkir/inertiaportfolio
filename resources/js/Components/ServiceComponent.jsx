@@ -2,19 +2,10 @@ import { useState } from 'react';
 import serviceSound from '../Sounds/serviceSound.mp3';
 import useSound from 'use-sound';
 
-const ServiceComponent = () => {
+const ServiceComponent = ({services: initialServices}) => {
     const [play] = useSound(serviceSound);
 
-    const [services, setServices] = useState([
-        { id: 1, name: 'Full Stack Development', info: 'Developing complete web applications using Laravel and React.js.', isSpinning: false, image: 'https://static.thenounproject.com/png/2230389-200.png' },
-        { id: 2, name: 'Custom Web Applications', info: 'Building tailored web solutions with high scalability and performance.', isSpinning: false, image: 'https://cdn-icons-png.freepik.com/256/12098/12098331.png?semt=ais_hybrid' },
-        { id: 3, name: 'Admin Panel Development', info: 'Creating powerful and user-friendly admin dashboards using Filament and Laravel.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/9323/9323925.png' },
-        { id: 4, name: 'Website Optimization', info: 'Enhancing website speed, SEO, and performance for a seamless user experience.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/1640/1640827.png' },
-        { id: 5, name: 'Real-time Web Applications', info: 'Developing chat apps and real-time systems using Laravel WebSockets and React.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/8727/8727856.png' },
-        { id: 6, name: 'Three.js & 3D Web Development', info: 'Creating interactive 3D experiences and visualizations in Next.js.', isSpinning: false, image: 'https://cdn3d.iconscout.com/3d/premium/thumb/web-development-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--html-logo-technology-design-pack-business-illustrations-4496032.png?f=webp' },
-        { id: 7, name: 'Payment Gateway Integration', info: 'Implementing secure payment solutions for e-commerce and online services.', isSpinning: false, image: 'https://cdn-icons-png.flaticon.com/512/4802/4802398.png' },
-        { id: 8, name: 'Docker & DevOps', info: 'Setting up scalable and containerized environments for smooth deployment.', isSpinning: false, image: 'https://theagileadmin.com/wp-content/uploads/2015/10/docker-logo.png' },
-    ]);
+    const [services, setServices] = useState(initialServices);
 
   const handleCubeClick = (id) => {
     play();
@@ -38,16 +29,16 @@ const ServiceComponent = () => {
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4" style={{ backfaceVisibility: 'hidden' }}>
               <h2 className="text-md md:text-lg font-semibold text-gray-900 dark:text-white text-center">
-                {service.name}
+                {service.title}
               </h2>
               <p className="text-sm md:text-md text-gray-600 dark:text-gray-400 text-center">
-                {service.info}
+                {service.description}
               </p>
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-2xl" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-              <img src={service.image} alt={service.name} className="w-16 h-16 md:w-full md:h-full object-contain rounded-2xl" />
+              <img src={`storage/${service.image}`} alt={service.title} className="w-16 h-16 md:w-full md:h-full object-contain rounded-2xl" />
               <h2 className="text-sm md:text-lg font-semibold text-gray-900 dark:text-white text-center mt-2">
-                {service.name}
+                {service.title}
               </h2>
             </div>
           </div>

@@ -80,59 +80,59 @@ const Blog = ({ blogs, categories }) => {
             </select>
           </motion.div>
 
-            {/* Right Side - Posts */}
-            <motion.div
+          {/* Right Side - Posts */}
+          <motion.div
             className="w-full lg:w-3/4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            >
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-                {filteredPosts.map((post) => (
+              {filteredPosts.map((post) => (
                 <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id} onClick={play}>
-                    <motion.div
+                  <motion.div
                     className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 flex flex-col sm:flex-row justify-between w-full"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                    >
+                  >
                     <div className="flex-1">
-                        <h3 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
                         {post.title}
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
+                      </h3>
+                      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
                         {post.description.substring(0, 50)} ...
-                        </p>
+                      </p>
                     </div>
                     <div className="flex flex-col justify-between mt-4 sm:mt-0 sm:ml-4">
-                        <p className="text-md text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 flex items-center justify-center">
+                      <p className="text-md text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 flex items-center justify-center">
                         {new Date(post.created_at).toLocaleDateString()}
-                        </p>
-                        <p className="text-md text-gray-500 dark:text-gray-400 flex items-center justify-center mt-2 sm:mt-0">
+                      </p>
+                      <p className="text-md text-gray-500 dark:text-gray-400 flex items-center justify-center mt-2 sm:mt-0">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                          <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
                         </svg>
                         {post.comments.length}
-                        </p>
+                      </p>
                     </div>
-                    </motion.div>
+                  </motion.div>
                 </Link>
-                ))}
+              ))}
             </div>
 
             {/* Pagination */}
             <div className="flex justify-center mt-8">
-                {links.map((link, index) => (
+              {links.map((link, index) => (
                 <Link
-                    key={index}
-                    href={link.url || "#"}
-                    className={`px-4 py-2 ${link.active ? 'bg-gray-500 text-white' : 'bg-white text-gray-700'} ${!link.url && 'cursor-not-allowed opacity-50'} border border-gray-300 rounded-lg mx-1`}
-                    disabled={!link.url}
+                  key={index}
+                  href={link.url || "#"}
+                  className={`px-4 py-2 ${link.active ? 'bg-gray-500 text-white' : 'bg-white text-gray-700'} ${!link.url && 'cursor-not-allowed opacity-50'} border border-gray-300 rounded-lg mx-1`}
+                  disabled={!link.url}
                 >
-                    {link.label.replace('&laquo;', '«').replace('&raquo;', '»')}
+                  {link.label.replace('&laquo;', '«').replace('&raquo;', '»')}
                 </Link>
-                ))}
+              ))}
             </div>
-            </motion.div>
+          </motion.div>
         </div>
       </div>
     </Layout>

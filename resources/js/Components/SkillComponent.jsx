@@ -74,7 +74,7 @@ const SkillComponent = () => {
                 Hello, I'm Zobir Ofkir, a Web Developer. You can explore my skills in the book below.
             </p>
         </div>
-        <div className="flex justify-center items-center max-h-full bg-gray-100 dark:bg-gray-900 rounded-xl relative">
+        <div className="flex justify-center items-center max-h-full rounded-xl relative">
             {/* FlipBook Component */}
             <HTMLFlipBook
             width={350}

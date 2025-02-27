@@ -50,12 +50,12 @@ const ShowBlog = ({ blog, tags }) => {
         </div>
       </motion.div>
 
-      <motion.div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+      <motion.div className="py-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <motion.div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
-          <div className="prose prose-lg dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div className="prose prose-lg dark:prose-invert " dangerouslySetInnerHTML={{ __html: post.content }} />
         </motion.div>
 
-        <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
+        <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
           {post.description}
         </motion.p>
 

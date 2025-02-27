@@ -1,6 +1,7 @@
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from '@inertiajs/react';
 
 const HeaderComponent = ({ darkMode, setDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -53,15 +54,15 @@ const HeaderComponent = ({ darkMode, setDarkMode }) => {
       } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="container mx-auto flex justify-between items-center relative">
-        <a href="/">
+        <Link href="/">
           <h1 className="text-xl sm:text-2xl font-bold tracking-wide">ZOBIR</h1>
-        </a>
+        </Link>
 
         <nav className="hidden sm:block">
           <ul className="flex gap-4 sm:gap-6 text-base sm:text-lg">
             {navItems.map((item, index) => (
               <li key={index} className="cursor-pointer transition-colors duration-300 hover:text-gray-400">
-                <a href={item.url}>{item.name}</a>
+                <Link href={item.url}>{item.name}</Link>
               </li>
             ))}
           </ul>

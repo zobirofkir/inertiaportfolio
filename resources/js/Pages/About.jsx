@@ -44,18 +44,17 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-                Hi, I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Zobir Ofkir</span>, a passionate and creative web developer with a strong focus on building user-friendly, responsive, and visually appealing websites. I specialize in modern web technologies and love turning ideas into reality through code.
-              </p>
+            <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+            Hi, I'm <span className="font-semibold text-indigo-600 dark:text-indigo-400">Zobir Ofkir</span>, a passionate and creative web developer with a strong focus on building user-friendly, responsive, and visually appealing websites. I specialize in modern web technologies and love turning ideas into reality through code.
+            </p>
 
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-                With over <span className="font-semibold">1.5 years</span> of experience, I have worked on various projects ranging from business websites to complex applications. My expertise includes <span className="font-semibold">Laravel, React.js, Next.js, Tailwind CSS, and more.</span>
-              </p>
+            <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+            I have worked on various projects ranging from business websites to complex applications. My expertise includes <span className="font-semibold">Laravel, React.js, Next.js, Tailwind CSS, and more.</span>
+            </p>
 
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-                I am always eager to learn new technologies and improve my skills to stay ahead in the ever-evolving world of web development. When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or enjoying a good cup of coffee.
-              </p>
-
+            <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+            I am always eager to learn new technologies and improve my skills to stay ahead in the ever-evolving world of web development. When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or enjoying a good cup of coffee.
+            </p>
               {/* Buttons with Enhanced Design */}
               <div className="flex md:flex-row flex-col gap-6">
                 {/* <motion.a

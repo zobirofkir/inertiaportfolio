@@ -3,8 +3,10 @@
 namespace App\Services\Services;
 
 use App\Http\Requests\ContactRequest;
+use App\Mail\ContactMail;
 use App\Models\Contact;
 use App\Services\Constructors\ContactConstructor;
+use Illuminate\Support\Facades\Mail;
 
 class ContactService implements ContactConstructor
 {
@@ -25,6 +27,9 @@ class ContactService implements ContactConstructor
     public function store(ContactRequest $request)
     {
         Contact::create($request->validated());
+
+        Mail::to('contact@zobirofkir.com')->send(new ContactMail($request->validated()));
+        
         return redirect()->back()->with('success', 'Message sent successfully!');
     }
 }

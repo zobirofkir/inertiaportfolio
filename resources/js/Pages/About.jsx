@@ -58,7 +58,7 @@ const About = () => {
 
               {/* Buttons with Enhanced Design */}
               <div className="flex md:flex-row flex-col gap-6">
-                <motion.a
+                {/* <motion.a
                   href="/path/to/your/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -67,7 +67,7 @@ const About = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   Download Resume
-                </motion.a>
+                </motion.a> */}
                 <motion.a
                   href="/contact"
                   className="px-8 py-3 border-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 rounded-xl hover:bg-indigo-600 hover:text-white transition-colors whitespace-nowrap text-center shadow-lg hover:shadow-indigo-500/50"

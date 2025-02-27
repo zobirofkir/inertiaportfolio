@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceConstroller;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,9 +26,7 @@ Route::get('/abouts', function () {
 /**
  * @phpstan-ignore-next-line
  */
-Route::get('/services', function () {
-    return inertia('Service');
-});
+Route::get('/services', [ServiceConstroller::class, 'index'])->name('services.index');
 
 /**
  * @phpstan-ignore-next-line

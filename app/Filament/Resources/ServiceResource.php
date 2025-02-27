@@ -39,7 +39,7 @@ class ServiceResource extends Resource
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(20),
             ])->columns(1);
     }
 

@@ -8,4 +8,5 @@ return [
     App\Providers\Filament\AdminPanelProvider::class,
     App\Providers\HomeServiceProvider::class,
     App\Providers\ProjectServiceProvider::class,
+    App\Providers\ServiceServiceProvider::class,
 ];

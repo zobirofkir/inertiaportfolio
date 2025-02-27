@@ -95,9 +95,9 @@ const Contact = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
             >
-                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold mt-2 ">123 Street, City, Country</p>
-                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold">Email: contact@example.com</p>
-                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold">Phone: +123 456 7890</p>
+                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold mt-2 ">Imouzzer Kandar Ain Soltane</p>
+                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold">Email: contact@zobirofkir.com</p>
+                <p className="text-gray-600 dark:text-gray-300 md:text-2xl text-xl font-bold">Phone: +212 619920942</p>
             </motion.div>
 
             </div>

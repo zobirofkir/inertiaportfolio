@@ -5,17 +5,11 @@ import Layout from '../Layouts/Layout'
 import AboutComponent from '@/Components/AboutComponent'
 import ProjectComponent from '@/Components/ProjectComponent'
 import ServiceComponent from '@/Components/ServiceComponent'
-import ContactComponent from '@/Components/ContactComponent'
-import BlogComponent from '@/Components/BlogComponent'
-import CategoryComponent from '@/Components/CategoryComponent'
 import SubscribeComponent from '@/Components/SubscribeComponent'
-import TagComponent from '@/Components/TagComponent'
 import SkillComponent from '@/Components/SkillComponent';
 import WelcomTextComponent from '@/Components/WelcomTextComponent';
 
-const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: initialProjects, projectsSlider: initialProjectsSlider}) => {
-  const [tags, setTags] = useState(initialTags);
-  const [blogs, setBlogs] = useState(initialBlogs);
+const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlider}) => {
   const [projects, setProjects] = useState(initialProjects);
   const [projectsSlider, setProjectsSlider] = useState(initialProjectsSlider)
 
@@ -34,14 +28,6 @@ const Home = ({ categories, tags: initialTags, blogs: initialBlogs , projects: i
         <SkillComponent />
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
-
-        <TagComponent tags={tags} setTags={setTags} />
-
-        <CategoryComponent categories={categories} />
-
-        <BlogComponent blogs={blogs} setBlogs={setBlogs} />
-
-        <ContactComponent />
 
         <SubscribeComponent />
     </Layout>

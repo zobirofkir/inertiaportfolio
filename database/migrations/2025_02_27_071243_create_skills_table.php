@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('title');
             $table->longText('description');
+            $table->string('emoji');
             $table->timestamps();
         });
     }

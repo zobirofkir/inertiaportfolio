@@ -9,9 +9,10 @@ import SubscribeComponent from '@/Components/SubscribeComponent'
 import SkillComponent from '@/Components/SkillComponent';
 import WelcomTextComponent from '@/Components/WelcomTextComponent';
 
-const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlider}) => {
+const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlider, skills: initialSkills}) => {
   const [projects, setProjects] = useState(initialProjects);
   const [projectsSlider, setProjectsSlider] = useState(initialProjectsSlider)
+  const [skills, setSkills] = useState(initialSkills);
 
   return (
     <Layout>
@@ -25,7 +26,7 @@ const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlide
 
         <ServiceComponent />
 
-        <SkillComponent />
+        <SkillComponent skills={skills} setSkills={setSkills}/>
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
 

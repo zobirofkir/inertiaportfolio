@@ -6,7 +6,9 @@ use App\Filament\Resources\SkillResource\Pages;
 use App\Filament\Resources\SkillResource\RelationManagers;
 use App\Models\Skill;
 use Filament\Forms;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -38,7 +40,21 @@ class SkillResource extends Resource
             ->schema([
                 TextInput::make('title')->required(),
                 FileUpload::make('image')->image()->required(),
-                Textarea::make('description'),
+                Textarea::make('description')->required(),
+
+                Select::make('emoji')
+                    ->label('Emoji')
+                    ->options([
+                        '⚛️' => '⚛️ Atom',
+                        '🔥' => '🔥 Fire',
+                        '💡' => '💡 Idea',
+                        '🚀' => '🚀 Rocket',
+                        '🎨' => '🎨 Art',
+                        '💻' => '💻 Coding',
+                    ])
+                    ->searchable()
+                    ->required(),
+
             ])->columns(1);
     }
 
@@ -50,6 +66,7 @@ class SkillResource extends Resource
                 TextColumn::make('title')->searchable(),
                 TextColumn::make('description')->limit(30)
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

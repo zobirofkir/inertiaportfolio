@@ -79,11 +79,11 @@ const SkillComponent = ({ skills }) => {
                   className="w-16 h-16 mb-4"
                 />
 
-                <h2 className="text-3xl font-bold text-white">
+                <h2 className="md:text-3xl text-xl font-bold text-white">
                   {skill.title} {skill.emoji}
                 </h2>
 
-                <p className="text-gray-600 mt-2 text-2xl text-white font-bold">{skill.description}</p>
+                <p className="text-gray-600 mt-2 md:text-2xl text-md text-white font-bold">{skill.description}</p>
               </div>
             );
           })}

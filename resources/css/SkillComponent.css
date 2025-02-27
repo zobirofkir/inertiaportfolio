@@ -1,11 +1,10 @@
 /* SkillComponent.css */
 
 .book-container {
-    position: relative;
-    perspective: 1500px;
-    transform-style: preserve-3d;
+    overflow: hidden;
+    touch-action: none; /* Prevent default touch behavior */
   }
-
+  
   .cover {
     position: relative;
     z-index: 3;

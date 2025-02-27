@@ -44,7 +44,7 @@ const Project = ({ projects: initialProjects }) => {
     return (
         <Layout>
             <Head title="Projects"/>
-            <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden flex justify-center items-center min-h-screen mt-10">
+            <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden flex justify-center items-center mt-10">
                 <div className="relative z-10 container mx-auto px-6 py-16">
                     <motion.h1
                         className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600"

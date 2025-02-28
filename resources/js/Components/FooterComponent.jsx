@@ -11,7 +11,7 @@ const FooterComponent = () => {
           </div>
           <div className="flex space-x-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/zobirofkir"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
@@ -30,7 +30,7 @@ const FooterComponent = () => {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/zobir-ofkir/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
@@ -49,7 +49,7 @@ const FooterComponent = () => {
               </svg>
             </a>
             <a
-              href="mailto:youremail@example.com"
+              href="mailto:contact@zobirofkir.com"
               className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
             >
               <svg

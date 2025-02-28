@@ -68,7 +68,7 @@ const About = () => {
                   Download Resume
                 </motion.a> */}
                 <motion.a
-                  href="/contact"
+                  href="/contacts"
                   className="px-8 py-3 border-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 rounded-xl hover:bg-indigo-600 hover:text-white transition-colors whitespace-nowrap text-center shadow-lg hover:shadow-indigo-500/50"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

@@ -95,15 +95,6 @@ const SkillComponent = ({ skills }) => {
               key={skill.id}
               className={`p-6 rounded-lg shadow-lg flex flex-col items-center text-center dark:bg-transparent bg-gray-300 relative`}
             >
-              {/* Decorative text on the left side */}
-              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -rotate-90 md:text-xl text-md text-black dark:text-white">
-                <p>Page {index + 1}</p>
-              </div>
-              {/* Decorative text on the right side */}
-              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 rotate-90 md:text-xl text-md text-black dark:text-white">
-                <p>Zobir Ofkir</p>
-              </div>
-
               <img
                 src={`storage/${skill.image}`}
                 alt={skill.title}
@@ -114,7 +105,10 @@ const SkillComponent = ({ skills }) => {
                 {skill.title} {skill.emoji}
               </h2>
 
-              <p className="text-gray-600 mt-2 md:text-2xl text-md text-black dark:text-white font-bold">{skill.description}</p>
+              <p
+                className="text-gray-600 mt-2 md:text-2xl text-md text-black dark:text-white font-bold"
+                dangerouslySetInnerHTML={{ __html: skill.description.replace(/\n/g, '<br />') }}
+            ></p>
             </div>
           ))}
 

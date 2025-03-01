@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Widgets\Table;
+namespace App\Filament\Widgets\Overview\Table;
 
 use App\Models\Blog;
 use Filament\Tables;

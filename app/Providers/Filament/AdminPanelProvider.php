@@ -2,15 +2,15 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Widgets\BlogChart;
-use App\Filament\Widgets\CategoryChart;
-use App\Filament\Widgets\CategoryTable;
-use App\Filament\Widgets\Overview\ProjectTable;
-use App\Filament\Widgets\Overview\TagTable;
+use App\Filament\Widgets\Overview\BlogChart;
+use App\Filament\Widgets\Overview\CategoryChart;
+use App\Filament\Widgets\Overview\ProjectChart;
+use App\Filament\Widgets\Overview\Table\BlogTable;
+use App\Filament\Widgets\Overview\Table\CategoryTable;
+use App\Filament\Widgets\Overview\Table\ProjectTable;
+use App\Filament\Widgets\Overview\Table\TagTable;
+use App\Filament\Widgets\Overview\TagChart;
 use App\Filament\Widgets\OverviewWidget;
-use App\Filament\Widgets\ProjectChart;
-use App\Filament\Widgets\Table\BlogTable;
-use App\Filament\Widgets\TagChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -19,7 +19,6 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;

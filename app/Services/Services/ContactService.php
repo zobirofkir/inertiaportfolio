@@ -27,9 +27,12 @@ class ContactService implements ContactConstructor
     public function store(ContactRequest $request)
     {
         Contact::create($request->validated());
-
         Mail::to('contact@zobirofkir.com')->send(new ContactMail($request->validated()));
-        
+
+        if (request()->expectsJson()) {
+            return response()->json(['message' => 'Message sent successfully!'], 201);
+        }
+
         return redirect()->back()->with('success', 'Message sent successfully!');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Widgets\Overview;
+namespace App\Filament\Widgets\Overview\Table;
 
 use App\Models\Project;
 use Filament\Tables;

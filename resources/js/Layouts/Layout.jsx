@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import HeaderComponent from '@/Components/HeaderComponent';
 import FooterComponent from '@/Components/FooterComponent';
+import { Helmet } from 'react-helmet';
 
 /**
  * Star Component
@@ -76,30 +77,30 @@ const Layout = ({ children, title }) => {
   }, [darkMode]);
 
   return (
-    <>
+    <Helmet>
       <Head title={title} />
-      <div className={`relative w-full min-h-screen transition-all duration-500 ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-        {darkMode ? (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {stars.map((star, index) => (
-              <Star key={index} style={star} />
-            ))}
-          </div>
-        ) : (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {fogs.map((fog, index) => (
-              <Fog key={index} style={fog} />
-            ))}
-          </div>
-        )}
+        <div className={`relative w-full min-h-screen transition-all duration-500 ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
+            {darkMode ? (
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {stars.map((star, index) => (
+                <Star key={index} style={star} />
+                ))}
+            </div>
+            ) : (
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {fogs.map((fog, index) => (
+                <Fog key={index} style={fog} />
+                ))}
+            </div>
+            )}
 
-        <HeaderComponent darkMode={darkMode} setDarkMode={setDarkMode} />
-        <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
-          {children}
-        </main>
-        <FooterComponent />
-      </div>
-    </>
+            <HeaderComponent darkMode={darkMode} setDarkMode={setDarkMode} />
+            <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
+            {children}
+            </main>
+            <FooterComponent />
+        </div>
+      </Helmet>
   );
 };
 

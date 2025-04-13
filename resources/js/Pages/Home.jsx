@@ -27,7 +27,7 @@ const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlide
 
         <ServiceComponent services={services} setServices={setServices}/>
 
-        <SkillComponent skills={skills} setSkills={setSkills}/>
+        {/* <SkillComponent skills={skills} setSkills={setSkills}/> */}
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
 

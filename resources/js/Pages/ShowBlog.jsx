@@ -44,11 +44,44 @@ const ShowBlog = ({ blog, tags }) => {
 
   return (
     <Layout>
-      <Head title={post.title} />
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={`${post.title}, blog, article, web development, Zobir Ofkir${tags ? ', ' + tags.join(', ') : ''}`} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={window.location.href} />
+        {post.image && <meta property="og:image" content={post.image} />}
+        <link rel="canonical" href={window.location.href} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": pageDescription,
+            "image": post.image,
+            "datePublished": blog.data.created_at,
+            "dateModified": blog.data.updated_at,
+            "author": {
+              "@type": "Person",
+              "name": "Zobir Ofkir"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Zobir Ofkir"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": window.location.href
+            }
+          })}
+        </script>
+      </Head>
 
       <motion.div className="relative h-96 w-full overflow-hidden rounded-md mt-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
         {post.image && (
-          <motion.img src={post.image} alt={post.title} className="w-full h-full object-cover" initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} />
+          <motion.img src={post.image} alt={`${post.title} - Blog post by Zobir Ofkir`} className="w-full h-full object-cover" initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} />
         )}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <motion.h1 className="text-5xl md:text-6xl font-bold text-white text-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>

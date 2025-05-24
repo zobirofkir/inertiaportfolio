@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from "@/Layouts/Layout";
 import { motion } from "framer-motion";
 import { Head, useForm } from '@inertiajs/react';
 
 const ShowBlog = ({ blog, tags }) => {
+  const [pageTitle, setPageTitle] = useState("");
+  const [pageDescription, setPageDescription] = useState("");
   if (!blog || !blog.data) {
     return <p>Blog not found.</p>;
   }
@@ -14,6 +16,11 @@ const ShowBlog = ({ blog, tags }) => {
     content: blog.data.content || "",
     image: blog.data.image || "",
   };
+  
+  useEffect(() => {
+    setPageTitle(`${post.title} | Zobir Ofkir's Blog`);
+    setPageDescription(post.description.substring(0, 160));
+  }, [post.title, post.description]);
 
   const images = blog.data.images || [];
 

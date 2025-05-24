@@ -8,6 +8,8 @@ import useSound from "use-sound";
 const Service = ({ services: initialServices }) => {
     const [play] = useSound(serviceSound);
     const [services, setServices] = useState(initialServices);
+    const [pageTitle] = useState("Web Development Services | Zobir Ofkir");
+    const [pageDescription] = useState("Professional web development services including frontend development, backend development, UI/UX design, and more. Learn how I can help with your next project.");
 
     const handleCubeClick = (id) => {
         play();
@@ -18,7 +20,32 @@ const Service = ({ services: initialServices }) => {
 
     return (
         <Layout>
-          <Head title='Services'/>
+          <Head>
+            <title>{pageTitle}</title>
+            <meta name="description" content={pageDescription} />
+            <meta name="keywords" content="web development services, frontend development, backend development, UI/UX design, Zobir Ofkir, web services" />
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={pageDescription} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={window.location.href} />
+            <link rel="canonical" href={window.location.href} />
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": services.map((service, index) => ({
+                  "@type": "Service",
+                  "position": index + 1,
+                  "name": service.title,
+                  "description": service.description,
+                  "provider": {
+                    "@type": "Person",
+                    "name": "Zobir Ofkir"
+                  }
+                }))
+              })}
+            </script>
+          </Head>
           <div className="flex flex-col items-center justify-center bg-transparent dark:bg-transparent p-4 md:p-6 md:my-0 mt-20 min-h-screen">
             <motion.h1
               className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10"
@@ -53,7 +80,7 @@ const Service = ({ services: initialServices }) => {
                     className="absolute inset-0 flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-2xl"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
-                    <img src={`storage/${service.image}`} alt={service.title} className="w-16 h-16 md:w-full md:h-full object-contain rounded-2xl" />
+                    <img src={`storage/${service.image}`} alt={`${service.title} - Web Development Service by Zobir Ofkir`} className="w-16 h-16 md:w-full md:h-full object-contain rounded-2xl" />
                     <h2 className="text-sm md:text-lg font-semibold text-gray-900 dark:text-white text-center mt-2">
                       {service.title}
                     </h2>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from '@/Layouts/Layout';
 import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
 import blogSound from '../Sounds/blogsound.mp3';
 import useSound from "use-sound";
@@ -12,6 +12,21 @@ const Blog = ({ blogs, categories }) => {
   const [category, setCategory] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [play] = useSound(blogSound);
+  const [pageTitle, setPageTitle] = useState('Blog | Zobir Ofkir');
+  const [pageDescription, setPageDescription] = useState('Explore web development articles and tutorials on Laravel, React, Next.js, and more by Zobir Ofkir.');
+
+  useEffect(() => {
+    /**
+     * Update meta title and description when category changes
+     */
+    if (category) {
+      setPageTitle(`${category} Articles | Zobir Ofkir's Blog`);
+      setPageDescription(`Read the latest ${category} articles, tutorials and insights by Zobir Ofkir. Expert web development content.`);
+    } else {
+      setPageTitle('Blog | Zobir Ofkir');
+      setPageDescription('Explore web development articles and tutorials on Laravel, React, Next.js, and more by Zobir Ofkir.');
+    }
+  }, [category]);
 
   const filteredPosts = data.filter(post => {
     return (
@@ -26,7 +41,33 @@ const Blog = ({ blogs, categories }) => {
 
   return (
     <Layout>
-      <Head title="Blog" />
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={`web development, blog, articles, tutorials, ${categories.map(cat => cat.title).join(', ')}`} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <link rel="canonical" href={window.location.href} />
+        {/* Schema.org structured data for blog */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "headline": pageTitle,
+            "description": pageDescription,
+            "author": {
+              "@type": "Person",
+              "name": "Zobir Ofkir"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Zobir Ofkir"
+            }
+          })}
+        </script>
+      </Head>
 
       <motion.h1
         className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center md:mt-0 mt-20"
@@ -89,17 +130,21 @@ const Blog = ({ blogs, categories }) => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {filteredPosts.map((post) => (
-                <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id} onClick={play}>
-                  <motion.div
+                <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id} onClick={play} aria-label={`Read article: ${post.title}`}>
+                  <motion.article
                     className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 flex flex-col sm:flex-row justify-between w-full"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
+                    itemScope
+                    itemType="https://schema.org/BlogPosting"
                   >
+                    <meta itemProp="datePublished" content={new Date(post.created_at).toISOString()} />
+                    <meta itemProp="author" content="Zobir Ofkir" />
                     <div className="flex-1">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
+                      <h2 itemProp="headline" className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
                         {post.title}
-                      </h3>
-                      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
+                      </h2>
+                      <p itemProp="description" className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
                         {post.description.substring(0, 50)} ...
                       </p>
                     </div>
@@ -114,7 +159,7 @@ const Blog = ({ blogs, categories }) => {
                         {post.comments.length}
                       </p>
                     </div>
-                  </motion.div>
+                  </motion.article>
                 </Link>
               ))}
             </div>

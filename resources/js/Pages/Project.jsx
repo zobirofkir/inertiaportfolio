@@ -6,6 +6,8 @@ import projectSound from '../Sounds/projectsound.mp3';
 import useSound from "use-sound";
 
 const Project = ({ projects: initialProjects }) => {
+    const [pageTitle] = useState("Projects Portfolio | Zobir Ofkir");
+    const [pageDescription] = useState("Explore my portfolio of web development projects. View my latest work in React, Laravel, and other modern technologies.");
     const [projects, setProjects] = useState(initialProjects.data);
     const [currentPage, setCurrentPage] = useState(initialProjects.current_page);
     const [lastPage, setLastPage] = useState(initialProjects.last_page);
@@ -43,7 +45,28 @@ const Project = ({ projects: initialProjects }) => {
 
     return (
         <Layout>
-            <Head title="Projects"/>
+            <Head>
+                <title>{pageTitle}</title>
+                <meta name="description" content={pageDescription} />
+                <meta name="keywords" content="web development projects, portfolio, Zobir Ofkir, React projects, Laravel projects, web design portfolio" />
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:description" content={pageDescription} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={window.location.href} />
+                <link rel="canonical" href={window.location.href} />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "CollectionPage",
+                        "headline": pageTitle,
+                        "description": pageDescription,
+                        "author": {
+                            "@type": "Person",
+                            "name": "Zobir Ofkir"
+                        }
+                    })}
+                </script>
+            </Head>
             <div className="bg-transparent dark:bg-transparent text-gray-900 dark:text-white relative overflow-hidden flex justify-center items-center mt-10">
                 <div className="relative z-10 container mx-auto px-6 py-16">
                     <motion.h1
@@ -78,7 +101,7 @@ const Project = ({ projects: initialProjects }) => {
                                     >
                                         <motion.img
                                             src={`storage/${project.image}`}
-                                            alt={project.title}
+                                            alt={`${project.title} - Project by Zobir Ofkir`}
                                             className="w-full h-full object-cover rounded-lg"
                                             style={{ transform: project.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
                                         />

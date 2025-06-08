@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import Layout from '@/Layouts/Layout';
+import Layout from '@/layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
-import serviceSound from '../Sounds/serviceSound.mp3';
+import serviceSound from '../sounds/serviceSound.mp3';
 import useSound from "use-sound";
 
 const Service = ({ services: initialServices }) => {

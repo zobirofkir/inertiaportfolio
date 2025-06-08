@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Layout from "@/Layouts/Layout";
+import Layout from "@/layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
-import projectSound from '../Sounds/projectsound.mp3';
+import projectSound from '../sounds/projectsound.mp3';
 import useSound from "use-sound";
 
 const Project = ({ projects: initialProjects }) => {

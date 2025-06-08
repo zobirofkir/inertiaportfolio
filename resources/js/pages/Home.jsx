@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import SliderComponent from '@/Components/SliderComponent'
+import SliderComponent from '@/components/SliderComponent'
 import { Head } from '@inertiajs/react'
-import Layout from '../Layouts/Layout'
-import AboutComponent from '@/Components/AboutComponent'
-import ProjectComponent from '@/Components/ProjectComponent'
-import ServiceComponent from '@/Components/ServiceComponent'
-import SubscribeComponent from '@/Components/SubscribeComponent'
-import SkillComponent from '@/Components/SkillComponent';
-import WelcomTextComponent from '@/Components/WelcomTextComponent';
+import Layout from '../layouts/Layout'
+import AboutComponent from '@/components/AboutComponent'
+import ProjectComponent from '@/components/ProjectComponent'
+import ServiceComponent from '@/components/ServiceComponent'
+import SubscribeComponent from '@/components/SubscribeComponent'
+import SkillComponent from '@/components/SkillComponent';
+import WelcomTextComponent from '@/components/WelcomTextComponent';
 
 const Home = ({  projects: initialProjects, projectsSlider: initialProjectsSlider, skills: initialSkills, services: initialServices}) => {
   const [projects, setProjects] = useState(initialProjects);

@@ -1,4 +1,4 @@
-import Layout from '@/Layouts/Layout';
+import Layout from '@/layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';

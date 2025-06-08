@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Layout from '@/Layouts/Layout';
+import Layout from '@/layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';

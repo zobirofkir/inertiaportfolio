@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Layout from "@/Layouts/Layout";
+import Layout from "@/layouts/Layout";
 import { motion } from "framer-motion";
 import { Head, useForm } from '@inertiajs/react';
 

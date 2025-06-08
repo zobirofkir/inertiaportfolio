@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout';
 import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
-import blogSound from '../Sounds/blogsound.mp3';
+import blogSound from '../sounds/blogsound.mp3';
 import useSound from "use-sound";
 
 const Blog = ({ blogs, categories }) => {

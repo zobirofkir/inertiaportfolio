@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
 import { Head } from '@inertiajs/react';
-import MyImage from '../Images/my_image.jpeg';
+import MyImage from '../images/my_image.jpeg';
 
 const About = () => {
   return (

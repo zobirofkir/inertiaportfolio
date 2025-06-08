@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
-import HeaderComponent from '@/Components/HeaderComponent';
-import FooterComponent from '@/Components/FooterComponent';
+import HeaderComponent from '@/components/HeaderComponent';
+import FooterComponent from '@/components/FooterComponent';
 
 /**
  * Star Component

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@inertiajs/react";
 import useSound from "use-sound";
-import projectSound from "../Sounds/projectsound.mp3";
+import projectSound from "../sounds/projectsound.mp3";
 
 const ProjectComponent = ({ projects, setProjects }) => {
   const [play] = useSound(projectSound);

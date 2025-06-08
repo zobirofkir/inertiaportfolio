@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import useSound from 'use-sound';
-import clickSound from '../Sounds/skillsound.mp3';
+import clickSound from '../sounds/skillsound.mp3';
 import '../../css/SkillComponent.css';
 
 const SkillComponent = ({ skills }) => {

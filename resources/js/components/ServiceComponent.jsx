@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import serviceSound from '../Sounds/serviceSound.mp3';
+import serviceSound from '../sounds/serviceSound.mp3';
 import useSound from 'use-sound';
 
 const ServiceComponent = ({services: initialServices}) => {

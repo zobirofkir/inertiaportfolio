@@ -32,7 +32,7 @@ const About = () => {
             {/* Profile Image with Enhanced Design */}
             <div className="flex justify-center">
               <motion.div
-                className="relative w-64 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 transform hover:scale-105 transition-transform duration-300"
+                className="relative w-64 h-full md:w-80 md:h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 transform hover:scale-105 transition-transform duration-300"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}

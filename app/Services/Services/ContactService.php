@@ -6,6 +6,7 @@ use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
 use App\Models\Contact;
 use App\Services\Constructors\ContactConstructor;
+use App\Services\SeoService;
 use Illuminate\Support\Facades\Mail;
 
 class ContactService implements ContactConstructor
@@ -16,7 +17,28 @@ class ContactService implements ContactConstructor
      */
     public function index()
     {
-        return inertia('Contact');
+        $seo = SeoService::generateMetaTags([
+            'title' => 'Contact Zobir Ofkir | Web Developer & Designer',
+            'description' => 'Get in touch with Zobir Ofkir, web developer and designer. Contact me for project inquiries, collaborations, or questions about web development services.',
+            'keywords' => 'contact, Zobir Ofkir, web developer, hire developer, web development services, contact form',
+            'type' => 'website'
+        ]);
+        
+        $structuredData = SeoService::generateStructuredData('Person', [
+            'name' => 'Zobir Ofkir',
+            'url' => url('/'),
+            'email' => 'contact@zobirofkir.com',
+            'telephone' => '+212 619920942',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => 'Imouzzer Kandar Ain Soltane'
+            ]
+        ]);
+        
+        return inertia('Contact', [
+            'seo' => $seo,
+            'structuredData' => $structuredData
+        ]);
     }
 
     /**

@@ -1,11 +1,9 @@
 import Layout from '@/layouts/Layout';
-import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import SeoHead from '@/components/SeoHead';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
-const ShowProject = ({ project }) => {
-  const [pageTitle] = useState(`${project.title} | Zobir Ofkir's Portfolio`);
-  const [pageDescription] = useState(`${project.description.substring(0, 150)}...`);
+const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -23,32 +21,13 @@ const ShowProject = ({ project }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={`${project.title}, web development, portfolio project, Zobir Ofkir, case study`} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:image" content={project.image.startsWith('/storage/') ? `${window.location.origin}${project.image}` : `${window.location.origin}/storage/${project.image}`} />
-        <link rel="canonical" href={window.location.href} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "name": project.title,
-            "description": project.description,
-            "image": project.image.startsWith('/storage/') ? `${window.location.origin}${project.image}` : `${window.location.origin}/storage/${project.image}`,
-            "url": project.link,
-            "author": {
-              "@type": "Person",
-              "name": "Zobir Ofkir"
-            }
-          })}
-        </script>
-      </Head>
-      <div className="h-screen flex items-center justify-center mt-20">
+      <SeoHead seo={seo} structuredData={structuredData} breadcrumbs={breadcrumbs} />
+      
+      <div className="container mx-auto px-4 mt-20">
+        <Breadcrumbs items={breadcrumbs?.itemListElement?.map(item => ({ name: item.name, url: item.item }))} />
+      </div>
+      
+      <div className="h-screen flex items-center justify-center">
         <motion.div
           className="max-w-4xl w-full mx-4 rounded-lg shadow-2xl overflow-hidden transform transition-all hover:shadow-3xl hover:rotate-1 hover:scale-105"
           variants={containerVariants}

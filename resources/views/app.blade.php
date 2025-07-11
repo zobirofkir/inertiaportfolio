@@ -7,6 +7,11 @@
         <meta name="keywords" content="Zobir Ofkir, Laravel, React.js, Web Development, Full Stack, Task Management, Filament Admin Panel, AI-based Legal Services">
         <meta name="author" content="Zobir Ofkir">
         <meta name="robots" content="index, follow">
+        <meta name="googlebot" content="index, follow">
+        <meta name="theme-color" content="#3B82F6">
+        <meta name="msapplication-TileColor" content="#3B82F6">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
 
         <!-- Open Graph Meta Tags -->
         <meta property="og:type" content="website">

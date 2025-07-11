@@ -19,9 +19,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /**
  * @phpstan-ignore-next-line
  */
-Route::get('/abouts', function () {
-    return inertia('About');
-});
+Route::get('/abouts', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
 /**
  * @phpstan-ignore-next-line
@@ -62,5 +60,10 @@ Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
  * @phpstan-ignore-next-line
  */
 Route::post('/blog/{id}/comment', [CommentController::class, 'store'])->name('blog.comment.store');
+
+/**
+ * @phpstan-ignore-next-line
+ */
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
 require __DIR__.'/auth.php';

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "@/layouts/Layout";
 import { motion } from "framer-motion";
-import { Head, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
+import SeoHead from '@/components/SeoHead';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
-const ShowBlog = ({ blog, tags }) => {
-  const [pageTitle, setPageTitle] = useState("");
-  const [pageDescription, setPageDescription] = useState("");
+const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
   if (!blog || !blog.data) {
     return <p>Blog not found.</p>;
   }
@@ -16,11 +16,6 @@ const ShowBlog = ({ blog, tags }) => {
     content: blog.data.content || "",
     image: blog.data.image || "",
   };
-  
-  useEffect(() => {
-    setPageTitle(`${post.title} | Zobir Ofkir's Blog`);
-    setPageDescription(post.description.substring(0, 160));
-  }, [post.title, post.description]);
 
   const images = blog.data.images || [];
 
@@ -44,42 +39,13 @@ const ShowBlog = ({ blog, tags }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={`${post.title}, blog, article, web development, Zobir Ofkir${tags ? ', ' + tags.join(', ') : ''}`} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href} />
-        {post.image && <meta property="og:image" content={post.image} />}
-        <link rel="canonical" href={window.location.href} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": pageDescription,
-            "image": post.image,
-            "datePublished": blog.data.created_at,
-            "dateModified": blog.data.updated_at,
-            "author": {
-              "@type": "Person",
-              "name": "Zobir Ofkir"
-            },
-            "publisher": {
-              "@type": "Person",
-              "name": "Zobir Ofkir"
-            },
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": window.location.href
-            }
-          })}
-        </script>
-      </Head>
+      <SeoHead seo={seo} structuredData={structuredData} breadcrumbs={breadcrumbs} />
+      
+      <div className="container mx-auto px-4 mt-20">
+        <Breadcrumbs items={breadcrumbs?.itemListElement?.map(item => ({ name: item.name, url: item.item }))} />
+      </div>
 
-      <motion.div className="relative h-96 w-full overflow-hidden rounded-md mt-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+      <motion.div className="relative h-96 w-full overflow-hidden rounded-md" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
         {post.image && (
           <motion.img src={post.image} alt={`${post.title} - Blog post by Zobir Ofkir`} className="w-full h-full object-cover" initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} />
         )}

@@ -1,34 +1,11 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
-import { Head } from '@inertiajs/react';
 import { useForm } from '@inertiajs/react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import SeoHead from '@/components/SeoHead';
 
-const Contact = () => {
-    useEffect(() => {
-        // Add structured data for local business
-        const script = document.createElement('script');
-        script.type = 'application/ld+json';
-        script.innerHTML = JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Person',
-            'name': 'Zobir Ofkir',
-            'url': window.location.origin,
-            'email': 'contact@zobirofkir.com',
-            'telephone': '+212 619920942',
-            'address': {
-                '@type': 'PostalAddress',
-                'addressLocality': 'Imouzzer Kandar Ain Soltane'
-            }
-        });
-        document.head.appendChild(script);
-        
-        return () => {
-            document.head.removeChild(script);
-        };
-    }, []);
+const Contact = ({ seo, structuredData }) => {
 
     const { data, setData, post, errors } = useForm({
         name: '',
@@ -56,16 +33,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>Contact Zobir Ofkir | Web Developer & Designer</title>
-        <meta name="description" content="Get in touch with Zobir Ofkir, web developer and designer. Contact me for project inquiries, collaborations, or questions about web development services." />
-        <meta name="keywords" content="contact, Zobir Ofkir, web developer, hire developer, web development services, contact form" />
-        <meta property="og:title" content="Contact Zobir Ofkir | Web Developer & Designer" />
-        <meta property="og:description" content="Get in touch with Zobir Ofkir. Contact me for project inquiries, collaborations, or questions about web development services." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <link rel="canonical" href={window.location.href} />
-      </Head>
+      <SeoHead seo={seo} structuredData={structuredData} />
 
       <div className="flex justify-center items-center min-h-screen md:mt-0 mt-20">
         <div className="container mx-auto p-6">

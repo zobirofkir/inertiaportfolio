@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
-import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import serviceSound from '../sounds/serviceSound.mp3';
 import useSound from "use-sound";
+import SeoHead from '@/components/SeoHead';
 
-const Service = ({ services: initialServices }) => {
+const Service = ({ services: initialServices, seo, structuredData }) => {
     const [play] = useSound(serviceSound);
     const [services, setServices] = useState(initialServices);
-    const [pageTitle] = useState("Web Development Services | Zobir Ofkir");
-    const [pageDescription] = useState("Professional web development services including frontend development, backend development, UI/UX design, and more. Learn how I can help with your next project.");
 
     const handleCubeClick = (id) => {
         play();
@@ -20,32 +18,7 @@ const Service = ({ services: initialServices }) => {
 
     return (
         <Layout>
-          <Head>
-            <title>{pageTitle}</title>
-            <meta name="description" content={pageDescription} />
-            <meta name="keywords" content="web development services, frontend development, backend development, UI/UX design, Zobir Ofkir, web services" />
-            <meta property="og:title" content={pageTitle} />
-            <meta property="og:description" content={pageDescription} />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content={window.location.href} />
-            <link rel="canonical" href={window.location.href} />
-            <script type="application/ld+json">
-              {JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "ItemList",
-                "itemListElement": services.map((service, index) => ({
-                  "@type": "Service",
-                  "position": index + 1,
-                  "name": service.title,
-                  "description": service.description,
-                  "provider": {
-                    "@type": "Person",
-                    "name": "Zobir Ofkir"
-                  }
-                }))
-              })}
-            </script>
-          </Head>
+          <SeoHead seo={seo} structuredData={structuredData} />
           <div className="flex flex-col items-center justify-center bg-transparent dark:bg-transparent p-4 md:p-6 md:my-0 mt-20 min-h-screen">
             <motion.h1
               className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10"

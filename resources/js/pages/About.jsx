@@ -1,22 +1,12 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
-import { Head } from '@inertiajs/react';
 import MyImage from '../images/my_image.jpeg';
+import SeoHead from '@/components/SeoHead';
 
-const About = () => {
+const About = ({ seo, structuredData }) => {
   return (
     <Layout>
-      <Head>
-        <title>About Zobir Ofkir - Web Developer & Designer | Portfolio</title>
-        <meta name="description" content="Learn about Zobir Ofkir, a passionate web developer specializing in Laravel, React.js, Next.js, and Tailwind CSS. Discover my skills, experience, and projects." />
-        <meta name="keywords" content="Zobir Ofkir, web developer, React developer, Laravel developer, portfolio, frontend developer, full-stack developer" />
-        <meta property="og:title" content="About Zobir Ofkir - Web Developer & Designer" />
-        <meta property="og:description" content="Learn about Zobir Ofkir, a passionate web developer specializing in Laravel, React.js, Next.js, and Tailwind CSS." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:image" content={MyImage} />
-        <link rel="canonical" href={window.location.href} />
-      </Head>
+      <SeoHead seo={seo} structuredData={structuredData} />
       <div className="min-h-screen mt-10 bg-transparent dark:bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300 flex items-center">
         <div className="container mx-auto px-4 py-12">
           <motion.h1

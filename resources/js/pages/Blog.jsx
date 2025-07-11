@@ -1,32 +1,30 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
-import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
 import blogSound from '../sounds/blogsound.mp3';
 import useSound from "use-sound";
+import SeoHead from '@/components/SeoHead';
 
-const Blog = ({ blogs, categories }) => {
+const Blog = ({ blogs, categories, seo, structuredData }) => {
   const { data, links } = blogs;
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [play] = useSound(blogSound);
-  const [pageTitle, setPageTitle] = useState('Blog | Zobir Ofkir');
-  const [pageDescription, setPageDescription] = useState('Explore web development articles and tutorials on Laravel, React, Next.js, and more by Zobir Ofkir.');
+  const [currentSeo, setCurrentSeo] = useState(seo);
 
   useEffect(() => {
-    /**
-     * Update meta title and description when category changes
-     */
     if (category) {
-      setPageTitle(`${category} Articles | Zobir Ofkir's Blog`);
-      setPageDescription(`Read the latest ${category} articles, tutorials and insights by Zobir Ofkir. Expert web development content.`);
+      setCurrentSeo({
+        ...seo,
+        title: `${category} Articles | Zobir Ofkir's Blog`,
+        description: `Read the latest ${category} articles, tutorials and insights by Zobir Ofkir. Expert web development content.`
+      });
     } else {
-      setPageTitle('Blog | Zobir Ofkir');
-      setPageDescription('Explore web development articles and tutorials on Laravel, React, Next.js, and more by Zobir Ofkir.');
+      setCurrentSeo(seo);
     }
-  }, [category]);
+  }, [category, seo]);
 
   const filteredPosts = data.filter(post => {
     return (
@@ -41,33 +39,7 @@ const Blog = ({ blogs, categories }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={`web development, blog, articles, tutorials, ${categories.map(cat => cat.title).join(', ')}`} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <link rel="canonical" href={window.location.href} />
-        {/* Schema.org structured data for blog */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            "headline": pageTitle,
-            "description": pageDescription,
-            "author": {
-              "@type": "Person",
-              "name": "Zobir Ofkir"
-            },
-            "publisher": {
-              "@type": "Person",
-              "name": "Zobir Ofkir"
-            }
-          })}
-        </script>
-      </Head>
+      <SeoHead seo={currentSeo} structuredData={structuredData} />
 
       <motion.h1
         className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-6 md:mb-10 text-center md:mt-0 mt-20"

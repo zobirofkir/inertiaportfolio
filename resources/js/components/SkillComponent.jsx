@@ -23,10 +23,10 @@ const SkillComponent = ({ skills }) => {
   return (
     <section className="skills-section">
       <div className='flex flex-col justify-center items-center text-center px-4 py-8 relative z-10'>
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-10 drop-shadow-lg">
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6 md:mb-10 drop-shadow-lg">
           My Skills
         </h1>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed drop-shadow-md">
+        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed drop-shadow-md">
           Hello, I'm Zobir Ofkir, a Web Developer. Explore my skills in this interactive book.
         </p>
       </div>
@@ -62,14 +62,14 @@ const SkillComponent = ({ skills }) => {
             <div className="book-spine"></div>
             <div className="flex flex-col justify-center items-center h-full p-6 relative z-20">
               <div className="text-center space-y-4">
-                <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-2xl">
                   📚 ZOBIR OFKIR
                 </h1>
-                <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
-                <p className="text-lg text-white/90 font-medium">
+                <div className="w-16 h-1 bg-gradient-to-r from-gold-400 to-amber-400 mx-auto rounded-full shadow-lg"></div>
+                <p className="text-lg text-white/95 font-medium drop-shadow-lg">
                   Skills Portfolio
                 </p>
-                <p className="text-sm text-white/70 mt-4">
+                <p className="text-sm text-white/80 mt-4 drop-shadow-md">
                   Click to explore my technical expertise
                 </p>
               </div>
@@ -151,20 +151,20 @@ const SkillComponent = ({ skills }) => {
             <div className="book-spine"></div>
             <div className="flex flex-col justify-center items-center h-full p-6 relative z-20">
               <div className="text-center space-y-4">
-                <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
+                <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-2xl">
                   🎯 Thank You!
                 </h1>
-                <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
-                <p className="text-lg text-white/90 font-medium">
+                <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto rounded-full shadow-lg"></div>
+                <p className="text-lg text-white/95 font-medium drop-shadow-lg">
                   Ready to collaborate?
                 </p>
-                <p className="text-sm text-white/70 mt-4">
+                <p className="text-sm text-white/80 mt-4 drop-shadow-md">
                   Let's build something amazing together!
                 </p>
                 
                 <div className="mt-6 space-y-2">
-                  <p className="text-white/80 text-sm">📧 contact@zobirofkir.com</p>
-                  <p className="text-white/80 text-sm">🌐 zobirofkir.com</p>
+                  <p className="text-white/85 text-sm drop-shadow-sm">📧 contact@zobirofkir.com</p>
+                  <p className="text-white/85 text-sm drop-shadow-sm">🌐 zobirofkir.com</p>
                 </div>
               </div>
             </div>

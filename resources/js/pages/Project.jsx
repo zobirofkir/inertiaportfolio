@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/Layout";
 import { Link } from "@inertiajs/react";
+import Ad from "@/components/Ad";
 import projectSound from '../sounds/projectsound.mp3';
 import useSound from "use-sound";
 import SeoHead from '@/components/SeoHead';
@@ -64,41 +65,47 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                             exit={{ opacity: 0, x: 50 }}
                             transition={{ duration: 0.5, ease: "easeInOut" }}
                         >
-                            {projects.map((project) => (
-                                <motion.div
-                                    key={project.id}
-                                    className="relative w-full h-64 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-xl cursor-pointer"
-                                    onClick={() => handleFlip(project.id)}
-                                    animate={{ rotateY: project.isFlipped ? 180 : 0 }}
-                                    transition={{ duration: 0.6 }}
-                                    style={{ transformStyle: "preserve-3d" }}
-                                >
+                            {projects.map((project, index) => (
+                                <React.Fragment key={project.id}>
                                     <motion.div
-                                        className="absolute inset-0 w-full h-full"
-                                        style={{ backfaceVisibility: "hidden" }}
+                                        className="relative w-full h-64 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-xl cursor-pointer"
+                                        onClick={() => handleFlip(project.id)}
+                                        animate={{ rotateY: project.isFlipped ? 180 : 0 }}
+                                        transition={{ duration: 0.6 }}
+                                        style={{ transformStyle: "preserve-3d" }}
                                     >
-                                        <motion.img
-                                            src={`storage/${project.image}`}
-                                            alt={`${project.title} - Project by Zobir Ofkir`}
-                                            className="w-full h-full object-cover rounded-lg"
-                                            style={{ transform: project.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
-                                        />
-                                    </motion.div>
-                                    <motion.div
-                                        className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-900 rounded-lg"
-                                        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                                    >
-                                        <h2 className="text-2xl font-semibold mb-3">{project.title}</h2>
-                                        <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description.slice(0, 30)} ...</p>
-                                        <Link
-                                            href={`/project/${project.slug}`}
-                                            rel="noopener noreferrer"
-                                            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-md text-lg font-medium shadow-lg hover:scale-105 transition-transform duration-300"
+                                        <motion.div
+                                            className="absolute inset-0 w-full h-full"
+                                            style={{ backfaceVisibility: "hidden" }}
                                         >
-                                            View Project
-                                        </Link>
+                                            <motion.img
+                                                src={`storage/${project.image}`}
+                                                alt={`${project.title} - Project by Zobir Ofkir`}
+                                                className="w-full h-full object-cover rounded-lg"
+                                                style={{ transform: project.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+                                            />
+                                        </motion.div>
+                                        <motion.div
+                                            className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-900 rounded-lg"
+                                            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                                        >
+                                            <h2 className="text-2xl font-semibold mb-3">{project.title}</h2>
+                                            <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description.slice(0, 30)} ...</p>
+                                            <Link
+                                                href={`/project/${project.slug}`}
+                                                rel="noopener noreferrer"
+                                                className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-md text-lg font-medium shadow-lg hover:scale-105 transition-transform duration-300"
+                                            >
+                                                View Project
+                                            </Link>
+                                        </motion.div>
                                     </motion.div>
-                                </motion.div>
+                                    {index === 1 && (
+                                        <div className="w-full flex justify-center my-4">
+                                            <Ad adSlot="1234567890" />
+                                        </div>
+                                    )}
+                                </React.Fragment>
                             ))}
                         </motion.div>
                     </AnimatePresence>

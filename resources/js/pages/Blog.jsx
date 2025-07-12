@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
 import { useState, useEffect } from 'react';
+import Ad from '@/components/Ad';
 import { Link } from '@inertiajs/react';
 import blogSound from '../sounds/blogsound.mp3';
 import useSound from "use-sound";
@@ -101,38 +102,45 @@ const Blog = ({ blogs, categories, seo, structuredData }) => {
             transition={{ duration: 0.5 }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-              {filteredPosts.map((post) => (
-                <Link href={`/blog/${post.slug}`} className="flex-1" key={post.id} onClick={play} aria-label={`Read article: ${post.title}`}>
-                  <motion.article
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 flex flex-col sm:flex-row justify-between w-full"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                    itemScope
-                    itemType="https://schema.org/BlogPosting"
-                  >
-                    <meta itemProp="datePublished" content={new Date(post.created_at).toISOString()} />
-                    <meta itemProp="author" content="Zobir Ofkir" />
-                    <div className="flex-1">
-                      <h2 itemProp="headline" className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
-                        {post.title}
-                      </h2>
-                      <p itemProp="description" className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
-                        {post.description.substring(0, 50)} ...
-                      </p>
+              {filteredPosts.map((post, index) => (
+                <React.Fragment key={post.id}>
+                  <Link href={`/blog/${post.slug}`} className="flex-1" onClick={play} aria-label={`Read article: ${post.title}`}>
+                    <motion.article
+                      className="bg-white dark:bg-gray-800 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:shadow-xl p-6 flex flex-col sm:flex-row justify-between w-full"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                      itemScope
+                      itemType="https://schema.org/BlogPosting"
+                    >
+                      <meta itemProp="datePublished" content={new Date(post.created_at).toISOString()} />
+                      <meta itemProp="author" content="Zobir Ofkir" />
+                      <div className="flex-1">
+                        <h2 itemProp="headline" className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 mb-3 flex items-center justify-start">
+                          {post.title}
+                        </h2>
+                        <p itemProp="description" className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 flex items-center justify-start">
+                          {post.description.substring(0, 50)} ...
+                        </p>
+                      </div>
+                      <div className="flex flex-col justify-between mt-4 sm:mt-0 sm:ml-4">
+                        <p className="text-md text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 flex items-center justify-center">
+                          {new Date(post.created_at).toLocaleDateString()}
+                        </p>
+                        <p className="text-md text-gray-500 dark:text-gray-400 flex items-center justify-center mt-2 sm:mt-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                          </svg>
+                          {post.comments.length}
+                        </p>
+                      </div>
+                    </motion.article>
+                  </Link>
+                  {index === 1 && (
+                    <div className="w-full flex justify-center my-4">
+                      <Ad adSlot="1234567890" />
                     </div>
-                    <div className="flex flex-col justify-between mt-4 sm:mt-0 sm:ml-4">
-                      <p className="text-md text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 flex items-center justify-center">
-                        {new Date(post.created_at).toLocaleDateString()}
-                      </p>
-                      <p className="text-md text-gray-500 dark:text-gray-400 flex items-center justify-center mt-2 sm:mt-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                        </svg>
-                        {post.comments.length}
-                      </p>
-                    </div>
-                  </motion.article>
-                </Link>
+                  )}
+                </React.Fragment>
               ))}
             </div>
 

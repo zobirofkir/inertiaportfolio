@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Ad from '@/components/Ad';
 import Layout from "@/layouts/Layout";
 import { motion } from "framer-motion";
 import { useForm } from '@inertiajs/react';
@@ -61,6 +62,10 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
           <div className="prose prose-lg dark:prose-invert " dangerouslySetInnerHTML={{ __html: post.content }} />
         </motion.div>
 
+        <div className="my-8">
+          <Ad adSlot="1234567890" />
+        </div>
+
         <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
           {post.description}
         </motion.p>
@@ -94,11 +99,18 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
         <motion.div className="mt-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }}>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Comments</h2>
             {blog.data.comments && blog.data.comments.map((comment, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md mb-4">
-                <p className="text-gray-900 dark:text-white font-semibold">{comment.name}</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">{comment.email}</p>
-                <p className="text-gray-700 dark:text-gray-200 mt-2">{comment.content}</p>
+              <React.Fragment key={index}>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md mb-4">
+                  <p className="text-gray-900 dark:text-white font-semibold">{comment.name}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{comment.email}</p>
+                  <p className="text-gray-700 dark:text-gray-200 mt-2">{comment.content}</p>
                 </div>
+                {index === 2 && (
+                  <div className="my-8">
+                    <Ad adSlot="1234567890" />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
         </motion.div>
 

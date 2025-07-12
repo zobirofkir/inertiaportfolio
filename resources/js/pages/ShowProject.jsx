@@ -1,5 +1,6 @@
 import Layout from '@/layouts/Layout';
 import { motion } from 'framer-motion';
+import Ad from '@/components/Ad';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
@@ -65,6 +66,10 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
             >
               {project.description}
             </motion.p>
+
+            <div className="my-8">
+              <Ad adSlot="1234567890" />
+            </div>
 
             {/* Call to Action */}
             <motion.div

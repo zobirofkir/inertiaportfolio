@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
 import React, { useState, useEffect } from 'react';
-import Ad from '@/components/Ad';
+import AdsenseComponent from '@/components/AdsenseComponent';
 import { Link } from '@inertiajs/react';
 import blogSound from '../sounds/blogsound.mp3';
 import useSound from "use-sound";
@@ -137,12 +137,12 @@ const Blog = ({ blogs, categories, seo, structuredData }) => {
                   </Link>
                   {index === 1 && (
                     <div className="w-full flex justify-center my-4">
-                      <Ad adSlot="3986701317" />
+                      <AdsenseComponent adSlot="3986701317" />
                     </div>
                   )}
                   {index === 3 && (
                     <div className="w-full flex justify-center my-4">
-                      <Ad adSlot="5793725415" />
+                      <AdsenseComponent adSlot="5793725415" />
                     </div>
                   )}
                 </React.Fragment>

@@ -1,6 +1,6 @@
 import Layout from '@/layouts/Layout';
 import { motion } from 'framer-motion';
-import Ad from '@/components/Ad';
+import AdsenseComponent from '@/components/AdsenseComponent';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
@@ -68,10 +68,10 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
             </motion.p>
 
             <div className="my-8">
-              <Ad adSlot="3986701317" />
+              <AdsenseComponent adSlot="3986701317" />
             </div>
             <div className="my-8">
-              <Ad adSlot="5793725415" />
+              <AdsenseComponent adSlot="5793725415" />
             </div>
 
             {/* Call to Action */}

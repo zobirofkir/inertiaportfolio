@@ -8,6 +8,7 @@ import SubscribeComponent from '@/components/SubscribeComponent'
 import SkillComponent from '@/components/SkillComponent';
 import WelcomTextComponent from '@/components/WelcomTextComponent';
 import SeoHead from '@/components/SeoHead';
+import AdsenseComponent from '@/components/AdsenseComponent';
 
 const Home = ({ projects: initialProjects, projectsSlider: initialProjectsSlider, skills: initialSkills, services: initialServices, seo, structuredData }) => {
   const [projects, setProjects] = useState(initialProjects);
@@ -23,6 +24,8 @@ const Home = ({ projects: initialProjects, projectsSlider: initialProjectsSlider
 
         <SliderComponent projectsSlider={projectsSlider} setProjectsSlider={setProjectsSlider}/>
 
+        <AdsenseComponent adSlot="7832445838" />
+
         <AboutComponent />
 
         <ServiceComponent services={services} setServices={setServices}/>
@@ -30,6 +33,8 @@ const Home = ({ projects: initialProjects, projectsSlider: initialProjectsSlider
         <SkillComponent skills={skills} setSkills={setSkills}/>
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
+
+        <AdsenseComponent adSlot="7832445838" />
 
         <SubscribeComponent />
     </Layout>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/Layout";
 import { Link } from "@inertiajs/react";
-import Ad from "@/components/Ad";
+import AdsenseComponent from "@/components/AdsenseComponent";
 import projectSound from '../sounds/projectsound.mp3';
 import useSound from "use-sound";
 import SeoHead from '@/components/SeoHead';
@@ -102,12 +102,12 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                     </motion.div>
                                     {index === 1 && (
                                         <div className="w-full flex justify-center my-4">
-                                            <Ad adSlot="3986701317" />
+                                            <AdsenseComponent adSlot="3986701317" />
                                         </div>
                                     )}
                                     {index === 3 && (
                                         <div className="w-full flex justify-center my-4">
-                                            <Ad adSlot="5793725415" />
+                                            <AdsenseComponent adSlot="5793725415" />
                                         </div>
                                     )}
                                 </React.Fragment>

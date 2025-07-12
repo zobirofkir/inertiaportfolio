@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import HeaderComponent from '@/components/HeaderComponent';
 import FooterComponent from '@/components/FooterComponent';
+import AdsenseComponent from '@/components/AdsenseComponent';
 
 /**
  * Star Component
@@ -75,17 +76,12 @@ const Layout = ({ children, title }) => {
     }
   }, [darkMode]);
 
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
-
   return (
     <>
-      <Head title={title || 'Zobir Ofkir'} />
+      <Head>
+        <title>{title || 'Zobir Ofkir'}</title>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2068612253576714" crossOrigin="anonymous"></script>
+      </Head>
       <div className={`relative w-full min-h-screen transition-all duration-500 ${darkMode ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
         {darkMode ? (
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -105,14 +101,6 @@ const Layout = ({ children, title }) => {
         <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
           {children}
         </main>
-        <div className="container mx-auto p-4">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', textAlign: 'center' }}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-2068612253576714"
-            data-ad-slot="7832445838"></ins>
-        </div>
         <FooterComponent />
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Ad from '@/components/Ad';
+import AdsenseComponent from '@/components/AdsenseComponent';
 import Layout from "@/layouts/Layout";
 import { motion } from "framer-motion";
 import { useForm } from '@inertiajs/react';
@@ -63,7 +63,7 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
         </motion.div>
 
         <div className="my-8">
-          <Ad adSlot="3986701317" />
+          <AdsenseComponent adSlot="3986701317" />
         </div>
 
         <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
@@ -82,7 +82,7 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
         </motion.div>
 
         <div className="my-8">
-          <Ad adSlot="5793725415" />
+          <AdsenseComponent adSlot="5793725415" />
         </div>
 
         <motion.div className="mt-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }}>
@@ -111,7 +111,7 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
                 </div>
                 {index === 2 && (
                   <div className="my-8">
-                    <Ad adSlot="3986701317" />
+                    <AdsenseComponent adSlot="3986701317" />
                   </div>
                 )}
               </React.Fragment>

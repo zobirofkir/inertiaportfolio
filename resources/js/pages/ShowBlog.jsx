@@ -63,6 +63,10 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
         </motion.div>
 
         <div className="my-8">
+          <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
+        </div>
+
+        <div className="my-8">
           <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
         </div>
 

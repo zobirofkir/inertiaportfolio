@@ -51,7 +51,7 @@ const WelcomeTextComponent = () => {
         </motion.span>
         <span className="cursor">|</span>
       </motion.h1>
-      <style jsx>{`
+      <style>{`
         .cursor {
           display: inline-block;
           margin-left: 0.25rem;

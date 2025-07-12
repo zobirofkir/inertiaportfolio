@@ -16,7 +16,12 @@ class SeoService
             'author' => 'Zobir Ofkir',
         ];
 
-        return array_merge($defaults, $data);
+        $merged = array_merge($defaults, $data);
+        
+        // Ensure all values are strings
+        return array_map(function($value) {
+            return is_string($value) ? $value : (string) $value;
+        }, $merged);
     }
 
     public static function generateStructuredData(string $type, array $data): array

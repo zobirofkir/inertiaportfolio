@@ -24,7 +24,7 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
       <SeoHead seo={seo} structuredData={structuredData} breadcrumbs={breadcrumbs} />
       
       <div className="container mx-auto px-4 mt-20">
-        <Breadcrumbs items={breadcrumbs?.itemListElement?.map(item => ({ name: item.name, url: item.item }))} />
+        <Breadcrumbs items={breadcrumbs?.itemListElement?.map(item => ({ name: item.name, url: item.item })) || []} />
       </div>
       
       <div className="h-screen flex items-center justify-center">
@@ -41,7 +41,7 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
             className="relative h-64 overflow-hidden"
             variants={itemVariants}
           >
-            <img
+            <motion.img
               src={imagePath}
               alt={`${project.title} - Project by Zobir Ofkir`}
               className="w-full h-full object-cover transform transition-all hover:scale-110"

@@ -81,6 +81,10 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
           </div>
         </motion.div>
 
+        <div className="my-8">
+          <Ad adSlot="5793725415" />
+        </div>
+
         <motion.div className="mt-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }}>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Comments</h2>
           <form onSubmit={handleSubmit} className="mb-8">

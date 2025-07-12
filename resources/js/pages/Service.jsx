@@ -4,6 +4,7 @@ import { useState } from 'react';
 import serviceSound from '../sounds/serviceSound.mp3';
 import useSound from "use-sound";
 import SeoHead from '@/components/SeoHead';
+import Ad from '@/components/Ad';
 
 const Service = ({ services: initialServices, seo, structuredData }) => {
     const [play] = useSound(serviceSound);
@@ -60,6 +61,9 @@ const Service = ({ services: initialServices, seo, structuredData }) => {
                   </motion.div>
                 </motion.div>
               ))}
+            </div>
+            <div className="container mx-auto my-8">
+              <Ad adSlot="5793725415" />
             </div>
           </div>
         </Layout>

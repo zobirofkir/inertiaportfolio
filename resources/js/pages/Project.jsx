@@ -105,6 +105,11 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                             <Ad adSlot="3986701317" />
                                         </div>
                                     )}
+                                    {index === 3 && (
+                                        <div className="w-full flex justify-center my-4">
+                                            <Ad adSlot="5793725415" />
+                                        </div>
+                                    )}
                                 </React.Fragment>
                             ))}
                         </motion.div>

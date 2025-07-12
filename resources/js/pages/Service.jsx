@@ -63,7 +63,7 @@ const Service = ({ services: initialServices, seo, structuredData }) => {
               ))}
             </div>
             <div className="container mx-auto my-8">
-              <AdsenseComponent adSlot="5793725415" />
+              <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
             </div>
           </div>
         </Layout>

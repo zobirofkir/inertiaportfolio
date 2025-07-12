@@ -102,7 +102,7 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                     </motion.div>
                                     {index === 1 && (
                                         <div className="w-full flex justify-center my-4">
-                                            <AdsenseComponent adSlot="3986701317" />
+                                            <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
                                         </div>
                                     )}
                                     {index === 3 && (

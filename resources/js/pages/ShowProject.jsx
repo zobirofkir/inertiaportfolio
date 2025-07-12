@@ -68,10 +68,10 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
             </motion.p>
 
             <div className="my-8">
-              <AdsenseComponent adSlot="3986701317" />
+              <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
             </div>
             <div className="my-8">
-              <AdsenseComponent adSlot="5793725415" />
+              <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
             </div>
 
             {/* Call to Action */}

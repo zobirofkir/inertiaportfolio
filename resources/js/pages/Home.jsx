@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import SliderComponent from '@/components/SliderComponent'
 import Layout from '../layouts/Layout'
 import AboutComponent from '@/components/AboutComponent'

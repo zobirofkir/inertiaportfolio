@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Ad from '@/components/Ad';
 import { Link } from '@inertiajs/react';
 import blogSound from '../sounds/blogsound.mp3';
@@ -137,7 +137,7 @@ const Blog = ({ blogs, categories, seo, structuredData }) => {
                   </Link>
                   {index === 1 && (
                     <div className="w-full flex justify-center my-4">
-                      <Ad adSlot="1234567890" />
+                      <Ad adSlot="3986701317" />
                     </div>
                   )}
                 </React.Fragment>

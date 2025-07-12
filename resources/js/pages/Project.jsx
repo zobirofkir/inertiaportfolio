@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/layouts/Layout";
 import { Link } from "@inertiajs/react";
@@ -102,7 +102,7 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                     </motion.div>
                                     {index === 1 && (
                                         <div className="w-full flex justify-center my-4">
-                                            <Ad adSlot="1234567890" />
+                                            <Ad adSlot="3986701317" />
                                         </div>
                                     )}
                                 </React.Fragment>

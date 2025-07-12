@@ -63,7 +63,7 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
         </motion.div>
 
         <div className="my-8">
-          <Ad adSlot="1234567890" />
+          <Ad adSlot="3986701317" />
         </div>
 
         <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
@@ -107,7 +107,7 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
                 </div>
                 {index === 2 && (
                   <div className="my-8">
-                    <Ad adSlot="1234567890" />
+                    <Ad adSlot="3986701317" />
                   </div>
                 )}
               </React.Fragment>

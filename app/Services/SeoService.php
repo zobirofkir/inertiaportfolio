@@ -15,6 +15,10 @@ class SeoService
         return $seoData;
     }
 
+public static function generateMetaTags(array $data = []): array
+    {
+        return self::generate($data);
+    }
     protected static function prepareData(array $data): array
     {
         $defaults = self::getDefaults();

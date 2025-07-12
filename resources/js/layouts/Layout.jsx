@@ -75,6 +75,14 @@ const Layout = ({ children, title }) => {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   return (
     <>
       <Head title={title || 'Zobir Ofkir'} />
@@ -97,6 +105,14 @@ const Layout = ({ children, title }) => {
         <main className="container mx-auto p-4 relative z-10 transition-all duration-500">
           {children}
         </main>
+        <div className="container mx-auto p-4">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center' }}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2068612253576714"
+            data-ad-slot="7832445838"></ins>
+        </div>
         <FooterComponent />
       </div>
     </>

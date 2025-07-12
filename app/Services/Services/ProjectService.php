@@ -16,26 +16,21 @@ class ProjectService implements ProjectConstructor
     {
         $projects = Project::orderBy('created_at', 'desc')->paginate(10);
         
-        $seo = SeoService::generateMetaTags([
-            'title' => 'Projects Portfolio | Zobir Ofkir - Web Development Showcase',
+        $seo = SeoService::generate([
+            'title' => 'Projects',
             'description' => 'Explore my portfolio of web development projects. View my latest work in React, Laravel, and other modern technologies.',
-            'keywords' => 'web development projects, portfolio, Zobir Ofkir, React projects, Laravel projects, web design portfolio',
-            'type' => 'website'
+            'keywords' => ['projects', 'portfolio', 'web development', 'zobir ofkir'],
         ]);
-        
+
         $structuredData = SeoService::generateStructuredData('CollectionPage', [
-            'headline' => 'Zobir Ofkir\'s Project Portfolio',
-            'description' => 'Web development projects showcase',
-            'author' => [
-                '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ]
+            'name' => 'Projects Portfolio',
+            'description' => 'A showcase of web development projects by Zobir Ofkir.',
         ]);
-        
+
         return inertia('Project', [
             'projects' => $projects,
             'seo' => $seo,
-            'structuredData' => $structuredData
+            'structuredData' => $structuredData,
         ]);
     }
 
@@ -48,23 +43,24 @@ class ProjectService implements ProjectConstructor
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         
-        $seo = SeoService::generateMetaTags([
-            'title' => $project->title . ' | Zobir Ofkir\'s Portfolio',
+        $seo = SeoService::generate([
+            'title' => $project->title,
             'description' => substr(strip_tags($project->description), 0, 160),
-            'keywords' => $project->title . ', web development, portfolio project, Zobir Ofkir, case study',
-            'image' => $project->image ? (str_starts_with($project->image, '/storage/') ? asset($project->image) : asset('storage/' . $project->image)) : asset('images/logo.png'),
-            'type' => 'article'
+            'keywords' => [$project->title, 'project', 'portfolio', 'case study'],
+            'image' => $project->image ? asset('storage/' . $project->image) : null,
+            'type' => 'article',
         ]);
-        
+
         $structuredData = SeoService::generateStructuredData('CreativeWork', [
             'name' => $project->title,
-            'description' => $project->description,
-            'image' => $project->image ? (str_starts_with($project->image, '/storage/') ? asset($project->image) : asset('storage/' . $project->image)) : asset('images/logo.png'),
-            'url' => $project->link,
+            'description' => substr(strip_tags($project->description), 0, 160),
+            'image' => $project->image ? asset('storage/' . $project->image) : asset(config('seo.image.fallback')),
+            'url' => route('projects.show', $project),
             'author' => [
                 '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ]
+                'name' => config('seo.author'),
+            ],
+            'datePublished' => $project->created_at->toIso8601String(),
         ]);
         
         $breadcrumbs = SeoService::generateBreadcrumbs([

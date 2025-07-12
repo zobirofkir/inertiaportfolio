@@ -6,57 +6,43 @@ use App\Models\Blog;
 use App\Models\Project;
 use Illuminate\Http\Response;
 
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+
 class SitemapController extends Controller
 {
     public function index()
     {
-        $sitemap = '<?xml version="1.0" encoding="UTF-8"?>';
-        $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-        
-        // Static pages
-        $staticPages = [
-            ['url' => url('/'), 'priority' => '1.0', 'changefreq' => 'weekly'],
-            ['url' => url('/abouts'), 'priority' => '0.8', 'changefreq' => 'monthly'],
-            ['url' => url('/services'), 'priority' => '0.8', 'changefreq' => 'monthly'],
-            ['url' => url('/projects'), 'priority' => '0.9', 'changefreq' => 'weekly'],
-            ['url' => url('/blogs'), 'priority' => '0.9', 'changefreq' => 'daily'],
-            ['url' => url('/contacts'), 'priority' => '0.7', 'changefreq' => 'monthly'],
-        ];
-        
-        foreach ($staticPages as $page) {
-            $sitemap .= '<url>';
-            $sitemap .= '<loc>' . $page['url'] . '</loc>';
-            $sitemap .= '<changefreq>' . $page['changefreq'] . '</changefreq>';
-            $sitemap .= '<priority>' . $page['priority'] . '</priority>';
-            $sitemap .= '</url>';
+        if (!config('seo.sitemap.enabled')) {
+            abort(404);
         }
-        
-        // Blog posts
-        $blogs = Blog::latest()->get();
-        foreach ($blogs as $blog) {
-            $sitemap .= '<url>';
-            $sitemap .= '<loc>' . url('/blog/' . $blog->slug) . '</loc>';
-            $sitemap .= '<lastmod>' . $blog->updated_at->toAtomString() . '</lastmod>';
-            $sitemap .= '<changefreq>weekly</changefreq>';
-            $sitemap .= '<priority>0.8</priority>';
-            $sitemap .= '</url>';
-        }
-        
-        // Projects
-        $projects = Project::latest()->get();
-        foreach ($projects as $project) {
-            $sitemap .= '<url>';
-            $sitemap .= '<loc>' . url('/project/' . $project->slug) . '</loc>';
-            $sitemap .= '<lastmod>' . $project->updated_at->toAtomString() . '</lastmod>';
-            $sitemap .= '<changefreq>monthly</changefreq>';
-            $sitemap .= '<priority>0.7</priority>';
-            $sitemap .= '</url>';
-        }
-        
-        $sitemap .= '</urlset>';
-        
-        return response($sitemap, 200, [
-            'Content-Type' => 'application/xml'
-        ]);
+
+        $sitemap = Sitemap::create()
+            ->add(Url::create(route('home'))->setPriority(1.0)->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY))
+            ->add(Url::create(route('about'))->setPriority(0.8)->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY))
+            ->add(Url::create(route('services.index'))->setPriority(0.8)->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY))
+            ->add(Url::create(route('projects.index'))->setPriority(0.9)->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY))
+            ->add(Url::create(route('blogs.index'))->setPriority(0.9)->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY))
+            ->add(Url::create(route('contacts.index'))->setPriority(0.7)->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY));
+
+        Blog::all()->each(function (Blog $blog) use ($sitemap) {
+            $sitemap->add(
+                Url::create(route('blog.show', $blog))
+                    ->setLastModificationDate($blog->updated_at)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                    ->setPriority(0.8)
+            );
+        });
+
+        Project::all()->each(function (Project $project) use ($sitemap) {
+            $sitemap->add(
+                Url::create(route('projects.show', $project))
+                    ->setLastModificationDate($project->updated_at)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setPriority(0.7)
+            );
+        });
+
+        return $sitemap;
     }
 }

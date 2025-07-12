@@ -27,33 +27,41 @@ class HomeService implements HomeConstructor
         $skills = Skill::latest()->get();
         $services = Service::latest()->get();
         
-        $seo = SeoService::generateMetaTags([
-            'title' => 'Zobir Ofkir | Web Developer & Designer Portfolio',
-            'description' => 'Portfolio of Zobir Ofkir, a professional web developer specializing in Laravel, React.js, and modern web technologies. View my projects, services, and skills.',
-            'keywords' => 'Zobir Ofkir, web developer, portfolio, React developer, Laravel developer, web design, frontend developer',
-            'type' => 'website'
+        $seo = SeoService::generate([
+            'title' => 'Home',
+            'description' => 'Welcome to the portfolio of Zobir Ofkir, a passionate web developer. Explore my projects, blog, and services.',
+            'keywords' => ['home', 'portfolio', 'web developer', 'Zobir Ofkir'],
         ]);
-        
-        $structuredData = SeoService::generateStructuredData('Person', [
-            'name' => 'Zobir Ofkir',
-            'url' => url('/'),
-            'jobTitle' => 'Web Developer',
-            'sameAs' => [
-                'https://github.com/zobirofkir',
-                'https://www.linkedin.com/in/zobir-ofkir'
-            ]
+
+        $structuredData = SeoService::generateStructuredData('WebSite', [
+            'url' => config('app.url'),
+            'name' => config('app.name'),
+            'description' => config('seo.description.default'),
+            'author' => [
+                '@type' => 'Person',
+                'name' => config('seo.author'),
+                'url' => config('app.url'),
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => config('app.name'),
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => asset(config('seo.image.default')),
+                ],
+            ],
         ]);
-        
+
         return inertia('Home', [
-            'categories' => $categories, 
-            'tags' => $tags, 
-            'blogs' => $blogs, 
-            'projects' => $projects, 
-            'projectsSlider' => $projectsSlider, 
-            'skills' => $skills, 
+            'categories' => $categories,
+            'tags' => $tags,
+            'blogs' => $blogs,
+            'projects' => $projects,
+            'projectsSlider' => $projectsSlider,
+            'skills' => $skills,
             'services' => $services,
             'seo' => $seo,
-            'structuredData' => $structuredData
+            'structuredData' => $structuredData,
         ]);
     }
 }

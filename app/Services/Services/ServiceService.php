@@ -12,32 +12,39 @@ class ServiceService implements ServiceConstructor
     {
         $services = Service::all();
         
-        $seo = SeoService::generateMetaTags([
-            'title' => 'Web Development Services | Zobir Ofkir - Professional Solutions',
-            'description' => 'Professional web development services including frontend development, backend development, UI/UX design, and more. Learn how I can help with your next project.',
-            'keywords' => 'web development services, frontend development, backend development, UI/UX design, Zobir Ofkir, web services',
-            'type' => 'website'
+        $seo = SeoService::generate([
+            'title' => 'Services',
+            'description' => 'Professional web development services including frontend development, backend development, UI/UX design, and more.',
+            'keywords' => ['services', 'web development', 'frontend', 'backend', 'ui/ux'],
         ]);
-        
-        $structuredData = SeoService::generateStructuredData('ItemList', [
-            'itemListElement' => $services->map(function ($service, $index) {
-                return [
-                    '@type' => 'Service',
-                    'position' => $index + 1,
-                    'name' => $service->title,
-                    'description' => $service->description,
-                    'provider' => [
-                        '@type' => 'Person',
-                        'name' => 'Zobir Ofkir'
-                    ]
-                ];
-            })->toArray()
+
+        $structuredData = SeoService::generateStructuredData('Service', [
+            'serviceType' => 'Web Development',
+            'provider' => [
+                '@type' => 'Organization',
+                'name' => config('app.name'),
+            ],
+            'description' => 'A range of web development services to build modern and efficient applications.',
+            'hasOfferCatalog' => [
+                '@type' => 'OfferCatalog',
+                'name' => 'Web Development Services',
+                'itemListElement' => $services->map(function ($service) {
+                    return [
+                        '@type' => 'Offer',
+                        'itemOffered' => [
+                            '@type' => 'Service',
+                            'name' => $service->title,
+                            'description' => $service->description,
+                        ],
+                    ];
+                })->toArray(),
+            ],
         ]);
-        
+
         return inertia('Service', [
             'services' => $services,
             'seo' => $seo,
-            'structuredData' => $structuredData
+            'structuredData' => $structuredData,
         ]);
     }
 }

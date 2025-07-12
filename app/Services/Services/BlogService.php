@@ -21,28 +21,27 @@ class BlogService implements BlogConstructor
         $blogs = Blog::with('category', 'tags' , 'comments')->paginate(10);
         $categories = Category::orderBy('created_at', 'desc')->get();
         
-        $seo = SeoService::generateMetaTags([
-            'title' => 'Blog | Zobir Ofkir - Web Development Articles & Tutorials',
-            'description' => 'Explore web development articles and tutorials on Laravel, React, Next.js, and more by Zobir Ofkir. Expert insights and practical guides.',
-            'keywords' => 'web development blog, Laravel tutorials, React articles, programming tips, Zobir Ofkir',
-            'type' => 'website'
+        $seo = SeoService::generate([
+            'title' => 'Blog',
+            'description' => 'Explore web development articles and tutorials on Laravel, React, Next.js, and more. Expert insights and practical guides.',
+            'keywords' => ['blog', 'web development', 'laravel', 'react', 'tutorials'],
         ]);
-        
+
         $structuredData = SeoService::generateStructuredData('Blog', [
-            'headline' => 'Zobir Ofkir\'s Web Development Blog',
-            'description' => 'Web development articles and tutorials',
-            'author' => [
-                '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ],
+            'name' => 'Web Development Blog',
+            'description' => 'A collection of articles and tutorials on web development.',
             'publisher' => [
-                '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ]
+                '@type' => 'Organization',
+                'name' => config('app.name'),
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => asset(config('seo.image.default')),
+                ],
+            ],
         ]);
-        
+
         return inertia('Blog', [
-            'blogs' => $blogs, 
+            'blogs' => $blogs,
             'categories' => $categories,
             'seo' => $seo,
             'structuredData' => $structuredData
@@ -62,32 +61,37 @@ class BlogService implements BlogConstructor
 
         $tags = $blog->tags->pluck('title');
         
-        $seo = SeoService::generateMetaTags([
-            'title' => $blog->title . ' | Zobir Ofkir\'s Blog',
+        $seo = SeoService::generate([
+            'title' => $blog->title,
             'description' => substr(strip_tags($blog->description), 0, 160),
-            'keywords' => $blog->title . ', blog, article, web development, Zobir Ofkir' . ($tags->count() ? ', ' . $tags->join(', ') : ''),
-            'image' => $blog->image ? asset('storage/' . $blog->image) : asset('images/logo.png'),
-            'type' => 'article'
+            'keywords' => $tags->toArray(),
+            'image' => $blog->image ? asset('storage/' . $blog->image) : null,
+            'type' => 'article',
         ]);
-        
+
         $structuredData = SeoService::generateStructuredData('BlogPosting', [
-            'headline' => $blog->title,
-            'description' => substr(strip_tags($blog->description), 0, 160),
-            'image' => $blog->image ? asset('storage/' . $blog->image) : asset('images/logo.png'),
-            'datePublished' => $blog->created_at->toISOString(),
-            'dateModified' => $blog->updated_at->toISOString(),
-            'author' => [
-                '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ],
-            'publisher' => [
-                '@type' => 'Person',
-                'name' => 'Zobir Ofkir'
-            ],
             'mainEntityOfPage' => [
                 '@type' => 'WebPage',
-                '@id' => url()->current()
-            ]
+                '@id' => url()->current(),
+            ],
+            'headline' => $blog->title,
+            'description' => substr(strip_tags($blog->description), 0, 160),
+            'image' => $blog->image ? asset('storage/' . $blog->image) : asset(config('seo.image.fallback')),
+            'author' => [
+                '@type' => 'Person',
+                'name' => config('seo.author'),
+                'url' => url('/'),
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => config('app.name'),
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => asset(config('seo.image.default')),
+                ],
+            ],
+            'datePublished' => $blog->created_at->toIso8601String(),
+            'dateModified' => $blog->updated_at->toIso8601String(),
         ]);
         
         $breadcrumbs = SeoService::generateBreadcrumbs([

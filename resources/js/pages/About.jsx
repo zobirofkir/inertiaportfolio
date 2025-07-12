@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Layout from '@/layouts/Layout';
 import MyImage from '../images/my_image.jpeg';
 import SeoHead from '@/components/SeoHead';
+import AdsenseComponent from '@/components/AdsenseComponent';
 
 const About = ({ seo, structuredData }) => {
   return (
@@ -78,6 +79,9 @@ const About = ({ seo, structuredData }) => {
               </div>
             </motion.div>
           </div>
+        </div>
+        <div className="my-8">
+          <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
         </div>
       </div>
     </Layout>

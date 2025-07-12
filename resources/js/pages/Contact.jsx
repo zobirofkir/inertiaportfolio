@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SeoHead from '@/components/SeoHead';
+import AdsenseComponent from '@/components/AdsenseComponent';
 
 const Contact = ({ seo, structuredData }) => {
 
@@ -132,6 +133,10 @@ const Contact = ({ seo, structuredData }) => {
 
             </div>
         </div>
+      </div>
+
+      <div className="my-8">
+        <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
       </div>
 
       {/* Toast Container */}

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceConstroller;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\LinkedInController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -66,6 +67,9 @@ Route::post('/blog/{id}/comment', [CommentController::class, 'store'])->name('bl
  * @phpstan-ignore-next-line
  */
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+Route::get('/linkedin/auth', [LinkedInController::class, 'redirectToLinkedIn'])->name('linkedin.auth');
+Route::get('/linkedin/callback', [LinkedInController::class, 'handleLinkedInCallback'])->name('linkedin.callback');
 
 
 require __DIR__.'/auth.php';

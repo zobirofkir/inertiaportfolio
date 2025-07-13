@@ -3,10 +3,28 @@
 namespace App\Observers;
 
 use App\Models\Blog;
+use App\Services\LinkedInService;
 use Illuminate\Support\Str;
 
 class BlogObserver
 {
+    protected $linkedInService;
+
+    public function __construct(LinkedInService $linkedInService)
+    {
+        $this->linkedInService = $linkedInService;
+    }
+
+    /**
+     * Handle the Blog "created" event.
+     */
+    public function created(Blog $blog): void
+    {
+        if ($blog->is_published) {
+            $this->linkedInService->createPost($blog);
+        }
+    }
+
     /**
      * Handle the Blog "creating" event.
      */

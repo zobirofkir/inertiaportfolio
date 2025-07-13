@@ -13,8 +13,9 @@ class LinkedInService
 
     public function __construct()
     {
+        // TODO: Implement full OAuth 2.0 flow to get a proper access token.
         $this->client = new Client(['base_uri' => 'https://api.linkedin.com/v2/']);
-        $this->accessToken = config('services.linkedin.access_token');
+        $this->accessToken = config('services.linkedin.client_secret');
         $this->companyId = config('services.linkedin.company_id');
     }
 

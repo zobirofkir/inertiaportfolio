@@ -20,9 +20,7 @@ class BlogObserver
      */
     public function created(Blog $blog): void
     {
-        if ($blog->is_published) {
-            $this->linkedInService->createPost($blog);
-        }
+        //
     }
 
     /**

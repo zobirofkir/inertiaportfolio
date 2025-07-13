@@ -47,7 +47,7 @@ class LinkedInService
                                     'description' => [
                                         'text' => $blog->description,
                                     ],
-                                    'originalUrl' => route('blogs.show', $blog),
+                                    'originalUrl' => config('app.url') . '/blogs/' . $blog->slug,
                                     'title' => [
                                         'text' => $blog->title,
                                     ],

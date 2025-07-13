@@ -100,13 +100,13 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                             </Link>
                                         </motion.div>
                                     </motion.div>
-                                    {index === 1 && (
-                                        <div className="w-full flex justify-center my-4">
+                                    {index === 2 && (
+                                        <div className="w-full flex justify-center my-4 sm:col-span-2 lg:col-span-3">
                                             <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
                                         </div>
                                     )}
-                                    {index === 3 && (
-                                        <div className="w-full flex justify-center my-4">
+                                    {index === 5 && (
+                                        <div className="w-full flex justify-center my-4 sm:col-span-2 lg:col-span-3">
                                             <AdsenseComponent adSlot="5793725415" />
                                         </div>
                                     )}

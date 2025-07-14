@@ -71,7 +71,3 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap')
 require __DIR__.'/auth.php';
 
 
-Route::get('/linkedin/redirect', [LinkedInController::class, 'redirect'])->name('linkedin.redirect');
-Route::get('/linkedin/callback', [LinkedInController::class, 'callback'])->name('linkedin.callback');
-
-Route::get('/linkedin/share', [LinkedInController::class, 'sharePost'])->name('linkedin.share');

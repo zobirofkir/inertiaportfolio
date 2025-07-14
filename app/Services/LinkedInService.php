@@ -9,21 +9,20 @@ class LinkedInService
 {
     protected $client;
     protected $accessToken;
-    protected $companyId;
+    protected $author;
 
     public function __construct()
     {
-        // TODO: Implement full OAuth 2.0 flow to get a proper access token.
         $this->client = new Client(['base_uri' => 'https://api.linkedin.com/v2/']);
-        $this->accessToken = config('services.linkedin.client_secret');
-        $this->companyId = config('services.linkedin.company_id');
+        $this->accessToken = config('services.linkedin.access_token');
+        $this->author = config('services.linkedin.author');
     }
 
     public function createPost($blog)
     {
-        if (!$this->accessToken || !$this->companyId) {
+        if (!$this->accessToken || !$this->author) {
             Log::error('LinkedIn API credentials are not configured.');
-            return;
+            return false;
         }
 
         try {
@@ -34,7 +33,7 @@ class LinkedInService
                     'X-Restli-Protocol-Version' => '2.0.0',
                 ],
                 'json' => [
-                    'author' => 'urn:li:organization:' . $this->companyId,
+                    'author' => $this->author,
                     'lifecycleState' => 'PUBLISHED',
                     'specificContent' => [
                         'com.linkedin.ugc.ShareContent' => [
@@ -63,8 +62,11 @@ class LinkedInService
             ]);
 
             Log::info('Successfully posted to LinkedIn.', ['response' => json_decode($response->getBody()->getContents())]);
+            return true;
         } catch (\Exception $e) {
             Log::error('Failed to post to LinkedIn.', ['error' => $e->getMessage()]);
+            return false;
         }
     }
+
 }

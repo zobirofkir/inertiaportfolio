@@ -68,8 +68,10 @@ Route::post('/blog/{id}/comment', [CommentController::class, 'store'])->name('bl
  */
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
-Route::get('/linkedin/auth', [LinkedInController::class, 'redirectToLinkedIn'])->name('linkedin.auth');
-Route::get('/linkedin/callback', [LinkedInController::class, 'handleLinkedInCallback'])->name('linkedin.callback');
-
-
 require __DIR__.'/auth.php';
+
+
+Route::get('/linkedin/redirect', [LinkedInController::class, 'redirect'])->name('linkedin.redirect');
+Route::get('/linkedin/callback', [LinkedInController::class, 'callback'])->name('linkedin.callback');
+
+Route::get('/linkedin/share', [LinkedInController::class, 'sharePost'])->name('linkedin.share');

@@ -24,7 +24,7 @@ const Home = ({ projects: initialProjects, projectsSlider: initialProjectsSlider
 
         <SliderComponent projectsSlider={projectsSlider} setProjectsSlider={setProjectsSlider}/>
 
-        <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" style={{ display: 'block', textAlign: 'center' }} />
+        {/* <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" style={{ display: 'block', textAlign: 'center' }} /> */}
 
         <AboutComponent />
 
@@ -34,7 +34,7 @@ const Home = ({ projects: initialProjects, projectsSlider: initialProjectsSlider
 
         <ProjectComponent projects={projects} setProjects={setProjects} />
 
-        <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
+        {/* <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} /> */}
 
         <SubscribeComponent />
     </Layout>

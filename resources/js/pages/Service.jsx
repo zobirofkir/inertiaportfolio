@@ -62,9 +62,9 @@ const Service = ({ services: initialServices, seo, structuredData }) => {
                 </motion.div>
               ))}
             </div>
-            <div className="container mx-auto my-8">
+            {/* <div className="container mx-auto my-8">
               <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
-            </div>
+            </div> */}
           </div>
         </Layout>
       );

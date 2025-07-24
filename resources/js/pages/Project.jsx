@@ -100,7 +100,7 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                             </Link>
                                         </motion.div>
                                     </motion.div>
-                                    {index === 2 && (
+                                    {/* {index === 2 && (
                                         <div className="w-full flex justify-center my-4 sm:col-span-2 lg:col-span-3">
                                             <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
                                         </div>
@@ -109,7 +109,7 @@ const Project = ({ projects: initialProjects, seo, structuredData }) => {
                                         <div className="w-full flex justify-center my-4 sm:col-span-2 lg:col-span-3">
                                             <AdsenseComponent adSlot="5793725415" />
                                         </div>
-                                    )}
+                                    )} */}
                                 </React.Fragment>
                             ))}
                         </motion.div>

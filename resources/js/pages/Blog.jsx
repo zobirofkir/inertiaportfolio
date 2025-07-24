@@ -135,7 +135,7 @@ const Blog = ({ blogs, categories, seo, structuredData }) => {
                       </div>
                     </motion.article>
                   </Link>
-                  {index === 1 && (
+                  {/* {index === 1 && (
                     <div className="w-full flex justify-center my-4">
                       <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
                     </div>
@@ -144,7 +144,7 @@ const Blog = ({ blogs, categories, seo, structuredData }) => {
                     <div className="w-full flex justify-center my-4">
                       <AdsenseComponent adSlot="5793725415" />
                     </div>
-                  )}
+                  )} */}
                 </React.Fragment>
               ))}
             </div>

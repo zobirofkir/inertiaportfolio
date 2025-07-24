@@ -135,9 +135,9 @@ const Contact = ({ seo, structuredData }) => {
         </div>
       </div>
 
-      <div className="my-8">
+      {/* <div className="my-8">
         <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
-      </div>
+      </div> */}
 
       {/* Toast Container */}
       <ToastContainer />

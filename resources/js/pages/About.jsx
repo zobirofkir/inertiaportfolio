@@ -80,9 +80,9 @@ const About = ({ seo, structuredData }) => {
             </motion.div>
           </div>
         </div>
-        <div className="my-8">
+        {/* <div className="my-8">
           <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

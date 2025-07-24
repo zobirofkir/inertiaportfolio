@@ -62,13 +62,13 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
           <div className="prose prose-lg dark:prose-invert " dangerouslySetInnerHTML={{ __html: post.content }} />
         </motion.div>
 
-        <div className="my-8">
+        {/* <div className="my-8">
           <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
         </div>
 
         <div className="my-8">
           <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
-        </div>
+        </div> */}
 
         <motion.p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed text-center mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
           {post.description}
@@ -85,9 +85,9 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
           </div>
         </motion.div>
 
-        <div className="my-8">
+        {/* <div className="my-8">
           <AdsenseComponent adSlot="5793725415" adFormat="auto" fullWidthResponsive={true} />
-        </div>
+        </div> */}
 
         <motion.div className="mt-16" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.5 }}>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Comments</h2>
@@ -113,11 +113,11 @@ const ShowBlog = ({ blog, tags, seo, structuredData, breadcrumbs }) => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm">{comment.email}</p>
                   <p className="text-gray-700 dark:text-gray-200 mt-2">{comment.content}</p>
                 </div>
-                {index === 2 && (
+                {/* {index === 2 && (
                   <div className="my-8">
                     <AdsenseComponent adSlot="7832445838" adFormat="fluid" adLayout="in-article" />
                   </div>
-                )}
+                )} */}
               </React.Fragment>
             ))}
         </motion.div>

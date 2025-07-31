@@ -28,7 +28,7 @@ const ShowProject = ({ project, seo, structuredData, breadcrumbs }) => {
         <Breadcrumbs items={breadcrumbs?.itemListElement?.map(item => ({ name: item.name, url: item.item })) || []} />
       </div>
       
-      <div className="h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <motion.div
           className="max-w-4xl w-full mx-4 rounded-lg shadow-2xl overflow-hidden transform transition-all hover:shadow-3xl hover:rotate-1 hover:scale-105"
           variants={containerVariants}

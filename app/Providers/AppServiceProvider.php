@@ -12,6 +12,7 @@ use App\Observers\ProjectObserver;
 use App\Observers\TagObserver;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Passport::ignoreRoutes();
     }
 
     /**

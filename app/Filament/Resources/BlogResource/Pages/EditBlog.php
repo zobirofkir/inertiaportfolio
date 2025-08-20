@@ -21,7 +21,6 @@ class EditBlog extends EditRecord
  
     protected function afterSave(): void
     {
-        $linkedInService = app(LinkedInService::class);
-        $linkedInService->createPost($this->record);
+        //
     }
 }

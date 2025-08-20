@@ -80,20 +80,7 @@ class BlogResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Action::make('Post to LinkedIn')
                     ->action(function (Blog $record) {
-                        $linkedInService = new LinkedInService();
-                        $result = $linkedInService->createPost($record);
-
-                        if ($result) {
-                            Notification::make()
-                                ->title('Posted to LinkedIn successfully')
-                                ->success()
-                                ->send();
-                        } else {
-                            Notification::make()
-                                ->title('Failed to post to LinkedIn')
-                                ->danger()
-                                ->send();
-                        }
+                        //
                     })
                     ->requiresConfirmation()
                     ->color('success')

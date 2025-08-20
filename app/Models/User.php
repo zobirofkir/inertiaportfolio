@@ -88,4 +88,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    /**
+     * Generate Passport AccessTokens for the user.
+     */
+    public function accessToken() : string
+    {
+        return $this->createToken('accessToken')->accessToken;
+    }
 }

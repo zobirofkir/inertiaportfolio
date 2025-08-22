@@ -25,7 +25,7 @@ class BlogResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'content' => str($this->content)->sanitizeHtml(),
-            'image' => $images[0] ?? null,
+            'image' => $images[0] ?? asset('images/my_image.jpeg'),
             'images' => $images,
             'slug' => $this->slug,
             'comments' => CommentResource::collection($this->whenLoaded('comments')),

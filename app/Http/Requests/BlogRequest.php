@@ -31,4 +31,13 @@ class BlogRequest extends FormRequest
             "is_published" => "required|boolean",
         ];
     }
+
+    protected function prepareForValidation()
+    {
+        if (empty($this->images)) {
+            $this->merge([
+                'images' => [['url' => 'images/my_image.jpeg']]
+            ]);
+        }
+    }
 }

@@ -13,11 +13,11 @@ class BlogResource extends JsonResource
     public function toArray(Request $request): array
     {
         $images = is_array($this->images) ? $this->images : json_decode($this->images, true);
-
         $images = $images ?? [];
-
+        
         $images = array_map(function ($image) {
-            return asset('storage/' . $image);
+            $url = is_array($image) ? $image['url'] : $image;
+            return filter_var($url, FILTER_VALIDATE_URL) ? $url : asset('storage/' . $url);
         }, $images);
 
         return [
